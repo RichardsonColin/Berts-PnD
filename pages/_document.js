@@ -39,7 +39,6 @@ export default class MyDocument extends Document {
         <Head>{this.props.styles}</Head>
         <body>
           <Main />
-          <div id='toast'></div>
           <NextScript />
         </body>
       </Html>
