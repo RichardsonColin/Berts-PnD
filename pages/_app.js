@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 // components
-import Layout from '@/components/Layout';
+import Layout from '@/components/layout/Layout';
+// constants
+import { COMPANY_NAME } from '@/src/constants';
 // styles
 import '../styles/globals.css';
 
@@ -14,14 +16,14 @@ function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Head>
-        <title>Bert&#39;s Painting &#38; Decorating</title>
+        <title>{COMPANY_NAME}</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta
           name='description'
-          content='Winnipeg&#39;s top painters and painting services. Inquire about our interior painting, exterior painting and decorating expertise.'
+          content='Bert&#39;s Painting &amp; Decorating is a father and son company providing service in English and French to many satisfied customers for over 35 years. We are Red Seal Qualified Journeyman Painters providing interior and exterior work in residential and small commercial buildings.'
         />
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Layout>
   );
 }
