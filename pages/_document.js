@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>{this.props.styles}</Head>
         <body>
           <Main />
