@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 // components
 import Layout from '@/components/layout/Layout';
 // constants
-import { COMPANY_NAME } from '@/src/constants';
-// styles
+import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/src/constants';
+// global styles
 import '../styles/globals.css';
 
 MyApp.propTypes = {
@@ -18,10 +18,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>{COMPANY_NAME}</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <meta
-          name='description'
-          content='Bert&#39;s Painting &amp; Decorating is a father and son company providing service in English and French to many satisfied customers for over 35 years. We are Red Seal Qualified Journeyman Painters providing interior and exterior work in residential and small commercial buildings.'
-        />
+        <meta name='description' content={COMPANY_DESCRIPTION} />
       </Head>
       <Component {...pageProps} />
     </Layout>
