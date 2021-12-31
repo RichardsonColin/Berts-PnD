@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // components
 import Header from './Header';
-import Navigation from './Navigation';
+import Nav from './Nav';
 import Main from './Main';
 import Footer from './Footer';
 
@@ -13,12 +13,10 @@ export default function Layout(props) {
   return (
     <>
       <Header>
-        <Navigation />
+        <Nav />
       </Header>
       <Main>{props.children}</Main>
-      <Footer>
-        <div></div>
-      </Footer>
+      <Footer></Footer>
     </>
   );
 }
