@@ -6,4 +6,16 @@ module.exports = {
   COMPANY_ADDRESS_CITY: 'Winnipeg',
   COMPANY_ADDRESS_PROVINCE: 'Manitoba',
   COMPANY_ADDRESS_POSTAL: 'R2H 1S3',
+  COMPANY_DESCRIPTION:
+    "Bert's Painting & Decorating is a father and son company providing service in English and French to many satisfied customers for over 35 years. We are Red Seal Qualified Journeyman Painters providing interior and exterior work in residential and small commercial buildings.",
+  sitePages: ['home', 'about', 'services', 'testimonials', 'contact'],
+  mediaQueries: {
+    mobileS: '320px',
+    mobileM: '375px',
+    mobileL: '425px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1440px',
+    desktop: '2560px',
+  },
 };
