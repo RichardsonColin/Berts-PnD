@@ -10,17 +10,23 @@ LinkButton.propTypes = {
 
 export default function LinkButton({ text, href, isPrimary }) {
   return (
-    <Link href={href} passHref>
-      <StyledLinkButton isPrimary={isPrimary}>{text}</StyledLinkButton>
-    </Link>
+    <ButtonWrapper>
+      <Link href={href} passHref>
+        <StyledLinkButton isPrimary={isPrimary}>{text}</StyledLinkButton>
+      </Link>
+    </ButtonWrapper>
   );
 }
 
 // styles
 const StyledLinkButton = styled.a`
-  padding: 15px 25px;
+  display: inline-block;
+  padding: 1rem 2rem;
   border-radius: 3px;
-  font-size: 1.1em;
+  font-size: 1em;
+  font-weight: 500;
+  box-shadow: 1px 1px 2px 0px var(--color-grey-800);
+  background-color: var(--secondary);
 
   ${({ isPrimary }) => {
     if (isPrimary) {
@@ -36,3 +42,4 @@ const StyledLinkButton = styled.a`
     }
   }}
 `;
+const ButtonWrapper = styled.div``;
