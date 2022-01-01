@@ -1,20 +1,21 @@
 import Image from 'next/image';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+// components for styling
+import { LogoWrapper as NavLogoWrapper } from '@/components/layout/Nav';
 // constants
-import { COMPANY_NAME } from '@/src/constants';
-// images
+import { COMPANY_NAME, mediaQueries } from '@/src/constants';
+// assets
 import logoImage from '@/public/images/logo.webp';
 
-Logo.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number,
-};
-
-export default function Logo({ width, height }) {
+export default function Logo() {
   return (
-    <ImageWrapper width={width} height={height}>
-      <StyledImage src={logoImage} alt={`${COMPANY_NAME} logo`} quality={100} />
+    <ImageWrapper mediaQueries={mediaQueries}>
+      <StyledImage
+        src={logoImage}
+        alt={`${COMPANY_NAME} logo`}
+        quality={100}
+        priority
+      />
     </ImageWrapper>
   );
 }
@@ -24,6 +25,12 @@ const StyledImage = styled(Image)`
   width: 100%;
 `;
 const ImageWrapper = styled.div`
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => (height ? `${height}px` : 'auto')};
+  ${NavLogoWrapper} & {
+    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileS}) {
+      width: 150px;
+    }
+    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+      width: 200px;
+    }
+  }
 `;
