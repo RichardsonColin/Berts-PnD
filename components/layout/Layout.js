@@ -16,7 +16,7 @@ export default function Layout(props) {
         <Nav />
       </Header>
       <Main>{props.children}</Main>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }
