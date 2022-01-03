@@ -7,14 +7,12 @@ import logoImage from '@/public/images/logo.webp';
 
 export default function Logo() {
   return (
-    <div>
-      <StyledImage
-        src={logoImage}
-        alt={`${COMPANY_NAME} logo`}
-        quality={100}
-        priority
-      />
-    </div>
+    <StyledImage
+      src={logoImage}
+      alt={`${COMPANY_NAME} logo`}
+      quality={100}
+      priority
+    />
   );
 }
 
