@@ -1,81 +1,134 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+// hooks
+import useCurrentRoute from '@/hooks/useCurrentRoute';
 // components
 import QuoteLinkButton from '@/components/QuoteLinkButton';
+// styling components
+import { StyledHeader as StyledHeaderWrapper } from '@/components/layout/Header';
+import { StyledFooter as StyledFooterWrapper } from '@/components/layout/Footer';
+// constants
+import { siteRoutes, mediaQueries } from '@/src/constants';
 
 NavList.propTypes = {
-  routes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentRoute: PropTypes.string.isRequired,
+  showCallToAction: PropTypes.bool,
 };
 
-export default function NavList({ routes, currentRoute }) {
+export default function NavList({ showCallToAction = true }) {
+  const currentRoute = useCurrentRoute();
   return (
-    <List>
-      {routes.map((route) => (
-        <ListItem key={route}>
+    <StyledNavList mediaQueries={mediaQueries}>
+      {siteRoutes.map((route) => (
+        <NavListItem key={route}>
           <Link href={route} passHref>
             <StyledLink isCurrentRoute={route === currentRoute}>
               {route === '/' ? 'home' : route.replace('/', '')}
             </StyledLink>
           </Link>
-        </ListItem>
+        </NavListItem>
       ))}
-      <ListItem>
-        <QuoteLinkButton />
-      </ListItem>
-    </List>
+      {showCallToAction && (
+        <NavListItem>
+          <QuoteLinkButton />
+        </NavListItem>
+      )}
+    </StyledNavList>
   );
 }
 
 // styles
-const List = styled.ul`
-  display: flex;
-  align-items: baseline;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`;
-const ListItem = styled.li`
-  margin-left: 3rem;
-`;
 const StyledLink = styled.a`
   position: relative;
   text-decoration: none;
   font-size: 1.1em;
   font-weight: 300;
   text-transform: capitalize;
+  cursor: pointer;
+  transition: color 0.2s ease;
 
-  &:hover,
-  &:active {
-    color: var(--primary-dark);
-    cursor: pointer;
-  }
-
+  /* Custom underline */
   &::before {
     position: absolute;
     bottom: -4px;
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--primary);
     opacity: 0;
     content: '';
     cursor: pointer;
     transition: opacity 0.2s ease;
   }
 
-  ${({ isCurrentRoute }) =>
-    isCurrentRoute
-      ? css`
+  ${StyledHeaderWrapper} &::before {
+    background-color: var(--primary-light);
+  }
+
+  ${StyledFooterWrapper} &::before {
+    background-color: var(--secondary-light);
+  }
+
+  ${({ isCurrentRoute }) => {
+    if (isCurrentRoute) {
+      return css`
+        ${StyledHeaderWrapper} && {
           color: var(--primary-dark);
-          &::before {
-            opacity: 1;
-          }
-        `
-      : ''}
+        }
+        ${StyledFooterWrapper} && {
+          color: var(--secondary-light);
+        }
+        &::before {
+          opacity: 1;
+        }
+      `;
+    }
+  }}
 
   &:hover::before {
     opacity: 1;
+  }
+`;
+const NavListItem = styled.li``;
+const StyledNavList = styled.ul`
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  ${StyledHeaderWrapper} & {
+    align-items: baseline;
+  }
+
+  ${StyledFooterWrapper} & {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+      flex-direction: row;
+      width: 500px;
+    }
+  }
+
+  ${StyledHeaderWrapper} & ${NavListItem} {
+    margin-left: 2.5rem;
+  }
+
+  ${StyledFooterWrapper} & ${NavListItem} {
+    margin-bottom: 0.5rem;
+  }
+
+  ${StyledHeaderWrapper} & ${NavListItem} ${StyledLink} {
+    &:hover {
+      color: var(--primary-dark);
+    }
+  }
+
+  ${StyledFooterWrapper} & ${NavListItem} ${StyledLink} {
+    font-size: 1em;
+    &:hover {
+      color: var(--secondary-light);
+    }
   }
 `;
