@@ -55,7 +55,7 @@ export const StyledFooter = styled.footer`
 
   /* Company info content */
   & ${ContentWrapper}:nth-child(3) {
-    width: 300px;
+    width: 275px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
