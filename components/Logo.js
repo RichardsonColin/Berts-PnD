@@ -19,4 +19,5 @@ export default function Logo() {
 // styles
 const StyledImage = styled(Image)`
   width: 100%;
+  transition: 0.2s ease;
 `;
