@@ -14,7 +14,7 @@ Header.propTypes = {
 export default function Header(props) {
   return (
     <StyledHeader id='header' mediaQueries={mediaQueries}>
-      <BorderSpacer size={3} position='bottom' />
+      <BorderSpacer size={4} position='bottom' />
       <ContentWrapper>
         <LogoWrapper mediaQueries={mediaQueries}>
           <Link href='/' passHref>
@@ -37,8 +37,9 @@ export const StyledHeader = styled.header`
   height: 42px;
   min-height: 42px;
   background-color: #fff;
-  box-shadow: 0px 1px 2px 1px var(--color-grey-100);
-  z-index: 1;
+  box-shadow: 0px 1px 2px 0px var(--color-grey-700);
+  z-index: 10;
+  transition: 0.2s ease;
 
   @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
     height: 50px;
@@ -56,7 +57,7 @@ export const StyledHeader = styled.header`
     @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
       max-width: 1350px;
     }
-    @media (max-width: 1350px) {
+    @media (max-width: 1400px) {
       padding-right: 1rem;
     }
   }
@@ -81,7 +82,7 @@ const LogoWrapper = styled.div`
     width: 200px;
     justify-content: flex-start;
   }
-  @media (max-width: 1350px) {
+  @media (max-width: 1400px) {
     padding-left: 1rem;
   }
 
