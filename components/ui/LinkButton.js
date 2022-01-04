@@ -35,6 +35,7 @@ const LinkButtonWrapper = styled.div`
     box-shadow: 1px 1px 2px 0px var(--color-grey-800);
     background-color: var(--secondary);
     transition: 0.2s ease;
+    text-shadow: 1px 1px var(--color-grey-990);
 
     ${({ isPrimary }) => {
       if (isPrimary) {
