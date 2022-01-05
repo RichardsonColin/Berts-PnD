@@ -54,7 +54,7 @@ export const StyledFooter = styled.footer`
   background-color: var(--secondary-dark);
 
   /* Company info content */
-  & ${ContentWrapper}:nth-child(3) {
+  ${ContentWrapper}:nth-child(3) {
     width: 275px;
     margin-left: auto;
     margin-right: auto;
@@ -62,7 +62,7 @@ export const StyledFooter = styled.footer`
   }
 
   /* Copyright content */
-  & ${ContentWrapper}:last-child {
+  ${ContentWrapper}:last-child {
     text-align: center;
     padding-bottom: 0.5rem;
     font-size: 0.75em;
@@ -108,7 +108,7 @@ const ContactEmail = styled.a`
   text-decoration: underline;
 `;
 const StyledDot = styled.span`
-  &:after {
+  :after {
     content: '';
     position: relative;
     display: inline-block;

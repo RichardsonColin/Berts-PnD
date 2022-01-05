@@ -45,10 +45,10 @@ const StyledLink = styled.a`
   font-weight: 300;
   text-transform: capitalize;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: 0.2s ease;
 
   /* Custom underline */
-  &::before {
+  &:before {
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -60,11 +60,15 @@ const StyledLink = styled.a`
     transition: opacity 0.2s ease;
   }
 
-  ${StyledHeaderWrapper} &::before {
+  &:hover::before {
+    opacity: 1;
+  }
+
+  ${StyledHeaderWrapper} &&:before {
     background-color: var(--primary-light);
   }
 
-  ${StyledFooterWrapper} &::before {
+  ${StyledFooterWrapper} &&:before {
     background-color: var(--secondary-light);
   }
 
@@ -77,16 +81,12 @@ const StyledLink = styled.a`
         ${StyledFooterWrapper} && {
           color: var(--secondary-light);
         }
-        &::before {
+        &:before {
           opacity: 1;
         }
       `;
     }
   }}
-
-  &:hover::before {
-    opacity: 1;
-  }
 `;
 const NavListItem = styled.li``;
 const StyledNavList = styled.ul`
@@ -95,11 +95,11 @@ const StyledNavList = styled.ul`
   padding: 0;
   list-style: none;
 
-  ${StyledHeaderWrapper} & {
+  ${StyledHeaderWrapper} && {
     align-items: baseline;
   }
 
-  ${StyledFooterWrapper} & {
+  ${StyledFooterWrapper} && {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -111,23 +111,23 @@ const StyledNavList = styled.ul`
     }
   }
 
-  ${StyledHeaderWrapper} & ${NavListItem} {
+  ${StyledHeaderWrapper} && ${NavListItem} {
     margin-left: 2.5rem;
   }
 
-  ${StyledFooterWrapper} & ${NavListItem} {
+  ${StyledFooterWrapper} && ${NavListItem} {
     margin-bottom: 0.5rem;
   }
 
-  ${StyledHeaderWrapper} & ${NavListItem} ${StyledLink} {
-    &:hover {
+  ${StyledHeaderWrapper} && ${StyledLink} {
+    :hover {
       color: var(--primary-dark);
     }
   }
 
-  ${StyledFooterWrapper} & ${NavListItem} ${StyledLink} {
+  ${StyledFooterWrapper} && ${StyledLink} {
     font-size: 1em;
-    &:hover {
+    :hover {
       color: var(--secondary-light);
     }
   }

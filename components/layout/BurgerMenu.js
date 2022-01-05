@@ -64,7 +64,7 @@ const StyledBurgerMenu = styled.nav`
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
 
-  & ${MenuList} {
+  ${MenuList} {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -74,7 +74,7 @@ const StyledBurgerMenu = styled.nav`
     list-style: none;
   }
 
-  & ${MenuList} ${MenuItem} {
+  ${MenuList} ${MenuItem} {
     margin: 1rem 0;
 
     /* Landscape on devices up to laptops */
@@ -112,7 +112,7 @@ const StyledLink = styled.a`
   letter-spacing: 0.2rem;
   color: var(--secondary);
   text-decoration: none;
-  transition: color 0.3s linear;
+  transition: color 0.2s linear;
 
   ${({ isCurrentRoute }) =>
     isCurrentRoute
@@ -124,7 +124,7 @@ const StyledLink = styled.a`
         `
       : ''}
 
-  &:hover {
+  :hover {
     color: var(--color-grey-50);
   }
 `;

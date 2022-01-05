@@ -50,7 +50,7 @@ export const StyledHeader = styled.header`
     min-height: 90px;
   }
 
-  & ${ContentWrapper} {
+  ${ContentWrapper} {
     position: relative;
     height: inherit;
     margin: 0 auto;
@@ -86,7 +86,7 @@ const LogoWrapper = styled.div`
     padding-left: 1rem;
   }
 
-  & ${LogoLink} {
+  ${LogoLink} {
     line-height: 0;
   }
 `;
