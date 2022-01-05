@@ -9,10 +9,16 @@ import { mediaQueries } from '@/src/constants';
 BorderSpacer.propTypes = {
   size: PropTypes.number,
   position: PropTypes.string,
+  backgroundColor: PropTypes.string,
   className: PropTypes.string,
 };
 
-export default function BorderSpacer({ size, position, className }) {
+export default function BorderSpacer({
+  size,
+  position,
+  backgroundColor,
+  className,
+}) {
   const { width } = useWindowDimensions();
   // size of border spacer in px
   const [spacerSize, setSpacerSize] = useState(size || 2);
@@ -23,7 +29,8 @@ export default function BorderSpacer({ size, position, className }) {
     // decrease to half the size of original for smaller viewports
     const newSpacerSize =
       width > breakPointWidth ? size : size - Math.round(size / 2);
-    setSpacerSize(newSpacerSize);
+    // defaults to 1 if calc results in 0
+    setSpacerSize(newSpacerSize || 1);
   }, [width, size]);
   return (
     <StyledBorderSpacer
@@ -31,14 +38,15 @@ export default function BorderSpacer({ size, position, className }) {
       className={className}
       spacerSize={spacerSize}
       position={position}
+      backgroundColor={backgroundColor || 'var(--primary)'}
     ></StyledBorderSpacer>
   );
 }
 
 const StyledBorderSpacer = styled.div`
-  &:before {
+  :before {
     position: absolute;
-    background-color: var(--primary);
+    background-color: ${({ backgroundColor }) => backgroundColor};
     content: '';
 
     ${({ position }) => {
