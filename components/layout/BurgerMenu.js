@@ -47,8 +47,6 @@ export default function BurgerMenu({ open, setOpen }) {
 }
 
 // styles
-const MenuItem = styled.li``;
-const MenuList = styled.ul``;
 const StyledBurgerMenu = styled.nav`
   position: absolute;
   top: 42px;
@@ -63,26 +61,6 @@ const StyledBurgerMenu = styled.nav`
   text-align: right;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
-
-  ${MenuList} {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  ${MenuList} ${MenuItem} {
-    margin: 1rem 0;
-
-    /* Landscape on devices up to laptops */
-    @media (max-width: ${({ mediaQueries }) =>
-        mediaQueries.laptop}) and (max-height: 500px) {
-      margin-bottom: 0.55rem 0;
-    }
-  }
 
   /* min-widths */
   @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileS}) {
@@ -106,25 +84,49 @@ const StyledBurgerMenu = styled.nav`
     font-size: 1em;
   }
 `;
+const MenuList = styled.ul`
+  ${StyledBurgerMenu} & {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+`;
+const MenuItem = styled.li`
+  ${StyledBurgerMenu} & {
+    margin: 1rem 0;
+
+    /* Landscape on devices up to laptops */
+    @media (max-width: ${({ mediaQueries }) =>
+        mediaQueries.laptop}) and (max-height: 500px) {
+      margin-bottom: 0.55rem 0;
+    }
+  }
+`;
 const StyledLink = styled.a`
-  text-transform: capitalize;
-  font-weight: bold;
-  letter-spacing: 0.2rem;
-  color: var(--secondary);
-  text-decoration: none;
-  transition: color 0.2s linear;
+  ${StyledBurgerMenu} && {
+    text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: 0.2s linear;
 
-  ${({ isCurrentRoute }) =>
-    isCurrentRoute
-      ? css`
-          color: var(--color-grey-50);
-          padding-left: 10px;
-          border-left: 4px solid var(--primary-light);
-          border-bottom: 2px solid var(--primary-light);
-        `
-      : ''}
+    ${({ isCurrentRoute }) =>
+      isCurrentRoute
+        ? css`
+            color: var(--color-grey-50);
+            padding-left: 10px;
+            border-left: 4px solid var(--primary-light);
+            border-bottom: 2px solid var(--primary-light);
+          `
+        : ''}
 
-  :hover {
-    color: var(--color-grey-50);
+    :hover {
+      color: var(--color-grey-50);
+    }
   }
 `;

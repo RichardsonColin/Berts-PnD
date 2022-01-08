@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 LinkButton.propTypes = {
-  text: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   isPrimary: PropTypes.bool,
-  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
-export default function LinkButton({ text, href, isPrimary, className }) {
+export default function LinkButton({ href, isPrimary, children, className }) {
   return (
     <LinkButtonWrapper>
       <Link href={href} passHref>
         <StyledLinkButton className={className} isPrimary={isPrimary}>
-          {text}
+          {children}
         </StyledLinkButton>
       </Link>
     </LinkButtonWrapper>
@@ -22,11 +22,11 @@ export default function LinkButton({ text, href, isPrimary, className }) {
 }
 
 // styles
-const StyledLinkButton = styled.a``;
 const LinkButtonWrapper = styled.div`
   display: inline-block;
-
-  & ${StyledLinkButton} {
+`;
+const StyledLinkButton = styled.a`
+  ${LinkButtonWrapper} & {
     display: inline-block;
     padding: 1rem 2rem;
     border-radius: 3px;
