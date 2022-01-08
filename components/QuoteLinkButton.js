@@ -4,18 +4,16 @@ import styled from 'styled-components';
 import LinkButton from '@/components/ui/LinkButton';
 
 QuoteLinkButton.propTypes = {
-  text: PropTypes.string,
   href: PropTypes.string,
   isPrimary: PropTypes.bool,
+  children: PropTypes.node,
 };
 
-export default function QuoteLinkButton({ text, href, isPrimary }) {
+export default function QuoteLinkButton({ href, isPrimary, children }) {
   return (
-    <StyledQuoteLinkButton
-      text={text || 'Request Quote'}
-      href={href || '/quote'}
-      isPrimary={isPrimary}
-    />
+    <StyledQuoteLinkButton href={href || '/quote'} isPrimary={isPrimary}>
+      {children || 'Request Quote'}
+    </StyledQuoteLinkButton>
   );
 }
 
