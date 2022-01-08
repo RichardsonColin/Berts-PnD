@@ -7,35 +7,39 @@ AnimatedSquare.propTypes = {
   size: PropTypes.number.isRequired,
   thickness: PropTypes.number.isRequired,
   angle: PropTypes.number,
+  shift: PropTypes.number,
   color: PropTypes.string,
   opacity: PropTypes.number,
-  animationOffset: PropTypes.number,
+  animationDuration: PropTypes.number,
   className: PropTypes.string,
 };
 
 // size is used as a pixel value for width/height
 // thickness is a width in % of the linear gradient background (min=1; max=51)
-// animationOffset is a positive number representing the amount of ms in hundreds to offset the animation-duration (min=1; max=9)
+// angle rotates at a fixed point in 2D realm
+// shift is the distance in px traveled along the Y-axis
 export default function AnimatedSquare({
   size,
   thickness,
-  angle,
-  color,
-  opacity,
-  animationOffset,
+  angle = 0,
+  shift = 10,
+  color = 'var(--primary)',
+  opacity = 1,
+  animationDuration = 12,
   className,
 }) {
   return (
     <AnimatedSquareShift
       aria-hidden='true'
-      className={`${className} animated-square`}
+      className={`${className}`}
       mediaQueries={mediaQueries}
       size={size}
       thickness={thickness}
-      angle={angle || 0}
-      color={color || 'var(--primary)'}
-      opacity={opacity || 1}
-      animationOffset={animationOffset || 0}
+      angle={angle}
+      shift={shift}
+      color={color}
+      opacity={opacity}
+      animationDuration={animationDuration}
     />
   );
 }
@@ -67,22 +71,22 @@ const StyledSquare = styled.div`
   }
 `;
 // animations
-const shift = ({ angle }) => keyframes`
+const shift = ({ angle, shift }) => keyframes`
   0% {
-    transform: rotate(${angle}deg) translateY(0);
+    transform: rotate(${angle}deg) translateY(-${shift}px);
   }
 
   50% {
-    transform: rotate(${angle}deg) translateY(25px);
+    transform: rotate(${angle}deg) translateY(${shift}px);
   }
 
   100% {
-    transform: rotate(${angle}deg) translateY(0);
+    transform: rotate(${angle}deg) translateY(-${shift}px);
   }
 `;
 const AnimatedSquareShift = styled(StyledSquare)`
   animation-name: ${shift};
-  animation-duration: ${({ animationOffset }) => `${7}.${animationOffset}s`};
+  animation-duration: ${({ animationDuration }) => `${animationDuration}s`};
   animation-delay: 0s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
