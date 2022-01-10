@@ -76,8 +76,8 @@ const NavListItem = styled.li`
 const StyledLink = styled.a`
   position: relative;
   text-decoration: none;
-  font-size: 1.1em;
-  font-weight: 300;
+  font-size: 1em;
+  font-weight: 400;
   text-transform: capitalize;
   cursor: pointer;
   transition: 0.2s ease;
