@@ -6,10 +6,15 @@ LinkButton.propTypes = {
   href: PropTypes.string.isRequired,
   isPrimary: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
-export default function LinkButton({ href, isPrimary, children, className }) {
+export default function LinkButton({
+  href,
+  isPrimary,
+  children,
+  className = '',
+}) {
   return (
     <LinkButtonWrapper>
       <Link href={href} passHref>
@@ -54,7 +59,7 @@ const StyledLinkButton = styled.a`
           color: var(--color-grey-10);
 
           :hover {
-            background-color: var(--secondary-dark);
+            background-color: var(--secondary-accent);
           }
         `;
       }

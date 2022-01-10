@@ -5,20 +5,20 @@ import { mediaQueries } from '@/src/constants';
 
 Container.propTypes = {
   position: PropTypes.string,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
-// sm, md, lg, xl
+// position: aligns the container to either center, left or right
 export default function Container({
   position = 'center',
-  className,
+  className = '',
   children,
 }) {
   return (
     <StyledContainer
-      position={position}
       className={className}
+      position={position}
       mediaQueries={mediaQueries}
     >
       {children}
