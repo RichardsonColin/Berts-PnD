@@ -8,20 +8,20 @@ import { mediaQueries } from '@/src/constants';
 
 BorderSpacer.propTypes = {
   size: PropTypes.number,
-  position: PropTypes.string,
+  position: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
   className: PropTypes.string,
 };
 
 export default function BorderSpacer({
-  size,
+  size = 2,
   position,
-  backgroundColor,
-  className,
+  backgroundColor = 'var(--primary)',
+  className = '',
 }) {
   const { width } = useWindowDimensions();
   // size of border spacer in px
-  const [spacerSize, setSpacerSize] = useState(size || 2);
+  const [spacerSize, setSpacerSize] = useState(size);
 
   useEffect(() => {
     // resize the spacer to be thinner for smaller viewports
@@ -38,7 +38,7 @@ export default function BorderSpacer({
       className={className}
       spacerSize={spacerSize}
       position={position}
-      backgroundColor={backgroundColor || 'var(--primary)'}
+      backgroundColor={backgroundColor}
     ></StyledBorderSpacer>
   );
 }
