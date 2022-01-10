@@ -46,43 +46,45 @@ const Wrapper = styled.div`
   }}
 `;
 const StyledContent = styled(Container)`
-  ${({ split }) => {
-    if (split === 'left') {
-      return css`
-        /* min-widths */
-        @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
-          width: 472px;
-          margin: auto;
-        }
-        @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
-          margin: 0;
-          margin-left: 3.5rem;
-        }
-        /* custom breakpoint */
-        @media (min-width: 1500px) {
-          margin-left: 0;
-          width: 612px;
-          margin-top: 3.8rem;
-        }
-      `;
-    }
+  ${Wrapper} & {
+    ${({ split }) => {
+      if (split === 'left') {
+        return css`
+          /* min-widths */
+          @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+            width: 472px;
+            margin: auto;
+          }
+          @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+            margin: 0;
+            margin-left: 3.5rem;
+          }
+          /* custom breakpoint */
+          @media (min-width: 1500px) {
+            margin-left: 0;
+            width: 612px;
+            margin-top: 3.8rem;
+          }
+        `;
+      }
 
-    if (split === 'right') {
-      return css`
-        /* min-widths */
-        @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
-          width: 472px;
-          margin: auto;
-        }
-        @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
-          margin-right: 0;
-        }
-        /* custom breakpoint */
-        @media (min-width: 1500px) {
-          width: 612px;
-          margin-top: 3.8rem;
-        }
-      `;
-    }
-  }}
+      if (split === 'right') {
+        return css`
+          /* min-widths */
+          @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+            width: 472px;
+            margin: auto;
+          }
+          @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+            margin-right: 0;
+          }
+          /* custom breakpoint */
+          @media (min-width: 1500px) {
+            width: 612px;
+            margin-top: 3.8rem;
+          }
+        `;
+      }
+    }}
+  }
 `;
