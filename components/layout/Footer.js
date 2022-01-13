@@ -15,9 +15,9 @@ import {
 
 export default function Footer() {
   return (
-    <StyledFooter id='footer' mediaQueries={mediaQueries}>
+    <StyledFooter id='footer'>
       <BorderSpacer size={8} position='top' />
-      <LogoWrapper mediaQueries={mediaQueries}>
+      <LogoWrapper>
         <Logo />
       </LogoWrapper>
       <ContentWrapper>
@@ -96,12 +96,12 @@ const LogoWrapper = styled.div`
   background-color: var(--color-grey-10);
 
   /* min-widths */
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+  @media (min-width: ${mediaQueries.tablet}) {
     top: -50px;
     width: 250px;
     background-size: 100% 41.5%;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (min-width: ${mediaQueries.laptop}) {
     top: -55px;
     width: 300px;
     background: linear-gradient(to right, var(--primary) 8px, transparent 8px) 0

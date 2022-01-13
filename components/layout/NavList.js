@@ -18,7 +18,7 @@ NavList.propTypes = {
 export default function NavList({ showCallToAction = true }) {
   const currentRoute = useCurrentRoute();
   return (
-    <StyledNavList mediaQueries={mediaQueries}>
+    <StyledNavList>
       {siteRoutes.map((route) => (
         <NavListItem key={route}>
           <Link href={route} passHref>
@@ -56,7 +56,7 @@ const StyledNavList = styled.ul`
     align-items: center;
     margin: 0 auto;
 
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       flex-direction: row;
       width: 500px;
     }
@@ -83,7 +83,7 @@ const StyledLink = styled.a`
   transition: 0.2s ease;
 
   /* Custom underline */
-  :before {
+  &:before {
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -97,7 +97,7 @@ const StyledLink = styled.a`
 
   /* Header */
   ${StyledHeaderWrapper} ${StyledNavList} & {
-    :hover {
+    &:hover {
       color: var(--primary-dark);
     }
   }
@@ -105,12 +105,12 @@ const StyledLink = styled.a`
   /* Footer */
   ${StyledFooterWrapper} ${StyledNavList} & {
     font-size: 1em;
-    :hover {
+    &:hover {
       color: var(--primary-light);
     }
   }
 
-  :hover::before {
+  &:hover::before {
     opacity: 1;
   }
 

@@ -1,7 +1,7 @@
-// import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
+import { mediaQueries } from '@/src/constants';
 
 // styles
 const SectionWrapper = css`
@@ -10,29 +10,29 @@ const SectionWrapper = css`
   margin: auto;
 
   /* min-widths */
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+  @media (min-width: ${mediaQueries.tablet}) {
     max-width: 700px;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (min-width: ${mediaQueries.laptop}) {
     max-width: 1200px;
   }
 `;
 const SectionCentered = css`
+  margin: auto;
   text-align: center;
 
   h2 {
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       max-width: 670px;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+    @media (min-width: ${mediaQueries.laptop}) {
       margin-left: auto;
       margin-right: auto;
     }
   }
-
   p {
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+    @media (min-width: ${mediaQueries.laptop}) {
       max-width: 625px;
       margin: auto;
     }
@@ -53,10 +53,13 @@ const FontStylings = css`
   h2 {
     font-size: 2em;
 
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       margin-bottom: 3.125rem;
       font-size: 2.75em;
     }
+  }
+  p {
+    font-size: 1em;
   }
   span {
     margin: 0;
@@ -64,25 +67,27 @@ const FontStylings = css`
     font-weight: 700;
     color: var(--secondary-light);
 
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       font-size: 1.125em;
     }
   }
-  p {
-    font-size: 1em;
-  }
 `;
 export const StyledServicesSection = styled(Section)`
-  ${SectionWrapper}
+  & {
+    ${SectionWrapper}
 
-  ${FontStylings}
+    ${FontStylings}
 
-  ${SectionCentered}
+    ${SectionCentered}
+  }
 `;
 export const StyledProductsSection = styled(Section)`
-  ${SectionWrapper}
+  & {
+    ${SectionWrapper}
 
-  ${FontStylings}
+    ${FontStylings}
 
-  ${SectionSplit}
+    ${SectionSplit}
+  }
 `;
+export const StyledExperienceSection = styled(Section)``;

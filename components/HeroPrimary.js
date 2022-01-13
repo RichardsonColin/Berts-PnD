@@ -12,18 +12,18 @@ import heroImage from '@/public/images/hero-primary.webp';
 
 export default function HeroPrimary() {
   return (
-    <StyledHero id='hero' mediaQueries={mediaQueries}>
-      <ColorWash aria-hidden='true' mediaQueries={mediaQueries} />
-      <StyledHeroAccent aria-hidden='true' mediaQueries={mediaQueries} />
+    <StyledHero id='hero'>
+      <ColorWash aria-hidden='true' />
+      <StyledHeroAccent aria-hidden='true' />
       <HeroContentWrapper>
-        <HeroContent mediaQueries={mediaQueries}>
-          <HeroHeading mediaQueries={mediaQueries}>
+        <HeroContent>
+          <HeroHeading>
             Professional Painters For Your Home or Business
           </HeroHeading>
           <QuoteLinkButton text='Schedule Now' />
         </HeroContent>
       </HeroContentWrapper>
-      <HeroImageWrapper mediaQueries={mediaQueries}>
+      <HeroImageWrapper>
         <Image
           priority
           src={heroImage}
@@ -39,7 +39,6 @@ export default function HeroPrimary() {
         thickness={50}
         angle={135}
         color='var(--color-grey-10)'
-        mediaQueries={mediaQueries}
       />
       <StyledSquareTwo
         size={30}
@@ -47,13 +46,11 @@ export default function HeroPrimary() {
         angle={135}
         color='var(--color-grey-10)'
         animationOffset={5}
-        mediaQueries={mediaQueries}
       />
       <StyledBorderSpacer
         size={1}
         backgroundColor='var(--primary-light)'
         position='bottom'
-        mediaQueries={mediaQueries}
       />
     </StyledHero>
   );
@@ -70,8 +67,7 @@ const StyledHero = styled.section`
   overflow: hidden;
 
   /* landscape */
-  @media (max-width: ${({ mediaQueries }) =>
-      mediaQueries.laptop}) and (max-height: 600px) {
+  @media (max-width: ${mediaQueries.laptop}) and (max-height: 600px) {
     height: 100vh;
   }
 `;
@@ -87,7 +83,7 @@ const HeroImageWrapper = styled.div`
     filter: brightness(90%);
     transition: 0.2s ease;
 
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+    @media (min-width: ${mediaQueries.laptop}) {
       max-width: 80%;
     }
   }
@@ -109,7 +105,7 @@ const HeroContent = styled.div`
     padding: 0;
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileM}) {
+    @media (min-width: ${mediaQueries.mobileM}) {
       max-width: 65%;
     }
     /* custom breakpoint to fit BigSquare dimensions */
@@ -117,13 +113,12 @@ const HeroContent = styled.div`
       max-width: 50%;
       padding-top: 2rem;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       max-width: 45%;
       padding-bottom: 5rem;
     }
     /* landscape */
-    @media (max-width: ${({ mediaQueries }) =>
-        mediaQueries.laptop}) and (max-height: 600px) {
+    @media (max-width: ${mediaQueries.laptop}) and (max-height: 600px) {
       margin-top: 2.5rem;
     }
   }
@@ -135,14 +130,14 @@ const HeroHeading = styled.h1`
     text-shadow: 1px 1px var(--color-grey-900);
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileM}) {
+    @media (min-width: ${mediaQueries.mobileM}) {
       color: var(--color-grey-900);
       text-shadow: none;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       font-size: 38px;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+    @media (min-width: ${mediaQueries.laptop}) {
       font-size: 42px;
     }
     @media (min-width: 1400px) {
@@ -158,7 +153,7 @@ const StyledHeroAccent = styled.div`
     z-index: 0;
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileM}) {
+    @media (min-width: ${mediaQueries.mobileM}) {
       position: absolute;
       left: 10%;
       width: 900px;
@@ -168,7 +163,7 @@ const StyledHeroAccent = styled.div`
       opacity: 1;
       z-index: 1;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       left: 50%;
       width: 1000px;
       height: 1000px;
@@ -187,12 +182,12 @@ const StyledSquareOne = styled(SquareOne)`
     ${StyledSquare}
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileM}) {
+    @media (min-width: ${mediaQueries.mobileM}) {
       display: block;
       bottom: 10px;
       right: -95px;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileL}) {
+    @media (min-width: ${mediaQueries.mobileL}) {
       bottom: -85px;
       left: 50%;
       margin-left: 20px;
@@ -208,13 +203,13 @@ const StyledSquareTwo = styled(SquareTwo)`
     ${StyledSquare}
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileM}) {
+    @media (min-width: ${mediaQueries.mobileM}) {
       display: block;
       bottom: 40px;
       left: 50%;
       margin-left: 105px;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileL}) {
+    @media (min-width: ${mediaQueries.mobileL}) {
       bottom: 75px;
       margin-left: 100px;
     }
@@ -248,10 +243,10 @@ const ColorWash = styled.div`
     filter: brightness(0.5);
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileM}) {
+    @media (min-width: ${mediaQueries.mobileM}) {
       filter: none;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       visibility: hidden;
     }
   }

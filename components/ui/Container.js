@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-// constants
-import { mediaQueries } from '@/src/constants';
 
 Container.propTypes = {
   position: PropTypes.string,
@@ -16,11 +14,7 @@ export default function Container({
   children,
 }) {
   return (
-    <StyledContainer
-      className={className}
-      position={position}
-      mediaQueries={mediaQueries}
-    >
+    <StyledContainer className={className} position={position}>
       {children}
     </StyledContainer>
   );

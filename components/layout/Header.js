@@ -13,10 +13,10 @@ Header.propTypes = {
 
 export default function Header({ children }) {
   return (
-    <StyledHeader id='header' mediaQueries={mediaQueries}>
+    <StyledHeader id='header'>
       <BorderSpacer size={4} position='bottom' />
-      <ContentWrapper mediaQueries={mediaQueries}>
-        <LogoWrapper mediaQueries={mediaQueries}>
+      <ContentWrapper>
+        <LogoWrapper>
           <Link href='/' passHref>
             <LogoLink>
               <Logo />
@@ -41,11 +41,11 @@ export const StyledHeader = styled.header`
   transition: 0.2s ease;
 
   /* min-widths */
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+  @media (min-width: ${mediaQueries.tablet}) {
     height: 50px;
     min-height: 50px;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (min-width: ${mediaQueries.laptop}) {
     height: 90px;
     min-height: 90px;
   }
@@ -57,7 +57,7 @@ const ContentWrapper = styled.div`
     margin: 0 auto;
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+    @media (min-width: ${mediaQueries.laptop}) {
       max-width: 1350px;
     }
     /* custom max-width for edge space */
@@ -80,10 +80,10 @@ const LogoWrapper = styled.div`
     height: 100%;
 
     /* min-widths */
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+    @media (min-width: ${mediaQueries.tablet}) {
       width: 150px;
     }
-    @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+    @media (min-width: ${mediaQueries.laptop}) {
       width: 200px;
       justify-content: flex-start;
     }

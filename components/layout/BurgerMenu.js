@@ -18,15 +18,10 @@ export default function BurgerMenu({ open, setOpen }) {
   const isHidden = open ? true : false;
   const tabIndex = isHidden ? 0 : -1;
   return (
-    <StyledBurgerMenu
-      aria-label='Main'
-      aria-hidden={!isHidden}
-      open={open}
-      mediaQueries={mediaQueries}
-    >
+    <StyledBurgerMenu aria-label='Main' aria-hidden={!isHidden} open={open}>
       <MenuList>
         {siteRoutes.map((route) => (
-          <MenuItem key={route} mediaQueries={mediaQueries}>
+          <MenuItem key={route}>
             <Link href={route} passHref>
               <StyledLink
                 isCurrentRoute={route === currentRoute}
@@ -38,7 +33,7 @@ export default function BurgerMenu({ open, setOpen }) {
             </Link>
           </MenuItem>
         ))}
-        <MenuItem mediaQueries={mediaQueries}>
+        <MenuItem>
           <QuoteLinkButton />
         </MenuItem>
       </MenuList>
@@ -63,24 +58,23 @@ const StyledBurgerMenu = styled.nav`
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
 
   /* min-widths */
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileS}) {
+  @media (min-width: ${mediaQueries.mobileS}) {
     font-size: 1em;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.mobileL}) {
+  @media (min-width: ${mediaQueries.mobileL}) {
     font-size: 1.25em;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+  @media (min-width: ${mediaQueries.tablet}) {
     top: 50px;
     min-width: 33%;
     font-size: 1.25em;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (min-width: ${mediaQueries.laptop}) {
     font-size: 2em;
   }
   /* max-widths */
   /* Landscape on smaller devices up to tablets */
-  @media (max-width: ${({ mediaQueries }) =>
-      mediaQueries.tablet}) and (max-height: 400px) {
+  @media (max-width: ${mediaQueries.tablet}) and (max-height: 400px) {
     font-size: 1em;
   }
 `;
@@ -100,8 +94,7 @@ const MenuItem = styled.li`
     margin: 1rem 0;
 
     /* Landscape on devices up to laptops */
-    @media (max-width: ${({ mediaQueries }) =>
-        mediaQueries.laptop}) and (max-height: 500px) {
+    @media (max-width: ${mediaQueries.laptop}) and (max-height: 500px) {
       margin-bottom: 0.55rem 0;
     }
   }
@@ -125,7 +118,7 @@ const StyledLink = styled.a`
           `
         : ''}
 
-    :hover {
+    &:hover {
       color: var(--color-grey-50);
     }
   }

@@ -11,7 +11,7 @@ Section.propTypes = {
 
 export default function Section({ id, className = '', children }) {
   return (
-    <StyledSection id={id} className={className} mediaQueries={mediaQueries}>
+    <StyledSection id={id} className={className}>
       {children}
     </StyledSection>
   );
@@ -21,7 +21,7 @@ export default function Section({ id, className = '', children }) {
 const StyledSection = styled.section`
   padding: 3.125rem 0.625rem;
 
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (min-width: ${mediaQueries.laptop}) {
     padding: 6.25rem 0.625rem;
   }
 `;

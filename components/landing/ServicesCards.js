@@ -14,7 +14,7 @@ export default function ServicesCards() {
   const lastSlashReg = '[^/]+$';
   const firstPeriodReg = '[^.]*';
   return (
-    <CardsWrapper position='center' mediaQueries={mediaQueries}>
+    <CardsWrapper position='center'>
       {servicesData.map((serviceData) => (
         <StyledCard key={serviceData.heading}>
           <ImageWrapper>
@@ -53,7 +53,7 @@ const CardsWrapper = styled(Container)`
   margin-top: 6rem;
 
   /* min-widths */
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+  @media (min-width: ${mediaQueries.tablet}) {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -61,7 +61,7 @@ const CardsWrapper = styled(Container)`
     margin-top: 6.125rem;
     margin-bottom: 2rem;
   }
-  @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (min-width: ${mediaQueries.laptop}) {
     max-width: 690px;
   }
   /* custom breakpoint */
@@ -76,6 +76,20 @@ const StyledCard = styled(Card)`
     margin-bottom: 3.125rem;
     padding: 0;
     padding-bottom: 1.5rem;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -70px;
+      width: 100px;
+      height: 100px;
+      margin: 10px 20px;
+      background-color: var(--color-grey-10);
+      transform: rotateZ(135deg);
+      z-index: 1;
+    }
   }
 `;
 const ImageWrapper = styled.div`
@@ -121,7 +135,7 @@ const StyledHeading = styled(Heading)`
     padding: 0 1.5rem;
     font-size: 1.25em;
 
-    ::before {
+    &:before {
       content: '';
       position: absolute;
       top: 31px;

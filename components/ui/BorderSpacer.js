@@ -44,7 +44,7 @@ export default function BorderSpacer({
 }
 
 const StyledBorderSpacer = styled.div`
-  :before {
+  &:before {
     position: absolute;
     background-color: ${({ backgroundColor }) => backgroundColor};
     content: '';

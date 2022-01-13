@@ -19,13 +19,8 @@ export default function LandingContent({
   children,
 }) {
   return (
-    <Wrapper split={split} mediaQueries={mediaQueries}>
-      <StyledContent
-        className={className}
-        position={position}
-        split={split}
-        mediaQueries={mediaQueries}
-      >
+    <Wrapper split={split}>
+      <StyledContent className={className} position={position} split={split}>
         {children}
       </StyledContent>
     </Wrapper>
@@ -37,7 +32,7 @@ const Wrapper = styled.div`
   ${({ split }) => {
     if (split === 'right') {
       return css`
-        @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+        @media (min-width: ${mediaQueries.laptop}) {
           margin: auto;
           margin-right: 3.125rem;
         }
@@ -51,11 +46,11 @@ const StyledContent = styled(Container)`
       if (split === 'left') {
         return css`
           /* min-widths */
-          @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+          @media (min-width: ${mediaQueries.tablet}) {
             width: 472px;
             margin: auto;
           }
-          @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+          @media (min-width: ${mediaQueries.laptop}) {
             margin: 0;
             margin-left: 3.5rem;
           }
@@ -71,11 +66,11 @@ const StyledContent = styled(Container)`
       if (split === 'right') {
         return css`
           /* min-widths */
-          @media (min-width: ${({ mediaQueries }) => mediaQueries.tablet}) {
+          @media (min-width: ${mediaQueries.tablet}) {
             width: 472px;
             margin: auto;
           }
-          @media (min-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+          @media (min-width: ${mediaQueries.laptop}) {
             margin-right: 0;
           }
           /* custom breakpoint */

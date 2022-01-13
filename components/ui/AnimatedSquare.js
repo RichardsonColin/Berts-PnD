@@ -26,13 +26,12 @@ export default function AnimatedSquare({
   color = 'var(--primary)',
   opacity = 1,
   animationDuration = 12,
-  className,
+  className = '',
 }) {
   return (
     <AnimatedSquareShift
       aria-hidden='true'
       className={`${className}`}
-      mediaQueries={mediaQueries}
       size={size}
       thickness={thickness}
       angle={angle}
@@ -61,12 +60,11 @@ const StyledSquare = styled.div`
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: 100%;
-  box-shadow: -1px -1px 8px hsl(300deg 8% 3% / 15%);
   opacity: ${({ opacity }) => opacity};
   z-index: 1;
 
   /* hide on smaller viewports */
-  @media (max-width: ${({ mediaQueries }) => mediaQueries.laptop}) {
+  @media (max-width: ${mediaQueries.laptop}) {
     display: none;
   }
 `;
