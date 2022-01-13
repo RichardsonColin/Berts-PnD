@@ -1,0 +1,1 @@
+- Reference for proper logging and error alerting: https://sematext.com/blog/node-js-error-handling/#toc-6-use-a-centralized-location-for-logs-and-error-alerting-12
