@@ -48,7 +48,7 @@ const StyledLinkButton = styled.a`
           background-color: var(--primary);
           color: var(--color-grey-900);
 
-          :hover {
+          &:hover {
             background-color: var(--primary-dark);
             color: var(--color-grey-50);
           }
@@ -58,7 +58,7 @@ const StyledLinkButton = styled.a`
           background-color: var(--secondary);
           color: var(--color-grey-10);
 
-          :hover {
+          &:hover {
             background-color: var(--secondary-accent);
           }
         `;
