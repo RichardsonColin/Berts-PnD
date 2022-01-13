@@ -32,16 +32,4 @@ export default class MyDocument extends Document {
       styleSheet.seal();
     }
   }
-
-  // render() {
-  //   return (
-  //     <Html lang='en'>
-  //       <Head>{this.props.styles}</Head>
-  //       <body>
-  //         <Main />
-  //         <NextScript />
-  //       </body>
-  //     </Html>
-  //   );
-  // }
 }
