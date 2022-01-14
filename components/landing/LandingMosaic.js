@@ -7,17 +7,23 @@ import { mediaQueries } from '@/src/constants';
 LandingMosaic.propTypes = {
   title: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  split: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
-export default function LandingMosaic({ title, images, className = '' }) {
+export default function LandingMosaic({
+  title,
+  images,
+  split,
+  className = '',
+}) {
   const [boxTwoImage, boxThreeImage, boxFourImage] = images;
   return (
-    <StyledMosaic className={className}>
-      <StyledBoxOne>
+    <StyledMosaic className={className} split={split}>
+      <StyledBoxOne split={split}>
         <StyledTitle>{title}</StyledTitle>
       </StyledBoxOne>
-      <StyledBoxTwo aria-hidden='true'>
+      <StyledBoxTwo aria-hidden='true' split={split}>
         <Image
           src={boxTwoImage}
           alt='Painting renovation image'
@@ -27,7 +33,7 @@ export default function LandingMosaic({ title, images, className = '' }) {
           placeholder='blur'
         />
       </StyledBoxTwo>
-      <StyledBoxThree aria-hidden='true'>
+      <StyledBoxThree aria-hidden='true' split={split}>
         <Image
           src={boxThreeImage}
           alt='Painting renovation image'
@@ -37,7 +43,7 @@ export default function LandingMosaic({ title, images, className = '' }) {
           placeholder='blur'
         />
       </StyledBoxThree>
-      <StyledBoxFour aria-hidden='true'>
+      <StyledBoxFour aria-hidden='true' split={split}>
         <Image
           src={boxFourImage}
           alt='Painting renovation image'
@@ -60,7 +66,6 @@ const StyledMosaic = styled.div`
   width: 100%;
   height: 250px;
   margin-top: 3.125rem;
-  background: var(--primary-accent);
   z-index: 1;
 
   /* viewport-wide banner */
@@ -76,11 +81,11 @@ const StyledMosaic = styled.div`
     opacity: 1;
     z-index: -1;
   }
-  /* viewport-wide lines */
+  /* viewport-wide bannner lines */
   &:after {
     content: '';
     position: absolute;
-    width: 150%;
+    width: 1050px;
     height: 200px;
     border-top: 4px solid var(--color-grey-10);
     border-bottom: 4px solid var(--color-grey-10);
@@ -93,7 +98,6 @@ const StyledMosaic = styled.div`
   @media (min-width: ${mediaQueries.laptop}) {
     position: absolute;
     top: 40px;
-    right: 0;
     display: inline-block;
     width: 40%;
     height: 100%;
@@ -102,6 +106,21 @@ const StyledMosaic = styled.div`
     transform: translateX(22px);
     background: 0 0;
 
+    /* position mosaic on right/left side of viewport */
+    ${({ split }) => {
+      if (split === 'left') {
+        return css`
+          left: -25px;
+        `;
+      }
+      if (split === 'right') {
+        return css`
+          right: 20px;
+        `;
+      }
+    }}
+
+    /* clear banner used on smaller viewports */
     &:before {
       content: none;
     }
@@ -112,6 +131,15 @@ const StyledMosaic = styled.div`
   /* custom breakpoints */
   @media (min-width: 1200px) {
     transform: none;
+
+    /* minor position adjustment for left-side mosiac */
+    ${({ split }) => {
+      if (split === 'left') {
+        return css`
+          left: 20px;
+        `;
+      }
+    }}
   }
   @media (min-width: 1500px) {
     display: -ms-grid;
@@ -122,79 +150,78 @@ const StyledMosaic = styled.div`
     grid-template-rows: 350px 350px 350px;
     grid-gap: 8px;
     width: 720px;
-    right: -105px;
+
+    /* position mosaic on right/left side of viewport */
+    ${({ split }) => {
+      if (split === 'left') {
+        return css`
+          left: -90px;
+        `;
+      }
+      if (split === 'right') {
+        return css`
+          right: -90px;
+        `;
+      }
+    }}
   }
 `;
 const StyledTitle = styled.span`
   ${StyledMosaic} & {
+    width: 350px;
+    margin: auto;
     color: var(--color-grey-10);
     font-size: 3em;
     font-weight: 700;
     line-height: 64px;
-    text-align: center;
     opacity: 0.95;
 
-    /* mid-widths */
     @media (min-width: ${mediaQueries.tablet}) {
+      width: 300px;
       font-size: 3.5em;
-    }
-    @media (min-width: ${mediaQueries.laptop}) {
-      line-height: 90px;
     }
   }
 `;
+// corner stylings used on individual mosaic boxes
+const CutCorner = css`
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-grey-10);
+  transform: rotateZ(135deg);
+  z-index: 1;
+  overflow: hidden;
+`;
 const CutCornerTopLeft = css`
   &:before {
+    ${CutCorner}
     content: '';
-    position: absolute;
     top: -50px;
     left: -50px;
-    width: 100px;
-    height: 100px;
-    background-color: var(--color-grey-10);
-    transform: rotateZ(135deg);
-    z-index: 1;
-    overflow: hidden;
   }
 `;
 const CutCornerTopRight = css`
   &:after {
     content: '';
-    position: absolute;
+    ${CutCorner}
     top: -50px;
     right: -50px;
-    width: 100px;
-    height: 100px;
-    background-color: var(--color-grey-10);
-    transform: rotateZ(135deg);
-    z-index: 1;
-    overflow: hidden;
   }
 `;
 const CutCornerBottomLeft = css`
   &:before {
     content: '';
-    position: absolute;
+    ${CutCorner}
     bottom: -50px;
     left: -50px;
-    width: 100px;
-    height: 100px;
-    background-color: var(--color-grey-10);
-    transform: rotateZ(135deg);
-    z-index: 1;
   }
 `;
 const CutCornerBottomRight = css`
   &:after {
     content: '';
-    position: absolute;
+    ${CutCorner}
     bottom: -50px;
     right: -50px;
-    width: 100px;
-    height: 100px;
-    background-color: var(--color-grey-10);
-    transform: rotateZ(135deg);
-    z-index: 1;
   }
 `;
 const CutCornerReset = css`
@@ -212,8 +239,9 @@ const CutCornerReset = css`
   }
 `;
 const StyledBoxOne = styled.div`
-  ${StyledMosaic} & {
+  ${StyledMosaic} && {
     position: relative;
+    text-align: center;
     overflow: hidden;
 
     /* min-widths */
@@ -223,9 +251,19 @@ const StyledBoxOne = styled.div`
       align-items: center;
       height: 350px;
       border-bottom: 13px solid #fff;
-      background-color: var(--primary-accent);
-
-      ${CutCornerBottomLeft}
+      background-color: var(--secondary);
+      ${({ split }) => {
+        if (split === 'left') {
+          return css`
+            ${CutCornerBottomRight}
+          `;
+        }
+        if (split === 'right') {
+          return css`
+            ${CutCornerBottomLeft}
+          `;
+        }
+      }}
     }
     /* custom breakpoints */
     @media (min-width: 1200px) {
@@ -234,20 +272,33 @@ const StyledBoxOne = styled.div`
       ${CutCornerBottomRight}
     }
     @media (min-width: 1500px) {
-      -ms-grid-column: 1;
-      grid-column: 1;
       -ms-grid-row: 1;
       grid-row: 1;
       border: none;
 
-      ${CutCornerReset}
-      ${CutCornerBottomLeft}
-      ${CutCornerTopRight}
+      ${({ split }) => {
+        if (split === 'left') {
+          return css`
+            -ms-grid-column: 2;
+            grid-column: 2;
+            ${CutCornerTopLeft}
+            ${CutCornerBottomRight}
+          `;
+        }
+        if (split === 'right') {
+          return css`
+            -ms-grid-column: 1;
+            grid-column: 1;
+            ${CutCornerBottomLeft}
+            ${CutCornerTopRight}
+          `;
+        }
+      }}
     }
   }
 `;
 const StyledBoxTwo = styled.div`
-  ${StyledMosaic} & {
+  ${StyledMosaic} && {
     position: relative;
     display: none;
     overflow: hidden;
@@ -258,7 +309,18 @@ const StyledBoxTwo = styled.div`
       width: 100%;
       height: 635px;
 
-      ${CutCornerTopLeft}
+      ${({ split }) => {
+        if (split === 'left') {
+          return css`
+            ${CutCornerTopRight}
+          `;
+        }
+        if (split === 'right') {
+          return css`
+            ${CutCornerTopLeft}
+          `;
+        }
+      }}
     }
     /* custom breakpoints */
     @media (min-width: 1200px) {
@@ -267,26 +329,39 @@ const StyledBoxTwo = styled.div`
       ${CutCornerTopRight}
     }
     @media (min-width: 1500px) {
-      -ms-grid-column: 2;
-      grid-column: 2;
       -ms-grid-row: 1;
       -ms-grid-row-span: 2;
       grid-row: 1/3;
       width: auto;
       height: 100%;
-
-      &:after {
-        top: unset;
-      }
-
       ${CutCornerReset}
-      ${CutCornerTopLeft}
-      ${CutCornerBottomRight}
+
+      ${({ split }) => {
+        if (split === 'left') {
+          return css`
+            -ms-grid-column: 1;
+            grid-column: 1;
+            ${CutCornerTopRight}
+            ${CutCornerBottomLeft}
+          `;
+        }
+        if (split === 'right') {
+          return css`
+            -ms-grid-column: 2;
+            grid-column: 2;
+            ${CutCornerTopLeft}
+            ${CutCornerBottomRight}
+            &:after {
+              top: unset;
+            }
+          `;
+        }
+      }}
     }
   }
 `;
 const StyledBoxThree = styled.div`
-  ${StyledMosaic} & {
+  ${StyledMosaic} && {
     position: relative;
     display: none;
     overflow: hidden;
@@ -294,21 +369,35 @@ const StyledBoxThree = styled.div`
     /* custom breakpoint */
     @media (min-width: 1500px) {
       display: block;
-      -ms-grid-column: 1;
-      grid-column: 1;
       -ms-grid-row: 2;
       -ms-grid-row-span: 2;
       grid-row: 2/4;
       width: auto;
       height: 100%;
 
-      ${CutCornerTopLeft}
-      ${CutCornerBottomRight}
+      ${({ split }) => {
+        if (split === 'left') {
+          return css`
+            -ms-grid-column: 2;
+            grid-column: 2;
+            ${CutCornerBottomLeft}
+            ${CutCornerTopRight}
+          `;
+        }
+        if (split === 'right') {
+          return css`
+            -ms-grid-column: 1;
+            grid-column: 1;
+            ${CutCornerTopLeft}
+            ${CutCornerBottomRight}
+          `;
+        }
+      }}
     }
   }
 `;
 const StyledBoxFour = styled.div`
-  ${StyledMosaic} & {
+  ${StyledMosaic} && {
     position: relative;
     display: none;
     overflow: hidden;
@@ -316,16 +405,30 @@ const StyledBoxFour = styled.div`
     /* custom breakpoint */
     @media (min-width: 1500px) {
       display: block;
-      -ms-grid-column: 2;
-      grid-column: 2;
       -ms-grid-row: 3;
       -ms-grid-row-span: 1;
       grid-row: 3/4;
       width: auto;
       height: 100%;
 
-      ${CutCornerBottomLeft}
-      ${CutCornerTopRight}
+      ${({ split }) => {
+        if (split === 'left') {
+          return css`
+            -ms-grid-column: 1;
+            grid-column: 1;
+            ${CutCornerBottomRight}
+            ${CutCornerTopLeft}
+          `;
+        }
+        if (split === 'right') {
+          return css`
+            -ms-grid-column: 2;
+            grid-column: 2;
+            ${CutCornerBottomLeft}
+            ${CutCornerTopRight}
+          `;
+        }
+      }}
     }
   }
 `;
