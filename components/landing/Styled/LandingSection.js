@@ -43,7 +43,7 @@ const SectionSplit = css`
 
   /* custom breakpoints */
   @media (min-width: 1300px) {
-    max-width: 1020px;
+    max-width: 1200px;
   }
   @media (min-width: 1500px) {
     max-width: 1350px;
@@ -73,21 +73,24 @@ const FontStylings = css`
   }
 `;
 export const StyledServicesSection = styled(Section)`
-  & {
-    ${SectionWrapper}
+  ${SectionWrapper}
 
-    ${FontStylings}
+  ${FontStylings}
 
-    ${SectionCentered}
-  }
+  ${SectionCentered}
 `;
 export const StyledProductsSection = styled(Section)`
-  & {
-    ${SectionWrapper}
+  ${SectionWrapper}
 
-    ${FontStylings}
+  ${FontStylings}
 
-    ${SectionSplit}
-  }
+  ${SectionSplit}
 `;
 export const StyledExperienceSection = styled(Section)``;
+export const StyledRenovationsSection = styled(Section)`
+  ${SectionWrapper}
+
+  ${FontStylings}
+
+  ${SectionSplit}
+`;
