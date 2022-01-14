@@ -15,5 +15,5 @@ const StyledCard = styled.div`
   padding: 2rem;
   background-color: #fff;
   box-shadow: 0 4px 13px 2px hsl(0deg 0% 0% / 12%);
-  border-radius: 3px;
+  border-radius: 2px;
 `;
