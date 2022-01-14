@@ -7,11 +7,21 @@ QuoteLinkButton.propTypes = {
   href: PropTypes.string,
   isPrimary: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
 };
 
-export default function QuoteLinkButton({ href, isPrimary, children }) {
+export default function QuoteLinkButton({
+  href,
+  isPrimary,
+  children,
+  className = '',
+}) {
   return (
-    <StyledQuoteLinkButton href={href || '/quote'} isPrimary={isPrimary}>
+    <StyledQuoteLinkButton
+      className={className}
+      href={href || '/quote'}
+      isPrimary={isPrimary}
+    >
       {children || 'Request Quote'}
     </StyledQuoteLinkButton>
   );
