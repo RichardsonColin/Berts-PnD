@@ -177,7 +177,7 @@ const StyledTitle = styled.span`
     opacity: 0.95;
 
     @media (min-width: ${mediaQueries.tablet}) {
-      width: 300px;
+      width: 325px;
       font-size: 3.5em;
     }
   }

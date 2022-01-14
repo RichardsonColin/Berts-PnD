@@ -33,29 +33,32 @@ const StyledLinkButton = styled.a`
   font-size: 1em;
   font-weight: 500;
   text-align: center;
+  color: var(--color-grey-10);
   box-shadow: 1px 1px 2px 0px var(--color-grey-800);
-  background-color: var(--secondary);
+  text-shadow: 1px 1px var(--color-grey-950);
   transition: 0.2s ease;
-  text-shadow: 1px 1px var(--color-grey-990);
 
   ${({ isPrimary }) => {
     if (isPrimary) {
       return css`
-        background-color: var(--primary);
-        color: var(--color-grey-900);
+        && {
+          background-color: var(--primary);
 
-        &:hover {
-          background-color: var(--primary-dark);
-          color: var(--color-grey-50);
+          &:hover {
+            background-color: var(--primary-dark);
+            color: var(--color-grey-50);
+          }
         }
       `;
     } else {
       return css`
-        background-color: var(--secondary);
-        color: var(--color-grey-10);
+        && {
+          background-color: var(--secondary);
+          text-shadow: 1px 1px var(--color-grey-990);
 
-        &:hover {
-          background-color: var(--secondary-accent);
+          &:hover {
+            background-color: var(--secondary-dark);
+          }
         }
       `;
     }

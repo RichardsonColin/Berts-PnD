@@ -58,6 +58,9 @@ const FontStylings = css`
       font-size: 2.75em;
     }
   }
+  h3 {
+    color: var(--secondary);
+  }
   p {
     font-size: 1em;
   }

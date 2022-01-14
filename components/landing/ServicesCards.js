@@ -138,7 +138,6 @@ const StyledHeading = styled(Heading)`
     margin-bottom: 0.75rem;
     padding: 0 1.5rem;
     font-size: 1.25em;
-    color: var(--secondary);
 
     &:before {
       content: '';

@@ -16,7 +16,7 @@ import mosaicImageThree from '@/public/images/hero-primary.webp';
 export default function LandingProductsSection() {
   return (
     <StyledProductsSection id='products'>
-      <LandingContent position='center' split='left'>
+      <LandingContent position='center' split='right'>
         <span>Our Products</span>
         <Heading level='2'>
           House Painting Contractors for the Winnipeg Area
@@ -31,9 +31,9 @@ export default function LandingProductsSection() {
         <StyledQuoteLinkButton>Get In Touch</StyledQuoteLinkButton>
       </LandingContent>
       <LandingMosaic
-        title='Free Estimates'
+        title='Exceptional Quality'
         images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
-        split={'right'}
+        split='left'
       />
     </StyledProductsSection>
   );

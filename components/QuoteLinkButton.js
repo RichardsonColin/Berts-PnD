@@ -28,9 +28,6 @@ export default function QuoteLinkButton({
 }
 
 const StyledQuoteLinkButton = styled(LinkButton)`
-  border: 1px solid var(--primary-dark);
-
   &:hover {
-    border: 1px solid var(--primary);
   }
 `;
