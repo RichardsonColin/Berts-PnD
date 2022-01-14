@@ -34,52 +34,56 @@ const Wrapper = styled.div`
       return css`
         @media (min-width: ${mediaQueries.laptop}) {
           margin: auto;
-          margin-right: 3.125rem;
         }
       `;
     }
   }}
 `;
 const StyledContent = styled(Container)`
-  ${Wrapper} & {
+  ${Wrapper} && {
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      width: 630px;
+      margin: auto;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      width: 480px;
+    }
     ${({ split }) => {
       if (split === 'left') {
         return css`
-          /* min-widths */
-          @media (min-width: ${mediaQueries.tablet}) {
-            width: 472px;
-            margin: auto;
-          }
           @media (min-width: ${mediaQueries.laptop}) {
             margin: 0;
             margin-left: 3.5rem;
           }
           /* custom breakpoint */
-          @media (min-width: 1500px) {
+          @media (min-width: 1300px) {
+            width: 560px;
             margin-left: 0;
-            width: 612px;
-            margin-top: 3.8rem;
           }
         `;
       }
 
       if (split === 'right') {
         return css`
-          /* min-widths */
-          @media (min-width: ${mediaQueries.tablet}) {
-            width: 472px;
-            margin: auto;
-          }
           @media (min-width: ${mediaQueries.laptop}) {
+            margin-right: 3.5rem;
+          }
+          /* custom breakpoints */
+          @media (min-width: 1300px) {
+            width: 560px;
             margin-right: 0;
           }
-          /* custom breakpoint */
           @media (min-width: 1500px) {
-            width: 612px;
-            margin-top: 3.8rem;
+            margin-right: -2rem;
           }
         `;
       }
     }}
+    /* custom breakpoint */
+    @media (min-width: 1500px) {
+      width: 610px;
+      margin-top: 3.8rem;
+    }
   }
 `;
