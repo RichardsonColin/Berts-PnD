@@ -15,12 +15,12 @@ export default function ServicesCards() {
   const firstPeriodReg = '[^.]*';
   return (
     <CardsWrapper position='center'>
-      {servicesData.map((serviceData) => (
-        <StyledCard key={serviceData.heading}>
+      {servicesData.map((service) => (
+        <StyledCard key={service.heading}>
           <ImageWrapper>
             <StyledImage
-              src={serviceData.image}
-              alt={serviceData.heading}
+              src={service.image}
+              alt={service.heading}
               layout='fill'
               objectFit='cover'
               quality={80}
@@ -29,9 +29,9 @@ export default function ServicesCards() {
           </ImageWrapper>
           <IconWrapper>
             <StyledIcon
-              src={serviceData.icon}
+              src={service.icon}
               alt={`${searchString(
-                searchString(serviceData.icon.src, lastSlashReg),
+                searchString(service.icon.src, lastSlashReg),
                 firstPeriodReg
               )} icon`}
               width={34}
@@ -39,8 +39,8 @@ export default function ServicesCards() {
               quality={100}
             />
           </IconWrapper>
-          <StyledHeading level='3'>{serviceData.heading}</StyledHeading>
-          <StyledDescription>{serviceData.description}</StyledDescription>
+          <StyledHeading level='3'>{service.heading}</StyledHeading>
+          <StyledDescription>{service.description}</StyledDescription>
         </StyledCard>
       ))}
     </CardsWrapper>
@@ -76,19 +76,15 @@ const StyledCard = styled(Card)`
     margin-bottom: 3.125rem;
     padding: 0;
     padding-bottom: 1.5rem;
-    overflow: hidden;
+    border-radius: 2px 2px 0 0;
 
-    &:before {
+    &:after {
       content: '';
       position: absolute;
-      bottom: -60px;
-      left: -70px;
-      width: 100px;
-      height: 100px;
-      margin: 10px 20px;
-      background-color: var(--color-grey-10);
-      transform: rotateZ(135deg);
-      z-index: 1;
+      bottom: 0;
+      right: 0;
+      width: 285px;
+      border-bottom: 1px solid var(--primary-light);
     }
   }
 `;
@@ -98,12 +94,11 @@ const ImageWrapper = styled.div`
     width: 100%;
     height: 132px;
     margin-bottom: 3.125rem;
-    border-radius: 3px 3px 0 0;
   }
 `;
 const StyledImage = styled(Image)`
   ${StyledCard} & {
-    border-radius: 3px 3px 0 0;
+    border-radius: 2px 2px 0 0;
   }
 `;
 const IconWrapper = styled.div`
@@ -118,8 +113,17 @@ const IconWrapper = styled.div`
     width: 70px;
     height: 70px;
     background-color: #fff;
-    border-radius: 10px 10px 0 10px;
+    border-radius: 10px 10px 1px 1px;
     box-shadow: 0px 3px 8px 0px hsl(300deg 5% 10% / 20%);
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70px;
+      border-bottom: 1px solid var(--primary-light);
+    }
   }
 `;
 const StyledIcon = styled(Image)`
@@ -134,6 +138,7 @@ const StyledHeading = styled(Heading)`
     margin-bottom: 0.75rem;
     padding: 0 1.5rem;
     font-size: 1.25em;
+    color: var(--secondary);
 
     &:before {
       content: '';
@@ -141,9 +146,9 @@ const StyledHeading = styled(Heading)`
       top: 31px;
       left: 50%;
       transform: translateX(-50%);
-      width: 25%;
+      width: 33%;
       height: 1px;
-      background-color: hsl(0deg 0% 85%);
+      background-color: var(--color-grey-100);
     }
   }
 `;
