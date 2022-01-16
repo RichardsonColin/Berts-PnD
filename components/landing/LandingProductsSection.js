@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import { StyledProductsSection as StyledSection } from './Styled/LandingSection';
@@ -6,14 +7,16 @@ import LandingContent from './LandingContent';
 import LandingMosaic from './LandingMosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
-// constants
-import { productsData } from '@/src/data/products';
 // assets
 import mosaicImageOne from '@/public/images/hero-primary.webp';
 import mosaicImageTwo from '@/public/images/hero-primary.webp';
 import mosaicImageThree from '@/public/images/hero-primary.webp';
 
-export default function LandingProductsSection() {
+LandingProductsSection.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default function LandingProductsSection({ products }) {
   return (
     <StyledProductsSection id='products'>
       <LandingContent position='center' split='right'>
@@ -27,7 +30,7 @@ export default function LandingProductsSection() {
           Suspendisse bibendum justo non justo cursus sodales. Vivamus sagittis
           quam dolor.
         </p>
-        <DetailsList details={productsData} />
+        <DetailsList details={products} />
         <StyledQuoteLinkButton>Get In Touch</StyledQuoteLinkButton>
       </LandingContent>
       <LandingMosaic

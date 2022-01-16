@@ -41,7 +41,7 @@ const StyledListItem = styled.li`
         display: block;
         width: 30px;
         height: 30px;
-        background: ${({ icon }) => `url(${icon.src})`};
+        background: ${({ icon }) => `url(${icon})`};
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;

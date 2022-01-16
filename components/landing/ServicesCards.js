@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import Card from '@/components/ui/Card';
@@ -7,15 +8,21 @@ import Heading from '@/components/ui/Heading';
 // helpers
 import { searchString } from '@/src/helpers';
 // constants
-import { servicesData } from '@/src/data/services';
 import { mediaQueries } from '@/src/constants';
 
-export default function ServicesCards() {
-  const lastSlashReg = '[^/]+$';
-  const firstPeriodReg = '[^.]*';
+ServicesCards.propTypes = {
+  services: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default function ServicesCards({ services }) {
+  const getFileName = (path) => {
+    const lastSlashReg = '[^/]+$';
+    const firstPeriodReg = '[^.]*';
+    return searchString(searchString(path, lastSlashReg), firstPeriodReg);
+  };
   return (
     <CardsWrapper position='center'>
-      {servicesData.map((service) => (
+      {services.map((service) => (
         <StyledCard key={service.heading}>
           <ImageWrapper>
             <StyledImage
@@ -30,10 +37,7 @@ export default function ServicesCards() {
           <IconWrapper>
             <StyledIcon
               src={service.icon}
-              alt={`${searchString(
-                searchString(service.icon.src, lastSlashReg),
-                firstPeriodReg
-              )} icon`}
+              alt={`${getFileName(service.icon.src)} icon`}
               width={34}
               height={34}
               quality={100}
