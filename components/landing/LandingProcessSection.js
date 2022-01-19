@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { StyledProcessSection as StyledSection } from './Styled/LandingSection';
 import ProcessCards from './ProcessCards';
 import Heading from '@/components/ui/Heading';
-// constants
-import { mediaQueries } from '@/src/constants';
 
 LandingProcessSection.propTypes = {
   process: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -31,17 +29,5 @@ export default function LandingProcessSection({ process }) {
 const StyledProcessSection = styled(StyledSection)`
   && {
     position: relative;
-
-    /* min-widths */
-    @media (min-width: ${mediaQueries.tablet}) {
-      padding-top: 6.5rem;
-    }
-    @media (min-width: ${mediaQueries.laptop}) {
-      padding-top: 9rem;
-    }
-    /* custom breakpoint */
-    @media (min-width: 1500px) {
-      padding-top: 16rem;
-    }
   }
 `;

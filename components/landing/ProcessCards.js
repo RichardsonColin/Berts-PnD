@@ -85,35 +85,51 @@ const StyledDescription = styled.p`
   }
 `;
 // animation used for StyledNumber
-const spin = keyframes`
+const tilt = keyframes`
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
 
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
+  25% {
+    transform: translate(-50%, -50%) rotate(-15deg);
   }
-`;
-const spinReverse = keyframes`
-  0% {
-    transform: translate(-50%, -50%) rotate(360deg);
+
+  75% {
+    transform: translate(-50%, -50%) rotate(15deg);
   }
 
   100% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
 `;
-const Spin = css`
-  animation-duration: 20s;
+// const tiltReverse = `
+//   % {
+//     transform: translate(-50%, -50%) rotate(45deg);
+//   }
+
+//   25% {
+//     transform: translate(-50%, -50%) rotate(55deg);
+//   }
+
+//   75% {
+//     transform: translate(-50%, -50%) rotate(35deg);
+//   }
+
+//   100% {
+//     transform: translate(-50%, -50%) rotate(45deg);
+//   }
+// `;
+const Tilt = css`
+  animation-duration: 5s;
   animation-delay: 0s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: normal;
   animation-fill-mode: forwards;
 `;
-const SpinAnimation = (alternate) => css`
-  animation-name: ${alternate ? spin : spinReverse};
-  ${Spin}
+const TiltAnimation = (alternate) => css`
+  animation-name: ${tilt};
+  ${Tilt}
 `;
 const StyledNumber = styled.span`
   ${StyledCard} && {
@@ -146,7 +162,7 @@ const StyledNumber = styled.span`
       box-shadow: 0px 0px 2px var(--color-grey-950);
       opacity: 1;
       z-index: -1;
-      ${() => SpinAnimation(0)}
+      ${() => TiltAnimation(0)}
     }
     &:after {
       content: '';
@@ -161,7 +177,6 @@ const StyledNumber = styled.span`
       box-shadow: 0px 0px 2px var(--color-grey-950);
       opacity: 1;
       z-index: -1;
-      ${() => SpinAnimation(1)}
     }
   }
 
