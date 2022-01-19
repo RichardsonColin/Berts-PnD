@@ -20,7 +20,7 @@ export default function HeroPrimary() {
           <HeroHeading>
             Professional Painters For Your Home or Business
           </HeroHeading>
-          <QuoteLinkButton isPrimary={true}>Schedule Now</QuoteLinkButton>
+          <QuoteLinkButton>Schedule Now</QuoteLinkButton>
         </HeroContent>
       </HeroContentWrapper>
       <HeroImageWrapper>
