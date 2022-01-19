@@ -97,3 +97,10 @@ export const StyledRenovationsSection = styled(Section)`
 
   ${SectionSplit}
 `;
+export const StyledProcessSection = styled(Section)`
+  ${SectionWrapper}
+
+  ${FontStylings}
+
+  ${SectionCentered}
+`;
