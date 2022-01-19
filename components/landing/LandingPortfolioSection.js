@@ -5,6 +5,7 @@ import { StyledPortfolioSection as StyledSection } from './Styled/LandingSection
 import PortfolioImages from './PortfolioImages';
 import Heading from '@/components/ui/Heading';
 import Container from '@/components/ui/Container';
+import BackgroundSlant from '@/components/ui/BackgroundSlant';
 // constants
 import { mediaQueries } from '@/src/constants';
 
@@ -14,7 +15,8 @@ LandingPortfolioSection.propTypes = {
 
 export default function LandingPortfolioSection({ portfolio }) {
   return (
-    <StyledPortfolioSection id='process'>
+    <StyledPortfolioSection id='portfolio'>
+      <BackgroundSlant slant='left' />
       <span>Take A Look At Our Work</span>
       <StyledHeading level='2'>Our Portfolio</StyledHeading>
       <StyledContainer>
@@ -29,40 +31,57 @@ const StyledPortfolioSection = styled(StyledSection)`
   && {
     position: relative;
     max-width: 100%;
+    height: 700px;
     z-index: 1;
-  }
-
-  /* slanted background */
-  &:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    width: 1000px;
-    height: 240px;
-    background-color: var(--secondary-light);
-    opacity: 1;
-    z-index: -1;
-    transform: translate(-50%, -65%) rotate(-20deg);
-    transform-origin: center;
 
     /* min-widths */
-    /* custom breakpoint */
+    /* staggered heights as images within adjust based on % and affect Footer logo linear-gradient background */
+    @media (min-width: ${mediaQueries.mobileS}) {
+      height: 725px;
+    }
+    @media (min-width: ${mediaQueries.mobileM}) {
+      height: 800px;
+    }
+    @media (min-width: ${mediaQueries.mobileL}) {
+      height: 850px;
+    }
+    @media (min-width: 500px) {
+      height: 925px;
+    }
+    @media (min-width: 550px) {
+      height: 975px;
+    }
     @media (min-width: 600px) {
-      width: 3000px;
-      height: 418px;
+      height: 1050px;
+    }
+    @media (min-width: 650px) {
+      height: 1100px;
+    }
+    @media (min-width: 700px) {
+      height: 1150px;
     }
     @media (min-width: ${mediaQueries.tablet}) {
-      height: 520px;
+      height: 1350px;
+      padding-top: 6.5rem;
+    }
+    /* custom breakpoints */
+    @media (min-width: 850px) {
+      height: 1425px;
+    }
+    @media (min-width: 900px) {
+      height: 1475px;
+    }
+    @media (min-width: 950px) {
+      height: 1575px;
     }
     @media (min-width: ${mediaQueries.laptop}) {
-      height: 785px;
-      transform: translate(-50%, -55%) rotate(-20deg);
+      height: 1625px;
+      padding-top: 9rem;
     }
     /* custom breakpoint */
     @media (min-width: 1500px) {
-      transform: translate(-50%, -43%) rotate(-20deg);
+      height: 1525px;
+      padding-top: 16rem;
     }
   }
 `;
