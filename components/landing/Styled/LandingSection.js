@@ -109,3 +109,10 @@ export const StyledPortfolioSection = styled(Section)`
 
   ${SectionCentered}
 `;
+export const StyledReviewsSection = styled(Section)`
+  ${SectionWrapper}
+
+  ${FontStylings}
+
+  ${SectionCentered}
+`;
