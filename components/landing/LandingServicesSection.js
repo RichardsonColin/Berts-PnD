@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { StyledServicesSection as StyledSection } from './Styled/LandingSection';
 import ServicesCards from './ServicesCards';
 import Heading from '@/components/ui/Heading';
-import QuoteLinkButton from '@/components/QuoteLinkButton';
+import LinkButton from '@/components/ui/LinkButton';
 import { default as SquareOne } from '@/components/ui/AnimatedSquare';
 import { default as SquareTwo } from '@/components/ui/AnimatedSquare';
 import { default as SquareThree } from '@/components/ui/AnimatedSquare';
@@ -29,7 +29,7 @@ export default function LandingServicesSection({ services }) {
         quam dolor.
       </p>
       <ServicesCards services={services} />
-      <QuoteLinkButton>View Services</QuoteLinkButton>
+      <LinkButton href='/services'>View Services</LinkButton>
       <SquaresWrapper>
         <StyledSquareOne
           size={300}
