@@ -4,19 +4,14 @@ import styled, { css } from 'styled-components';
 // constants
 import { mediaQueries } from '@/src/constants';
 
-LandingMosaic.propTypes = {
+Mosaic.propTypes = {
   title: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.object).isRequired,
   split: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
-export default function LandingMosaic({
-  title,
-  images,
-  split,
-  className = '',
-}) {
+export default function Mosaic({ title, images, split, className = '' }) {
   const [boxTwoImage, boxThreeImage, boxFourImage] = images;
   return (
     <StyledMosaic className={className} split={split}>

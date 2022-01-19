@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { StyledProductsSection as StyledSection } from './Styled/LandingSection';
 import DetailsList from './DetailsList';
 import LandingContent from './LandingContent';
-import LandingMosaic from './LandingMosaic';
+import Mosaic from './Mosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 // assets
@@ -33,7 +33,7 @@ export default function LandingProductsSection({ products }) {
         <DetailsList details={products} />
         <StyledQuoteLinkButton>Get In Touch</StyledQuoteLinkButton>
       </LandingContent>
-      <LandingMosaic
+      <Mosaic
         title='Exceptional Quality'
         images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
         split='left'
