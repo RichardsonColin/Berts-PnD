@@ -64,6 +64,7 @@ export default function LandingServicesSection({ services }) {
 const StyledServicesSection = styled(StyledSection)`
   && {
     position: relative;
+
     /* custom breakpoint */
     @media (min-width: 1300px) {
       max-width: 1500px;
