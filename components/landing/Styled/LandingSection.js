@@ -22,13 +22,11 @@ const SectionCentered = css`
   text-align: center;
 
   h2 {
-    /* min-widths */
+    margin-left: auto;
+    margin-right: auto;
+
     @media (min-width: ${mediaQueries.tablet}) {
       max-width: 670px;
-    }
-    @media (min-width: ${mediaQueries.laptop}) {
-      margin-left: auto;
-      margin-right: auto;
     }
   }
   p {
@@ -98,6 +96,13 @@ export const StyledRenovationsSection = styled(Section)`
   ${SectionSplit}
 `;
 export const StyledProcessSection = styled(Section)`
+  ${SectionWrapper}
+
+  ${FontStylings}
+
+  ${SectionCentered}
+`;
+export const StyledPortfolioSection = styled(Section)`
   ${SectionWrapper}
 
   ${FontStylings}
