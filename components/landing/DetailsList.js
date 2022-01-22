@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import Heading from '@/components/ui/Heading';
+// constants
+import { mediaQueries } from '@/src/constants';
 
 DetailsList.propTypes = {
   details: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -37,7 +39,7 @@ const StyledListItem = styled.li`
         content: '';
         position: absolute;
         top: -3px;
-        left: -47px;
+        left: -40px;
         display: block;
         width: 30px;
         height: 30px;
@@ -46,6 +48,10 @@ const StyledListItem = styled.li`
         background-position: center;
         background-repeat: no-repeat;
         opacity: 1;
+
+        @media (min-width: ${mediaQueries.tablet}) {
+          left: -45px;
+        }
       }
     }
   }
