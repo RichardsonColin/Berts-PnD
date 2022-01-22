@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+// hooks
+import useCurrentRoute from '@/hooks/useCurrentRoute';
 // components
 import Logo from '@/components/Logo';
 import NavList from '@/components/layout/NavList';
@@ -14,10 +16,12 @@ import {
 } from '@/src/constants';
 
 export default function Footer() {
+  const route = useCurrentRoute();
+  const isLanding = route === '/';
   return (
     <StyledFooter id='footer'>
       <BorderSpacer size={8} position='top' />
-      <LogoWrapper>
+      <LogoWrapper isLanding={isLanding}>
         <Logo />
       </LogoWrapper>
       <ContentWrapper>
@@ -92,8 +96,9 @@ const LogoWrapper = styled.div`
     linear-gradient(to left, var(--primary) 4px, transparent 4px) 0 100%,
     linear-gradient(to top, var(--primary) 4px, transparent 4px) 0 100%;
   background-repeat: no-repeat;
-  background-size: 100% 42.5%;
-  background-color: var(--color-grey-10);
+  background-size: 100% 34px;
+  background-color: ${({ isLanding }) =>
+    isLanding ? css`var(--color-grey-10)` : css`var(--secondary-accent)`};
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
@@ -109,8 +114,9 @@ const LogoWrapper = styled.div`
       linear-gradient(to left, var(--primary) 8px, transparent 8px) 0 100%,
       linear-gradient(to top, var(--primary) 8px, transparent 8px) 0 100%;
     background-repeat: no-repeat;
-    background-size: 100% 43%;
-    background-color: var(--color-grey-10);
+    background-size: 100% 41px;
+    background-color: ${({ isLanding }) =>
+      isLanding ? css`var(--color-grey-10)` : css`var(--secondary-accent)`};
   }
 `;
 const StyledDot = styled.span`
