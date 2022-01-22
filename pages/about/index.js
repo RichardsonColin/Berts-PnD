@@ -1,20 +1,16 @@
 import Head from 'next/head';
+// components
+import PagesContent from '@/components/pages/PagesContent';
 // constants
 import { COMPANY_NAME } from '@/src/constants';
 
 export default function AboutPage() {
-  /*
-    TODO:
-      - replace sections with components
-  */
   return (
     <>
       <Head>
-        <title>About Us | {COMPANY_NAME}</title>
+        <title>About | {COMPANY_NAME}</title>
       </Head>
-      <section id='hero-alternate'></section>
-      <section id='about'></section>
-      <section id='call-to-action'></section>
+      <PagesContent id='about' heading='About Us'></PagesContent>
     </>
   );
 }
