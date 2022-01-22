@@ -68,7 +68,7 @@ const StyledCard = styled(Card)`
 `;
 const StyledHeading = styled(Heading)`
   ${StyledCard} & {
-    font-size: 1.75em;
+    font-size: 1.5em;
   }
 `;
 const StyledDescription = styled.p`
@@ -87,47 +87,26 @@ const StyledDescription = styled.p`
 // animation used for StyledNumber
 const tilt = keyframes`
   0% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(-5deg);
   }
 
-  25% {
-    transform: translate(-50%, -50%) rotate(-15deg);
-  }
-
-  75% {
-    transform: translate(-50%, -50%) rotate(15deg);
+  50% {
+    transform: translate(-50%, -50%) rotate(5deg);
   }
 
   100% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(-5deg);
   }
 `;
-// const tiltReverse = `
-//   % {
-//     transform: translate(-50%, -50%) rotate(45deg);
-//   }
-
-//   25% {
-//     transform: translate(-50%, -50%) rotate(55deg);
-//   }
-
-//   75% {
-//     transform: translate(-50%, -50%) rotate(35deg);
-//   }
-
-//   100% {
-//     transform: translate(-50%, -50%) rotate(45deg);
-//   }
-// `;
 const Tilt = css`
-  animation-duration: 5s;
+  animation-duration: 1.5s;
   animation-delay: 0s;
-  animation-timing-function: linear;
+  animation-timing-function: ease;
   animation-iteration-count: infinite;
   animation-direction: normal;
   animation-fill-mode: forwards;
 `;
-const TiltAnimation = (alternate) => css`
+const TiltAnimation = css`
   animation-name: ${tilt};
   ${Tilt}
 `;
@@ -162,7 +141,7 @@ const StyledNumber = styled.span`
       box-shadow: 0px 0px 2px var(--color-grey-950);
       opacity: 1;
       z-index: -1;
-      ${() => TiltAnimation(0)}
+      ${TiltAnimation}
     }
     &:after {
       content: '';
