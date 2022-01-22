@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // assets
@@ -13,8 +14,8 @@ export default function Reviews({ reviews }) {
   );
   return (
     <>
-      {reviews.map((review) => (
-        <>
+      {reviews.map((review, index) => (
+        <Fragment key={index}>
           <StarWrapper>
             {Star}
             {Star}
@@ -24,7 +25,7 @@ export default function Reviews({ reviews }) {
           </StarWrapper>
           <StyledReview>{review.review}</StyledReview>
           <StyledAuthor>{review.author}</StyledAuthor>
-        </>
+        </Fragment>
       ))}
     </>
   );
