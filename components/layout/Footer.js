@@ -97,8 +97,7 @@ const LogoWrapper = styled.div`
     linear-gradient(to top, var(--primary) 4px, transparent 4px) 0 100%;
   background-repeat: no-repeat;
   background-size: 100% 34px;
-  background-color: ${({ isLanding }) =>
-    isLanding ? css`var(--color-grey-10)` : css`var(--secondary-light)`};
+  background-color: var(--color-grey-10);
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {

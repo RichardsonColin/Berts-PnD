@@ -1,15 +1,22 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
+import BackgroundSlant from '@/components/ui/BackgroundSlant';
 // constants
 import { mediaQueries } from '@/src/constants';
 
-export default function CallToAction() {
+CallToAction.propTypes = {
+  className: PropTypes.string,
+};
+
+export default function CallToAction({ className = '' }) {
   return (
-    <StyledSection id='call-to-action'>
+    <StyledSection id='call-to-action' className={className}>
+      <BackgroundSlant isStandardHeight={false} slant='right' degree={5} />
       <Wrapper>
         <StyledContainer position='left'>
           <StyledHeading level='2'>Give Us A Call!</StyledHeading>
@@ -27,10 +34,10 @@ export default function CallToAction() {
 
 // styles
 export const StyledSection = styled(Section)`
-  padding-bottom: 5rem;
-  color: #fff;
-  background-color: var(--secondary-light);
-  text-shadow: 1px 1px 1px var(--color-grey-800);
+  position: relative;
+  padding-bottom: 10rem;
+  color: var(--color-grey-900);
+  z-index: 0;
 `;
 const Wrapper = styled.div`
   ${StyledSection} & {
