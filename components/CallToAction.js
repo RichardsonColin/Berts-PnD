@@ -19,7 +19,7 @@ export default function CallToAction() {
             Suspendisse bibendum justo non justo cursus sodales.
           </StyledText>
         </StyledContainer>
-        <QuoteLinkButton isPrimary={true}>Schedule Now</QuoteLinkButton>
+        <QuoteLinkButton>Schedule Now</QuoteLinkButton>
       </Wrapper>
     </StyledSection>
   );
@@ -29,14 +29,15 @@ export default function CallToAction() {
 export const StyledSection = styled(Section)`
   padding-bottom: 5rem;
   color: #fff;
-  background-color: var(--secondary-accent);
+  background-color: var(--secondary-light);
+  text-shadow: 1px 1px 1px var(--color-grey-800);
 `;
 const Wrapper = styled.div`
   ${StyledSection} & {
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
 
     @media (min-width: ${mediaQueries.laptop}) {
