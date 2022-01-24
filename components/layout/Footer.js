@@ -98,7 +98,7 @@ const LogoWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 34px;
   background-color: ${({ isLanding }) =>
-    isLanding ? css`var(--color-grey-10)` : css`var(--secondary-accent)`};
+    isLanding ? css`var(--color-grey-10)` : css`var(--secondary-light)`};
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
@@ -116,11 +116,11 @@ const LogoWrapper = styled.div`
     background-repeat: no-repeat;
     background-size: 100% 41px;
     background-color: ${({ isLanding }) =>
-      isLanding ? css`var(--color-grey-10)` : css`var(--secondary-accent)`};
+      isLanding ? css`var(--color-grey-10)` : css`var(--secondary-light)`};
   }
 `;
 const StyledDot = styled.span`
-  :after {
+  &:after {
     content: '';
     position: relative;
     display: inline-block;
