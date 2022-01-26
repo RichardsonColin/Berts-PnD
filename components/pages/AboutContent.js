@@ -8,55 +8,53 @@ import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 import TextHighlight from '@/components/ui/TextHighlight';
 // assets
-// import personalImage from '@/public/images/hero-primary.webp';
 import icon from '@/public/images/paint-roller.svg';
 // constants
 import { mediaQueries } from '@/src/constants';
-// import { COMPANY_NAME, COMPANY_OWNER } from '@/src/constants';
 
 AboutContent.propTypes = {
-  aboutData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  contentData: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
 };
 
-export default function AboutContent({ aboutData, id, heading }) {
+export default function AboutContent({ contentData, id, heading }) {
   return (
     <PagesContent heading={heading}>
       <StyledAboutSection id={id}>
         <ContentWrapper>
           <ImageWrapper>
             <Image
-              src={aboutData.image}
-              alt={`${aboutData.companyOwner} from ${aboutData.companyName}`}
+              src={contentData.image}
+              alt={`${contentData.companyOwner} from ${contentData.companyName}`}
               layout='fill'
               objectFit='cover'
               quality={80}
               placeholder='blur'
             />
           </ImageWrapper>
-          <StyledContainer position='left'>
+          <StyledContainer position='right'>
             <span>Who We Are</span>
             <StyledHeading level='2'>
               About{' '}
               <StyledTitleHighlight color='var(--primary-dark)'>
-                {aboutData.companyName}
+                {contentData.companyName}
               </StyledTitleHighlight>
             </StyledHeading>
             <IconWrapper>
               <Image
                 src={icon}
-                alt='Icon'
+                alt='Equipment icon'
                 width={30}
                 height={30}
                 quality={100}
               />
             </IconWrapper>
-            <Description>{aboutData.description}</Description>
-            <OwnerName>{aboutData.companyOwner}</OwnerName>
+            <Description>{contentData.description}</Description>
+            <OwnerName>{contentData.companyOwner}</OwnerName>
             <OwnerTitle>Owner</OwnerTitle>
             <StatsWrapper>
-              {aboutData.stats.map((stat, index) => {
+              {contentData.stats.map((stat, index) => {
                 return (
                   <StatsContent key={index}>
                     <h3>
@@ -96,8 +94,8 @@ const ContentWrapper = styled.div`
 const StyledContainer = styled(Container)`
   ${StyledAboutSection} & {
     @media (min-width: ${mediaQueries.tablet}) {
-      flex: 0 1 75%;
-      padding-left: 6rem;
+      flex: 0 1 70%;
+      padding-left: 3rem;
     }
   }
 `;
@@ -131,6 +129,11 @@ const ImageWrapper = styled.div`
       background-color: var(--color-grey-10);
       transform: rotate(45deg);
       z-index: 1;
+    }
+
+    @media (min-width: ${mediaQueries.laptop}) {
+      width: 300px;
+      height: 300px;
     }
   }
 `;
