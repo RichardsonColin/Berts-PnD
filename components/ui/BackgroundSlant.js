@@ -6,20 +6,22 @@ import { mediaQueries } from '@/src/constants';
 BackgroundSlant.propTypes = {
   slant: PropTypes.string,
   degree: PropTypes.number,
-  isStandardHeight: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  heightMultiple: PropTypes.number,
 };
 
-// add position: relative and z-index : 1 on container where this is used.
+// to use, add 'position: relative' and 'z-index : 1' on container where this is incorporated.
 export default function BackgroundSlant({
   slant = 'left',
   degree = 20,
-  isStandardHeight = true,
+  heightMultiple = 1,
+  backgroundColor = 'var(--secondary-light)',
 }) {
-  const heightMultiple = isStandardHeight ? 1 : 0.8;
   return (
     <StyledBackgroundSlant
       slant={slant}
       degree={`${parseInt(degree)}deg`}
+      backgroundColor={backgroundColor}
       heightMultiple={heightMultiple}
     />
   );
@@ -42,7 +44,7 @@ const StyledBackgroundSlant = styled.div`
     display: block;
     width: 1000px;
     height: 350px;
-    background-color: var(--secondary-light);
+    background-color: ${({ backgroundColor }) => backgroundColor};
     opacity: 1;
     z-index: -1;
     transform: ${({ slant, degree }) => {

@@ -16,7 +16,13 @@ CallToAction.propTypes = {
 export default function CallToAction({ className = '' }) {
   return (
     <StyledSection id='call-to-action' className={className}>
-      <BackgroundSlant isStandardHeight={false} slant='right' degree={5} />
+      <BackgroundSlant
+        heightMultiple={0.8}
+        slant='left'
+        degree={5}
+        backgroundColor='var(--secondary)'
+      />
+      <BackgroundSlant heightMultiple={0.8} slant='right' degree={5} />
       <Wrapper>
         <StyledContainer position='left'>
           <StyledHeading level='2'>Give Us A Call!</StyledHeading>
@@ -26,7 +32,7 @@ export default function CallToAction({ className = '' }) {
             Suspendisse bibendum justo non justo cursus sodales.
           </StyledText>
         </StyledContainer>
-        <QuoteLinkButton>Schedule Now</QuoteLinkButton>
+        <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
       </Wrapper>
     </StyledSection>
   );
@@ -56,7 +62,7 @@ const Wrapper = styled.div`
 `;
 const StyledContainer = styled(Container)`
   ${StyledSection} & {
-    max-width: 500px;
+    max-width: 550px;
     margin: 0;
     text-align: center;
 
@@ -67,11 +73,14 @@ const StyledContainer = styled(Container)`
 `;
 const StyledHeading = styled(Heading)`
   ${StyledSection} & {
-    font-size: 2em;
+    font-size: 2.25em;
   }
 `;
 const StyledText = styled.p`
   ${StyledSection} & {
     margin-bottom: 2rem;
   }
+`;
+const StyledQuoteLinkButton = styled(QuoteLinkButton)`
+  z-index: 1;
 `;
