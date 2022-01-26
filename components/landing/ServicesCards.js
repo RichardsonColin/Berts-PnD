@@ -88,7 +88,6 @@ const StyledCard = styled(Card)`
       bottom: 0;
       right: 0;
       width: 285px;
-      border-bottom: 1px solid var(--primary-light);
     }
   }
 `;
@@ -126,7 +125,6 @@ const IconWrapper = styled.div`
       bottom: 0;
       right: 0;
       width: 70px;
-      border-bottom: 1px solid var(--primary-light);
     }
   }
 `;
