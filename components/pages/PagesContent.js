@@ -27,7 +27,7 @@ const StyledCallToAction = styled(CallToAction)`
     margin-top: -4rem;
     margin-bottom: 2rem;
     padding-top: 7.5rem;
-    color: #fff;
+    color: var(--color-grey-10);
     text-shadow: 1px 1px 1px var(--color-grey-800);
 
     /* min-widths */
@@ -42,11 +42,7 @@ const StyledCallToAction = styled(CallToAction)`
     @media (min-width: ${mediaQueries.laptop}) {
       margin-top: 14rem;
       padding-top: 0;
-      padding-bottom: 8rem;
-    }
-    /* custom breakpoint */
-    @media (min-width: 1500px) {
-      padding-bottom: 6rem;
+      padding-bottom: 4rem;
     }
   }
 `;
