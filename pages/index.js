@@ -12,6 +12,7 @@ import ReviewsSection from '@/components/landing/LandingReviewsSection';
 import { servicesData } from '@/src/data/services';
 import { productsData } from '@/src/data/products';
 import { renovationsData } from '@/src/data/renovations';
+import { experienceData } from '@/src/data/experience';
 import { processData } from '@/src/data/process';
 import { portfolioData } from '@/src/data/portfolio';
 import { reviewsData } from '@/src/data/reviews';
@@ -19,6 +20,7 @@ import { reviewsData } from '@/src/data/reviews';
 Home.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,
   renovations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  experience: PropTypes.arrayOf(PropTypes.object).isRequired,
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
   process: PropTypes.arrayOf(PropTypes.object).isRequired,
   portfolio: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -28,6 +30,7 @@ Home.propTypes = {
 export default function Home({
   services,
   renovations,
+  experience,
   products,
   process,
   portfolio,
@@ -39,7 +42,7 @@ export default function Home({
       <HeroPrimary />
       <ServicesSection services={services} />
       <RenovationsSection renovations={renovations} />
-      <ExperienceSection />
+      <ExperienceSection experience={experience} />
       <ProductsSection products={products} />
       <PortfolioSection portfolio={portfolio} />
       <ProcessSection process={process} />
@@ -53,12 +56,19 @@ export async function getStaticProps() {
   const services = servicesData;
   const products = productsData;
   const renovations = renovationsData;
+  const experience = experienceData;
   const process = processData;
   const portfolio = portfolioData;
   const reviews = reviewsData;
   return {
-    props: { services, products, renovations, process, portfolio, reviews },
+    props: {
+      services,
+      products,
+      renovations,
+      experience,
+      process,
+      portfolio,
+      reviews,
+    },
   };
 }
-
-// styles
