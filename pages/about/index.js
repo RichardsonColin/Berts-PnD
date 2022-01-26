@@ -1,16 +1,29 @@
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 // components
-import PagesContent from '@/components/pages/PagesContent';
+import AboutContent from '@/components/pages/AboutContent';
 // constants
-import { COMPANY_NAME } from '@/src/constants';
+import { aboutData } from '@/src/data/about';
 
-export default function AboutPage() {
+AboutPage.propTypes = {
+  contentData: PropTypes.object.isRequired,
+};
+
+export default function AboutPage({ contentData }) {
   return (
     <>
       <Head>
-        <title>About | {COMPANY_NAME}</title>
+        <title>About | {contentData.companyName}</title>
       </Head>
-      <PagesContent id='about' heading='About Us'></PagesContent>
+      <AboutContent contentData={contentData} id='about' heading='About Us' />
     </>
   );
+}
+
+// SSG
+export async function getStaticProps() {
+  const contentData = aboutData;
+  return {
+    props: { contentData },
+  };
 }
