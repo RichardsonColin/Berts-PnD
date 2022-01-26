@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { StyledProcessSection as StyledSection } from './Styled/LandingSection';
 import ProcessCards from './ProcessCards';
 import Heading from '@/components/ui/Heading';
+import AnimatedSquareGroup from '@/components/AnimatedSquareGroup';
 
 LandingProcessSection.propTypes = {
   process: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -21,6 +22,17 @@ export default function LandingProcessSection({ process }) {
         quam dolor.
       </p>
       <ProcessCards process={process} />
+      <AnimatedSquareWrapper>
+        <AnimatedSquareGroup
+          sizes={[400, 200, 100]}
+          angles={[35, 35, 35]}
+          colors={[
+            'var(--secondary)',
+            'var(--primary)',
+            'var(--secondary-accent)',
+          ]}
+        />
+      </AnimatedSquareWrapper>
     </StyledProcessSection>
   );
 }
@@ -29,5 +41,14 @@ export default function LandingProcessSection({ process }) {
 const StyledProcessSection = styled(StyledSection)`
   && {
     position: relative;
+  }
+`;
+const AnimatedSquareWrapper = styled.div`
+  ${StyledProcessSection} & {
+    position: absolute;
+    top: 100px;
+    right: -50px;
+    margin: auto;
+    margin-right: -300px;
   }
 `;
