@@ -245,7 +245,7 @@ const StyledBoxOne = styled.div`
       justify-content: center;
       align-items: center;
       height: 350px;
-      border-bottom: 13px solid #fff;
+      border-bottom: 13px solid var(--color-grey-10);
       background-color: var(--secondary);
       ${({ split }) => {
         if (split === 'left') {
