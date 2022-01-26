@@ -12,7 +12,8 @@ export default function useMediaQuery(width) {
   }, []);
 
   useEffect(() => {
-    const media = window.matchMedia(`(max-width: ${width}px)`);
+    // minus one to offset for use with min-widths
+    const media = window.matchMedia(`(max-width: ${width - 1}px)`);
     media.addListener(updateTarget);
 
     // Check on mount (callback is not called until a change occurs)
