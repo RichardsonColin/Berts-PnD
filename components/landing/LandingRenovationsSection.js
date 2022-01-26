@@ -7,6 +7,8 @@ import LandingContent from './LandingContent';
 import Mosaic from './Mosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
+// constants
+import { mediaQueries } from '@/src/constants';
 // assets
 import mosaicImageOne from '@/public/images/hero-primary.webp';
 import mosaicImageTwo from '@/public/images/hero-primary.webp';
@@ -45,9 +47,17 @@ export default function LandingRenovationsSection({ renovations }) {
 // styles
 const StyledRenovationsSection = styled(StyledSection)`
   && {
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      margin-bottom: 2.5rem;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      margin-bottom: 0;
+    }
     /* custom breakpoint */
     @media (min-width: 1500px) {
       max-width: 1400px;
+      margin-bottom: 5rem;
     }
   }
 `;
