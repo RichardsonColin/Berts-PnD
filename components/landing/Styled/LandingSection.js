@@ -87,7 +87,9 @@ export const StyledProductsSection = styled(Section)`
 
   ${SectionSplit}
 `;
-export const StyledExperienceSection = styled(Section)``;
+export const StyledExperienceSection = styled(Section)`
+  ${FontStylings}
+`;
 export const StyledRenovationsSection = styled(Section)`
   ${SectionWrapper}
 
