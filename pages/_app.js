@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Layout from '@/components/layout/Layout';
 // constants
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/src/constants';
-// global styles
-import GlobalStyle from '../styles/globalStyles';
+// styles
+import '../styles/globals.css';
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
@@ -15,7 +15,6 @@ MyApp.propTypes = {
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
       <Layout>
         <Head>
           <title>{COMPANY_NAME}</title>
