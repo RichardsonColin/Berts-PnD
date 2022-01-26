@@ -5,6 +5,9 @@ import { StyledReviewsSection as StyledSection } from './Styled/LandingSection';
 import Reviews from './reviews';
 import Heading from '@/components/ui/Heading';
 import LinkButton from '@/components/ui/LinkButton';
+import Logo from '@/components/Logo';
+// constants
+import { mediaQueries } from '@/src/constants';
 
 LandingReviewsSection.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -13,6 +16,9 @@ LandingReviewsSection.propTypes = {
 export default function LandingReviewsSection({ reviews }) {
   return (
     <StyledReviewsSection id='reviews'>
+      <LogoWrapper>
+        <Logo />
+      </LogoWrapper>
       <span>What People Say</span>
       <Heading level='2'>Testimonials</Heading>
       <Reviews reviews={reviews} />
@@ -23,5 +29,32 @@ export default function LandingReviewsSection({ reviews }) {
 
 // styles
 const StyledReviewsSection = styled(StyledSection)`
+  position: relative;
   margin-bottom: 5rem;
+`;
+const LogoWrapper = styled.div`
+  position: absolute;
+  opacity: 0;
+  transform: rotate(-20deg);
+
+  /* min-widths */
+  @media (min-width: ${mediaQueries.tablet}) {
+    top: -50px;
+    left: -50px;
+    width: 350px;
+    opacity: 0.1;
+  }
+  @media (min-width: ${mediaQueries.laptop}) {
+    left: 50px;
+    width: 400px;
+  }
+  /* custom breakpoint */
+  @media (min-width: 1300px) {
+    left: -80px;
+    width: 500px;
+  }
+  /* custom breakpoint */
+  @media (min-width: 1500px) {
+    left: -200px;
+  }
 `;
