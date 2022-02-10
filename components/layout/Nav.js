@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import FocusLock from 'react-focus-lock';
 import styled from 'styled-components';
 // hooks
@@ -12,10 +12,16 @@ import BurgerMenu from '@/components/layout/BurgerMenu';
 import { mediaQueries } from '@/src/constants';
 
 export default function Nav() {
+  const [loaded, setLoaded] = useState(false);
   const [open, setOpen] = useState(false);
   const node = useRef();
   const breakPointWidth = Number(mediaQueries.laptop.replace('px', ''));
   const isBreakPoint = useMediaQuery(breakPointWidth);
+
+  // ensure DOM is ready before setting a nav to display
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   // close BurgerMenu by clicking outside of node
   useClickOutside(node, () => setOpen(false));
@@ -29,7 +35,7 @@ export default function Nav() {
           </FocusLock>
         </MobileNavWrapper>
       ) : (
-        <StyledNav aria-label='Main'>
+        <StyledNav loaded={loaded} aria-label='Main'>
           <NavList />
         </StyledNav>
       )}
@@ -40,7 +46,7 @@ export default function Nav() {
 // styles
 const MobileNavWrapper = styled.div``;
 const StyledNav = styled.nav`
-  display: flex;
+  display: ${({ loaded }) => (loaded ? 'flex' : 'none')};
   justify-content: flex-end;
   align-items: center;
   height: inherit;
