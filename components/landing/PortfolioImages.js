@@ -82,10 +82,15 @@ const StyledImage = styled(Image)`
 const StyledLinkButton = styled(LinkButton)`
   ${ImageWrapper} & {
     position: absolute;
-    bottom: -99px;
-    left: 50%;
+    bottom: -120px;
+    left: 105%;
     transform: translateX(-50%);
 
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      bottom: -99px;
+      left: 50%;
+    }
     /* custom breakpoint */
     @media (min-width: 1500px) {
       bottom: -132px;
