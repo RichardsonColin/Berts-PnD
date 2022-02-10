@@ -7,6 +7,10 @@ export const servicesData = [
     heading: 'Interior Painting',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    body: [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    ],
     image: interiorImage,
     icon: interiorIcon,
   },
@@ -14,6 +18,10 @@ export const servicesData = [
     heading: 'Decorating',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    body: [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    ],
     image: interiorImage,
     icon: interiorIcon,
   },
@@ -21,6 +29,10 @@ export const servicesData = [
     heading: 'Exterior Painting',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    body: [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    ],
     image: interiorImage,
     icon: interiorIcon,
   },
@@ -28,6 +40,10 @@ export const servicesData = [
     heading: 'Accents',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    body: [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
+    ],
     image: interiorImage,
     icon: interiorIcon,
   },
