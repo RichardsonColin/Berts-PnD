@@ -13,7 +13,7 @@ export default function ExperienceItems({ items }) {
     <ItemsWrapper>
       {items.map((item, index) => (
         <Item key={index}>
-          <Image
+          <StyledImage
             src={item.icon}
             alt='Experience icon'
             width={60}
@@ -44,6 +44,11 @@ const Item = styled.div`
     @media (min-width: ${mediaQueries.tablet}) {
       width: 250px;
     }
+  }
+`;
+const StyledImage = styled(Image)`
+  ${ItemsWrapper} & {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.7));
   }
 `;
 const Value = styled.p`
