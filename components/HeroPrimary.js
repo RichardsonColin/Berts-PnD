@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styled, { css } from 'styled-components';
 // components
 import QuoteLinkButton from '@/components/QuoteLinkButton';
-import BorderSpacer from '@/components/ui/BorderSpacer';
 import { default as SquareOne } from '@/components/ui/AnimatedSquare';
 import { default as SquareTwo } from '@/components/ui/AnimatedSquare';
 // constants
@@ -25,7 +24,7 @@ export default function HeroPrimary() {
       </HeroContentWrapper>
       <HeroImageWrapper>
         <Image
-          priority
+          priority={true}
           src={heroImage}
           alt='Hero image'
           layout='fill'
@@ -46,11 +45,6 @@ export default function HeroPrimary() {
         angle={135}
         color='var(--color-grey-10)'
         animationOffset={5}
-      />
-      <StyledBorderSpacer
-        size={1}
-        backgroundColor='var(--primary-light)'
-        position='bottom'
       />
     </StyledHero>
   );
@@ -215,17 +209,6 @@ const StyledSquareTwo = styled(SquareTwo)`
     }
     /* landscape */
     @media (max-width: 825px) and (max-height: 425px) {
-      display: none;
-    }
-  }
-`;
-const StyledBorderSpacer = styled(BorderSpacer)`
-  ${StyledHero} & {
-    opacity: 0.5;
-    z-index: 1;
-
-    /* displays only on smaller viewports */
-    @media (min-width: 769px) {
       display: none;
     }
   }
