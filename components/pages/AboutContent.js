@@ -14,11 +14,18 @@ import { mediaQueries } from '@/src/constants';
 
 AboutContent.propTypes = {
   contentData: PropTypes.object.isRequired,
+  companyData: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
 };
 
-export default function AboutContent({ contentData, id, heading }) {
+export default function AboutContent({
+  contentData,
+  companyData,
+  id,
+  heading,
+}) {
+  const { companyOwner, companyName } = companyData;
   return (
     <PagesContent heading={heading}>
       <StyledAboutSection id={id}>
@@ -26,7 +33,7 @@ export default function AboutContent({ contentData, id, heading }) {
           <ImageWrapper>
             <Image
               src={contentData.image}
-              alt={`${contentData.companyOwner} from ${contentData.companyName}`}
+              alt={`${companyOwner} from ${companyName}`}
               layout='fill'
               objectFit='cover'
               quality={80}
@@ -38,7 +45,7 @@ export default function AboutContent({ contentData, id, heading }) {
             <StyledHeading level='2'>
               About{' '}
               <StyledTitleHighlight color='var(--primary-dark)'>
-                {contentData.companyName}
+                {companyName}
               </StyledTitleHighlight>
             </StyledHeading>
             <IconWrapper>
@@ -51,7 +58,7 @@ export default function AboutContent({ contentData, id, heading }) {
               />
             </IconWrapper>
             <Description>{contentData.description}</Description>
-            <OwnerName>{contentData.companyOwner}</OwnerName>
+            <OwnerName>{companyOwner}</OwnerName>
             <OwnerTitle>Owner</OwnerTitle>
             <StatsWrapper>
               {contentData.stats.map((stat, index) => {
