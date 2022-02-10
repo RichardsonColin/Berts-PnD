@@ -21,3 +21,6 @@ const FontStylings = css`
 export const StyledAboutSection = styled(Section)`
   ${FontStylings}
 `;
+export const StyledServicesSection = styled(Section)`
+  ${FontStylings}
+`;
