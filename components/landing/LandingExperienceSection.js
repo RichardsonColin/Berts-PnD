@@ -124,7 +124,7 @@ const StyledSlantLeft = styled.div`
   ${StyledExperienceSection} & {
     position: absolute;
     top: 60%;
-    left: -620px;
+    left: -720px;
     width: 700px;
     height: 700px;
     background-color: var(--primary);
@@ -133,6 +133,9 @@ const StyledSlantLeft = styled.div`
     z-index: 2;
 
     /* min-widths */
+    @media (min-width: ${mediaQueries.mobileL}) {
+      left: -675px;
+    }
     @media (min-width: ${mediaQueries.tablet}) {
       left: -400px;
     }
@@ -146,7 +149,7 @@ const StyledSlantRight = styled.div`
   ${StyledExperienceSection} & {
     position: absolute;
     top: 40%;
-    right: -620px;
+    right: -720px;
     width: 700px;
     height: 700px;
     background-color: var(--primary);
@@ -155,6 +158,9 @@ const StyledSlantRight = styled.div`
     z-index: 2;
 
     /* min-widths */
+    @media (min-width: ${mediaQueries.mobileL}) {
+      right: -675px;
+    }
     @media (min-width: ${mediaQueries.tablet}) {
       right: -400px;
     }
