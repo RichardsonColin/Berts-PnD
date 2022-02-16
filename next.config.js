@@ -12,7 +12,6 @@ module.exports = {
     domains: ['brave-ritchie-84cd7d.netlify.app'],
     formats: ['image/webp'],
   },
-  swcMinify: true,
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US',
