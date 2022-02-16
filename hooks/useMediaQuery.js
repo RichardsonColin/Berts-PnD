@@ -14,14 +14,14 @@ export default function useMediaQuery(width) {
   useEffect(() => {
     // minus one to offset for use with min-widths
     const media = window.matchMedia(`(max-width: ${width - 1}px)`);
-    media.addListener(updateTarget);
+    media.addEventListener('change', updateTarget);
 
     // Check on mount (callback is not called until a change occurs)
     if (media.matches) {
       setTargetReached(true);
     }
 
-    return () => media.removeListener(updateTarget);
+    return () => media.removeEventListener('change', updateTarget);
   }, [width, updateTarget]);
 
   return targetReached;
