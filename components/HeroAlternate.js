@@ -6,7 +6,7 @@ import Heading from '@/components/ui/Heading';
 // constants
 import { mediaQueries } from '@/src/constants';
 // assets
-import heroImage from '@/public/images/hero-primary.webp';
+import heroImage from '@/public/images/hero-alternate.webp';
 
 HeroAlternate.propTypes = {
   heading: PropTypes.string,
@@ -23,7 +23,6 @@ export default function HeroAlternate({ heading }) {
         layout='fill'
         objectFit='cover'
         quality={100}
-        placeholder='blur'
       />
       <StyledHeading level='1'>{heading}</StyledHeading>
     </StyledHero>

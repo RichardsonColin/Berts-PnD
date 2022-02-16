@@ -30,7 +30,6 @@ export default function HeroPrimary() {
           layout='fill'
           objectFit='cover'
           quality={100}
-          placeholder='blur'
         />
       </HeroImageWrapper>
       <StyledSquareOne
