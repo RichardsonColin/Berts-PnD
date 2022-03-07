@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-light: hsl(43, 70%, 81%);
     --primary-dark: hsl(43, 58%, 20%);
     --secondary: hsl(220, 56%, 22%);
-    --secondary-light: hsl(220, 62%, 80%);
+    --secondary-light: hsl(210, 35%, 47%);
     --secondary-dark: hsl(219, 86%, 9%);
 
     --color-grey-10: hsl(265, 100%, 99%);
@@ -53,6 +53,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background-color: var(--color-grey-10);
+    color: var(--color-grey-900);
+    overflow-x: hidden;
   }
 
   h1,
