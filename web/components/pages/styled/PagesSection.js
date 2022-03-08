@@ -24,3 +24,6 @@ export const StyledAboutSection = styled(Section)`
 export const StyledServicesSection = styled(Section)`
   ${FontStylings}
 `;
+export const StyledTestimonialsSection = styled(Section)`
+  ${FontStylings}
+`;
