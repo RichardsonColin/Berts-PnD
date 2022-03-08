@@ -13,6 +13,9 @@ module.exports = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
+  images: {
+    domains: ['cdn.sanity.io'],
+  },
   experimental: {
     // ssr and displayName are configured by default
     styledComponents: true,
