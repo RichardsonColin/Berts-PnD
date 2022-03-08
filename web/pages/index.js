@@ -1,3 +1,4 @@
+import sanityClient from '../sanityClient';
 import PropTypes from 'prop-types';
 // components
 import HeroPrimary from '@/components/HeroPrimary';
@@ -15,7 +16,6 @@ import { renovationsData } from '@/src/data/renovations';
 import { experienceData } from '@/src/data/experience';
 import { processData } from '@/src/data/process';
 import { portfolioData } from '@/src/data/portfolio';
-import { reviewsData } from '@/src/data/reviews';
 
 Home.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -59,7 +59,10 @@ export async function getStaticProps() {
   const experience = experienceData;
   const process = processData;
   const portfolio = portfolioData;
-  const reviews = reviewsData;
+  const reviews = await sanityClient.fetch(`
+    *[_type == "review" && onLanding == true][0...3]
+  `);
+
   return {
     props: {
       services,
@@ -70,5 +73,6 @@ export async function getStaticProps() {
       portfolio,
       reviews,
     },
+    revalidate: 60,
   };
 }
