@@ -23,7 +23,7 @@ export default function Reviews({ reviews }) {
             {Star}
             {Star}
           </StarWrapper>
-          <StyledReview>{review.review}</StyledReview>
+          <StyledReview>{review.body}</StyledReview>
           <StyledAuthor>{review.author}</StyledAuthor>
         </Fragment>
       ))}
