@@ -12,6 +12,9 @@
 web/.next/
 web/out/
 
+# sanity
+studio/dist
+
 # production
 **/build
 
@@ -24,11 +27,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-**.env.local
-**.env.development.local
-**.env.test.local
-**.env.production.local
+# env files
+**.env
+**.env.development
+**.env.test
+**.env.production
 
 # root level linter
 /.eslintrc.json
