@@ -1,12 +1,8 @@
 import sanityClient from '@sanity/client';
 
-// configs
-const apiVersion = '2021-10-21';
-const projectId = process.env['SANITY_PROJECT_ID'];
-
 export default sanityClient({
-  apiVersion,
-  projectId,
+  apiVersion: '2021-10-21',
+  projectId: process.env['SANITY_PROJECT_ID'],
   dataset: 'production',
   useCdn: true,
 });
