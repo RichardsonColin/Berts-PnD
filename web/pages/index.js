@@ -60,7 +60,7 @@ export async function getStaticProps() {
   const process = processData;
   const portfolio = portfolioData;
   const reviews = await sanityClient.fetch(`
-    *[_type == "review" && onLanding == true][0...3]
+    *[_type == "review" && onLanding == true] | order(date desc)[0..2]
   `);
 
   return {
