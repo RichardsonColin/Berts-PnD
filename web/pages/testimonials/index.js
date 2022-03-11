@@ -1,16 +1,38 @@
 import Head from 'next/head';
 // components
-import PagesContent from '@/components/pages/PagesContent';
+import ReviewsContent from '@/components/pages/ReviewsContent';
 // constants
-import { COMPANY_NAME } from '@/src/constants';
+import { companyData } from '@/src/data/company';
+// models
+import { fetch } from '@/models/review';
 
-export default function TestimonialsPage() {
+export default function ReviewsPage({
+  contentData,
+  contentParams,
+  companyData,
+}) {
+  const { companyName } = companyData;
   return (
     <>
       <Head>
-        <title>Testimonials | {COMPANY_NAME}</title>
+        <title>Testimonials | {companyName}</title>
       </Head>
-      <PagesContent id='testimonials' heading='Testimonials'></PagesContent>
+      <ReviewsContent
+        contentData={contentData}
+        contentParams={contentParams}
+        id='testimonials'
+        heading='Testimonials'
+      ></ReviewsContent>
     </>
   );
+}
+
+// SSG
+export async function getStaticProps() {
+  const contentParams = { perPage: 5, order: 'date desc' };
+  const { data } = await fetch({ page: 1, ...contentParams });
+  return {
+    props: { contentData: data, contentParams, companyData },
+    revalidate: 60,
+  };
 }
