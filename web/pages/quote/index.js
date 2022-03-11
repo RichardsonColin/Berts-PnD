@@ -5,18 +5,18 @@ import PagesContent from '@/components/pages/PagesContent';
 // constants
 import { companyData } from '@/src/data/company';
 
-ContactPage.propTypes = {
+QuotePage.propTypes = {
   companyData: PropTypes.object.isRequired,
 };
 
-export default function ContactPage({ companyData }) {
+export default function QuotePage({ companyData }) {
   const { companyName } = companyData;
   return (
     <>
       <Head>
-        <title>Contact | {companyName}</title>
+        <title>Quote | {companyName}</title>
       </Head>
-      <PagesContent id='contact' heading='Contact Us'></PagesContent>
+      <PagesContent id='quote' heading='Request Quote'></PagesContent>
     </>
   );
 }

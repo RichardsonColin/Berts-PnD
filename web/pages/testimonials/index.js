@@ -1,10 +1,17 @@
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 // components
 import ReviewsContent from '@/components/pages/ReviewsContent';
 // constants
 import { companyData } from '@/src/data/company';
 // models
 import { fetchReviews } from '@/models/review';
+
+ReviewsPage.propTypes = {
+  contentData: PropTypes.object.isRequired,
+  contentParams: PropTypes.object,
+  companyData: PropTypes.object.isRequired,
+};
 
 export default function ReviewsPage({
   contentData,
