@@ -22,14 +22,14 @@ export default function Review({ review }) {
           />
         ))}
       </StarWrapper>
-      <StyledReview>{body}</StyledReview>
+      <StyledBody>{body}</StyledBody>
       <StyledAuthor>{author}</StyledAuthor>
     </>
   );
 }
 
 // styles
-const StyledReview = styled.p`
+const StyledBody = styled.p`
   && {
     margin-top: 0;
     margin-bottom: 2rem;
