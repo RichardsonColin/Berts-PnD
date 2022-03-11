@@ -1,4 +1,3 @@
-import sanityClient from '../sanityClient';
 import PropTypes from 'prop-types';
 // components
 import HeroPrimary from '@/components/HeroPrimary';
@@ -9,6 +8,8 @@ import ProductsSection from '@/components/landing/LandingProductsSection';
 import ProcessSection from '@/components/landing/LandingProcessSection';
 import PortfolioSection from '@/components/landing/LandingPortfolioSection';
 import ReviewsSection from '@/components/landing/LandingReviewsSection';
+// models
+import { fetchReviews } from '@/models/review';
 // constants
 import { servicesData } from '@/src/data/services';
 import { productsData } from '@/src/data/products';
@@ -59,9 +60,12 @@ export async function getStaticProps() {
   const experience = experienceData;
   const process = processData;
   const portfolio = portfolioData;
-  const reviews = await sanityClient.fetch(`
-    *[_type == "review" && onLanding == true] | order(date desc)[0..2]
-  `);
+  const reviews = await fetchReviews({
+    page: 1,
+    perPage: 3,
+    order: 'date desc',
+    filter: 'onLanding == true',
+  });
 
   return {
     props: {
@@ -71,7 +75,7 @@ export async function getStaticProps() {
       experience,
       process,
       portfolio,
-      reviews,
+      reviews: reviews?.data || [],
     },
     revalidate: 60,
   };
