@@ -4,7 +4,7 @@ import ReviewsContent from '@/components/pages/ReviewsContent';
 // constants
 import { companyData } from '@/src/data/company';
 // models
-import { fetch } from '@/models/review';
+import { fetchReviews } from '@/models/review';
 
 export default function ReviewsPage({
   contentData,
@@ -30,7 +30,7 @@ export default function ReviewsPage({
 // SSG
 export async function getStaticProps() {
   const contentParams = { perPage: 5, order: 'date desc' };
-  const { data } = await fetch({ page: 1, ...contentParams });
+  const { data } = await fetchReviews({ page: 1, ...contentParams });
   return {
     props: { contentData: data, contentParams, companyData },
     revalidate: 60,

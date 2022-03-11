@@ -1,10 +1,10 @@
 // models
-import { fetch } from '../../models/review';
+import { fetchReviews } from '../../models/review';
 /*
   Path:
     /api/reviews
 
-  Methods:
+  Accepted Methods:
     GET
 */
 export default async function handler(req, res) {
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {
       // handle request
       const { page, perPage, order } = req.query;
-      const { data, status } = await fetch({
+      const { data, status } = await fetchReviews({
         page,
         perPage,
         order,
@@ -22,13 +22,15 @@ export default async function handler(req, res) {
       if (status === 'success') {
         res.status(200).json(data);
       } else {
-        res.status(500).json({ data: [], status });
+        console.error(`HTTP Method: ${req.method} --- ${error}`);
+        res.status(400).json(data);
       }
     } else {
-      res.status(400).json({});
+      console.log(`HTTP Method: ${req.method} --- Unsupported HTTP Method`);
+      res.status(400).json([]);
     }
   } catch (error) {
     console.error(`HTTP Method: ${req.method} --- ${error}`);
-    res.status(500).json({ status: 'error', message: 'Internal server error' });
+    res.status(500).json([]);
   }
 }
