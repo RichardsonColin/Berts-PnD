@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       if (status === 'success') {
         res.status(200).json(data);
       } else {
-        console.error(`HTTP Method: ${req.method} --- ${error}`);
+        console.error(`HTTP Method: ${req.method} --- ${status}`);
         res.status(400).json(data);
       }
     } else {
