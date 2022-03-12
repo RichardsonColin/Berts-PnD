@@ -8,8 +8,8 @@ import { companyData } from '@/src/data/company';
 import { fetchReviews } from '@/models/review';
 
 ReviewsPage.propTypes = {
-  contentData: PropTypes.object.isRequired,
-  contentParams: PropTypes.object,
+  contentData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  contentParams: PropTypes.object.isRequired,
   companyData: PropTypes.object.isRequired,
 };
 
