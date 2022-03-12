@@ -16,6 +16,9 @@ module.exports = {
   images: {
     domains: ['cdn.sanity.io'],
   },
+  env: {
+    SANITY_PROJECT_ID: process.env['SANITY_PROJECT_ID'],
+  },
   experimental: {
     // ssr and displayName are configured by default
     styledComponents: true,
