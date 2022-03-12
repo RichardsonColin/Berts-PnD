@@ -1,5 +1,5 @@
 // models
-import { fetchReviews } from '../../models/review';
+import { fetchReviews } from '@/models/review';
 /*
   Path:
     /api/reviews
