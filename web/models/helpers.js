@@ -2,20 +2,21 @@ import sanityClient from '../sanityClient';
 
 // general sanity query
 export const query = async (type, params) => {
+  let query = '';
   try {
     const { filterFor, orderBy, rangeWithin } = params;
+    query = `*[_type == "${type}"${filterFor}]${orderBy}${rangeWithin}`.trim();
 
-    return await sanityClient.fetch(`
-      *[_type == "${type}"${filterFor}]
-      ${orderBy}
-      ${rangeWithin}
-    `);
+    return await sanityClient.fetch(query);
   } catch (error) {
-    console.error(`Sanity Query Error on ${type} --- ${error}`);
+    console.error(`Sanity Error on ${type} ---
+      Query: ${query}
+      Error: ${error}
+    `);
   }
 };
 
-// common params used to filter GROQ query statements
+// common params used to filter GROQ query statements; defaults to 10 resources per query
 export const parseParams = ({ page, perPage = 10, filter, order }) => {
   // check for params
   const hasPage = page !== undefined;
