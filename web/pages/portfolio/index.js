@@ -1,0 +1,49 @@
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+// components
+import PortfolioContent from '@/components/pages/PortfolioContent';
+// constants
+import { companyData } from '@/src/data/company';
+// models
+import { fetchPortfolioImages } from '@/models/portfolioImage';
+
+PortfolioPage.propTypes = {
+  contentData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  contentParams: PropTypes.object.isRequired,
+  companyData: PropTypes.object.isRequired,
+};
+
+export default function PortfolioPage({
+  contentData,
+  contentParams,
+  companyData,
+}) {
+  const { companyName } = companyData;
+  return (
+    <>
+      <Head>
+        <title>Portfolio | {companyName}</title>
+      </Head>
+      <PortfolioContent
+        id='portfolio'
+        heading='Portfolio'
+        contentData={contentData}
+        contentParams={contentParams}
+        companyData={companyData}
+      />
+    </>
+  );
+}
+
+// SSG
+export async function getStaticProps() {
+  const contentParams = { perPage: 5, order: '_createdAt desc' };
+  const { data } = await fetchPortfolioImages({
+    page: 1,
+    ...contentParams,
+  });
+  return {
+    props: { contentData: data, contentParams, companyData },
+    revalidate: 60,
+  };
+}
