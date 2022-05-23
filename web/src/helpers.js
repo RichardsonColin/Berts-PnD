@@ -1,6 +1,6 @@
 export function searchString(string, regExpPattern) {
   try {
-    if (typeof string !== 'string' && !string.length) return null;
+    if (typeof string !== 'string' || !string) return null;
 
     const regex = new RegExp(regExpPattern);
     const result = regex.exec(string);
