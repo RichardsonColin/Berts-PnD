@@ -13,6 +13,7 @@ export const siteRoutes = [
   '/',
   '/about',
   '/services',
+  '/portfolio',
   '/testimonials',
   '/contact',
 ];
