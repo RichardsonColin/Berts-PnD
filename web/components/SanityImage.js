@@ -10,6 +10,7 @@ SanityImage.propTypes = {
   quality: PropTypes.number,
   blur: PropTypes.number,
   altText: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 /*
@@ -24,6 +25,7 @@ export default function SanityImage({
   quality = 80,
   blur = 20,
   altText,
+  className = '',
 }) {
   const customImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder
@@ -50,6 +52,7 @@ export default function SanityImage({
       objectFit={objectFit}
       quality={quality}
       alt={altText}
+      className={className}
     />
   );
 }
