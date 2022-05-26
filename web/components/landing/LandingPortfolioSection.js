@@ -11,16 +11,21 @@ import { mediaQueries } from '@/src/constants';
 
 LandingPortfolioSection.propTypes = {
   portfolio: PropTypes.arrayOf(PropTypes.object).isRequired,
+  companyData: PropTypes.object.isRequired,
 };
 
-export default function LandingPortfolioSection({ portfolio }) {
+export default function LandingPortfolioSection({ portfolio, companyData }) {
+  const { companyName } = companyData;
   return (
     <StyledPortfolioSection id='portfolio'>
       <BackgroundSlant slant='left' />
       <span>Take A Look At Our Work</span>
       <StyledHeading level='2'>Our Portfolio</StyledHeading>
       <StyledContainer>
-        <PortfolioImages portfolio={portfolio} />
+        <PortfolioImages
+          portfolioImages={portfolio}
+          altText={`${companyName} portfolio work`}
+        />
       </StyledContainer>
     </StyledPortfolioSection>
   );

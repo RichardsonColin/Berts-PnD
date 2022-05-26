@@ -34,7 +34,7 @@ export default function PortfolioContent({
       <StyledPortfolioSection id={id}>
         <StyledHeading level='2'>Check out our Work</StyledHeading>
         <PortfolioImages
-          images={portfolioImages}
+          portfolioImages={portfolioImages}
           altText={`${companyName} portfolio work`}
         />
         <ButtonWrapper>
