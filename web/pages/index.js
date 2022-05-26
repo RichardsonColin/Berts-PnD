@@ -10,13 +10,14 @@ import PortfolioSection from '@/components/landing/LandingPortfolioSection';
 import ReviewsSection from '@/components/landing/LandingReviewsSection';
 // models
 import { fetchReviews } from '@/models/review';
+import { fetchPortfolioImages } from '@/models/portfolioImage';
 // constants
+import { companyData } from '@/src/data/company';
 import { servicesData } from '@/src/data/services';
 import { productsData } from '@/src/data/products';
 import { renovationsData } from '@/src/data/renovations';
 import { experienceData } from '@/src/data/experience';
 import { processData } from '@/src/data/process';
-import { portfolioData } from '@/src/data/portfolio';
 
 Home.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -45,7 +46,7 @@ export default function Home({
       <RenovationsSection renovations={renovations} />
       <ExperienceSection experience={experience} />
       <ProductsSection products={products} />
-      <PortfolioSection portfolio={portfolio} />
+      <PortfolioSection portfolio={portfolio} companyData={companyData} />
       <ProcessSection process={process} />
       <ReviewsSection reviews={reviews} />
     </>
@@ -54,12 +55,18 @@ export default function Home({
 
 // SSG
 export async function getStaticProps() {
+  // Local resources
   const services = servicesData;
   const products = productsData;
   const renovations = renovationsData;
   const experience = experienceData;
   const process = processData;
-  const portfolio = portfolioData;
+  // Sanity resources
+  const portfolio = await fetchPortfolioImages({
+    page: 1,
+    perPage: 4,
+    filter: 'onLanding == true',
+  });
   const reviews = await fetchReviews({
     page: 1,
     perPage: 3,
@@ -74,7 +81,7 @@ export async function getStaticProps() {
       renovations,
       experience,
       process,
-      portfolio,
+      portfolio: portfolio?.data || [],
       reviews: reviews?.data || [],
     },
     revalidate: 60,
