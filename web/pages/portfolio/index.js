@@ -25,11 +25,13 @@ export default function PortfolioPage({
         <title>Portfolio | {companyName}</title>
       </Head>
       <PortfolioContent
-        id='portfolio'
-        heading='Portfolio'
         contentData={contentData}
         contentParams={contentParams}
         companyData={companyData}
+        id='portfolio'
+        heading='Portfolio'
+        title='Preview Our Work'
+        subtitle="What We've Done"
       />
     </>
   );

@@ -88,9 +88,6 @@ const ContentWrapper = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
 
     @media (min-width: ${mediaQueries.tablet}) {
       flex-direction: row;
@@ -101,7 +98,7 @@ const ContentWrapper = styled.div`
 const StyledContainer = styled(Container)`
   ${StyledAboutSection} & {
     @media (min-width: ${mediaQueries.tablet}) {
-      flex: 0 1 70%;
+      flex: 0 1 75%;
       padding-left: 3rem;
     }
   }
@@ -180,22 +177,32 @@ const OwnerTitle = styled.p`
 `;
 const StatsWrapper = styled.div`
   ${StyledAboutSection} & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 3rem;
 
     /* custom breakpoint */
     @media (min-width: 500px) {
-      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
     }
   }
 `;
 const StatsContent = styled.div`
   ${StyledAboutSection} & {
-    width: 125px;
+    text-align: center;
+
+    h3 {
+      margin-bottom: 0.25rem;
+    }
 
     /* custom breakpoint */
     @media (min-width: 500px) {
-      flex: 0 1 100%;
-      padding-right: 2rem;
+      h3 {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 `;

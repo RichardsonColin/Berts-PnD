@@ -50,13 +50,11 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-width: 1200px;
     margin: 0 auto;
 
     @media (min-width: ${mediaQueries.laptop}) {
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 2rem;
     }
   }
 `;

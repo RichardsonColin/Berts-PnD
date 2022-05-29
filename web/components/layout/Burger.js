@@ -26,7 +26,7 @@ export default function Burger({ open, setOpen }) {
 const StyledBurger = styled.button`
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 35px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;

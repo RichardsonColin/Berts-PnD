@@ -56,7 +56,6 @@ const StyledRenovationsSection = styled(StyledSection)`
     }
     /* custom breakpoint */
     @media (min-width: 1500px) {
-      max-width: 1400px;
       margin-bottom: 5rem;
     }
   }

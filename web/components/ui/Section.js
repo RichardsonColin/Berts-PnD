@@ -19,9 +19,9 @@ export default function Section({ id, className = '', children }) {
 
 // styles
 const StyledSection = styled.section`
-  padding: 3.125rem 0.625rem;
+  padding: 3.125rem 2rem;
 
   @media (min-width: ${mediaQueries.laptop}) {
-    padding: 6.25rem 0.625rem;
+    padding: 6.25rem 2rem;
   }
 `;

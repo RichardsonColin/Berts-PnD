@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
+import CallToAction from '@/components/CallToAction';
 import { mediaQueries } from '@/src/constants';
 
 const FontStylings = css`
@@ -18,15 +19,32 @@ const FontStylings = css`
     }
   }
 `;
+const ContainerStylings = css`
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* custom breakpoints */
+  @media (min-width: 1400px) {
+    max-width: 1350px;
+  }
+`;
+export const StyledCallToActionSection = styled(CallToAction)`
+  ${ContainerStylings}
+  ${FontStylings}
+`;
 export const StyledAboutSection = styled(Section)`
+  ${ContainerStylings}
   ${FontStylings}
 `;
 export const StyledServicesSection = styled(Section)`
+  ${ContainerStylings}
   ${FontStylings}
 `;
 export const StyledReviewsSection = styled(Section)`
+  ${ContainerStylings}
   ${FontStylings}
 `;
 export const StyledPortfolioSection = styled(Section)`
+  ${ContainerStylings}
   ${FontStylings}
 `;

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
+import Section from '../ui/Section';
 import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
@@ -50,29 +51,30 @@ export const StyledHeader = styled.header`
     min-height: 90px;
   }
 `;
-const ContentWrapper = styled.div`
+const ContentWrapper = styled(Section)`
   ${StyledHeader} & {
-    position: relative;
+    display: flex;
+    justify-content: space-between;
     height: inherit;
     margin: 0 auto;
+    padding-top: 0;
+    padding-bottom: 0;
 
     /* min-widths */
-    @media (min-width: ${mediaQueries.laptop}) {
-      max-width: 1350px;
+    @media (min-width: ${mediaQueries.tablet}) {
+      max-width: 900px;
     }
-    /* custom max-width for edge space */
-    @media (max-width: 1400px) {
-      padding-right: 1rem;
+    @media (min-width: ${mediaQueries.laptop}) {
+      max-width: 1200px;
+    }
+    /* custom breakpoint */
+    @media (min-width: 1400px) {
+      max-width: 1350px;
     }
   }
 `;
 const LogoWrapper = styled.div`
   ${StyledHeader} & {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,10 +88,6 @@ const LogoWrapper = styled.div`
     @media (min-width: ${mediaQueries.laptop}) {
       width: 200px;
       justify-content: flex-start;
-    }
-    /* custom max-width for edge space */
-    @media (max-width: 1400px) {
-      padding-left: 1rem;
     }
   }
 `;

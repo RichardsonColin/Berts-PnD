@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // components
 import PagesContent from './PagesContent';
 import { StyledServicesSection as StyledSection } from './styled/PagesSection';
+import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // constants
@@ -13,9 +14,17 @@ ServicesContent.propTypes = {
   contentData: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
 };
 
-export default function ServicesContent({ contentData, id, heading }) {
+export default function ServicesContent({
+  contentData,
+  id,
+  heading,
+  title,
+  subtitle,
+}) {
   const ContentImage = (content) => {
     const { image, heading } = content;
     return (
@@ -35,7 +44,7 @@ export default function ServicesContent({ contentData, id, heading }) {
     const { icon, heading, body } = content;
     return (
       <StyledContentContainer position='left'>
-        <StyledHeading level='2'>{heading}</StyledHeading>
+        <StyledContentHeading level='3'>{heading}</StyledContentHeading>
         <IconWrapper>
           <Image
             src={icon}
@@ -54,6 +63,10 @@ export default function ServicesContent({ contentData, id, heading }) {
   return (
     <PagesContent heading={heading}>
       <StyledServicesSection id={id}>
+        <HeadingWrapper>
+          <span>{subtitle}</span>
+          <Heading level='2'>{title}</Heading>
+        </HeadingWrapper>
         {contentData.map((content, index) => (
           <StyledWrapperContainer
             key={content.heading}
@@ -79,7 +92,6 @@ export default function ServicesContent({ contentData, id, heading }) {
 
 // styles
 const StyledServicesSection = styled(StyledSection)`
-  max-width: 1550px;
   margin: 0 auto;
 `;
 const StyledWrapperContainer = styled(Container)`
@@ -104,16 +116,6 @@ const StyledWrapperContainer = styled(Container)`
         flex-direction: row;
       }
     }
-    @media (min-width: ${mediaQueries.laptop}) {
-      width: 975px;
-    }
-    /* custom breakpoints */
-    @media (min-width: 1300px) {
-      width: 1100px;
-    }
-    @media (min-width: 1500px) {
-      width: 1375px;
-    }
   }
 `;
 const StyledContentContainer = styled(Container)`
@@ -122,7 +124,12 @@ const StyledContentContainer = styled(Container)`
 
     /* min-widths */
     @media (min-width: ${mediaQueries.tablet}) {
-      padding: 0 2rem;
+      :nth-child(even) {
+        padding-left: 2rem;
+      }
+      :nth-child(odd) {
+        padding-right: 2rem;
+      }
     }
     /* custom breakpoint */
     @media (min-width: 1500px) {
@@ -130,10 +137,11 @@ const StyledContentContainer = styled(Container)`
     }
   }
 `;
-const StyledHeading = styled(Heading)`
+const StyledContentHeading = styled(Heading)`
   ${StyledServicesSection} & {
     margin-bottom: 0.5rem;
     color: var(--secondary);
+    font-size: 1.5em;
   }
 `;
 const ImageWrapper = styled.div`

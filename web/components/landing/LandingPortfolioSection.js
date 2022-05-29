@@ -111,7 +111,7 @@ const StyledContainer = styled(Container)`
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-evenly;
-      max-width: 1480px;
+      max-width: 1350px;
       margin: 22.5rem auto 7rem;
     }
   }

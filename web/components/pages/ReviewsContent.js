@@ -4,14 +4,18 @@ import styled from 'styled-components';
 // components
 import PagesContent from './PagesContent';
 import { StyledReviewsSection as StyledSection } from './styled/PagesSection';
+import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
 import Reviews from '@/components/Reviews';
 import ContentLoader from '@/components/ContentLoader';
+import Heading from '@/components/ui/Heading';
 
 ReviewsContent.propTypes = {
   contentData: PropTypes.arrayOf(PropTypes.object).isRequired,
   contentParams: PropTypes.object,
   id: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
 };
 
 export default function ReviewsContent({
@@ -19,6 +23,8 @@ export default function ReviewsContent({
   contentParams,
   id,
   heading,
+  title,
+  subtitle,
 }) {
   const [reviews, setReviews] = useState(contentData || []);
 
@@ -29,6 +35,10 @@ export default function ReviewsContent({
   return (
     <PagesContent heading={heading}>
       <StyledReviewsSection id={id}>
+        <HeadingWrapper>
+          <span>{subtitle}</span>
+          <Heading level='2'>{title}</Heading>
+        </HeadingWrapper>
         <Reviews reviews={reviews} />
         <ContentLoader
           content={reviews}
