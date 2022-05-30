@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PagesContent from './PagesContent';
 import { StyledServicesSection as StyledSection } from './styled/PagesSection';
 import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
+import Gutter from '@/components/ui/Gutter';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // constants
@@ -63,28 +64,30 @@ export default function ServicesContent({
   return (
     <PagesContent heading={heading}>
       <StyledServicesSection id={id}>
-        <HeadingWrapper>
-          <span>{subtitle}</span>
-          <Heading level='2'>{title}</Heading>
-        </HeadingWrapper>
-        {contentData.map((content, index) => (
-          <StyledWrapperContainer
-            key={content.heading}
-            position={index % 2 === 0 ? 'right' : 'left'}
-          >
-            {index % 2 === 0 ? (
-              <>
-                <ContentImage {...content} />
-                <ContentText {...content} />
-              </>
-            ) : (
-              <>
-                <ContentText {...content} />
-                <ContentImage {...content} />
-              </>
-            )}
-          </StyledWrapperContainer>
-        ))}
+        <Gutter>
+          <HeadingWrapper>
+            <span>{subtitle}</span>
+            <Heading level='2'>{title}</Heading>
+          </HeadingWrapper>
+          {contentData.map((content, index) => (
+            <StyledWrapperContainer
+              key={content.heading}
+              position={index % 2 === 0 ? 'right' : 'left'}
+            >
+              {index % 2 === 0 ? (
+                <>
+                  <ContentImage {...content} />
+                  <ContentText {...content} />
+                </>
+              ) : (
+                <>
+                  <ContentText {...content} />
+                  <ContentImage {...content} />
+                </>
+              )}
+            </StyledWrapperContainer>
+          ))}
+        </Gutter>
       </StyledServicesSection>
     </PagesContent>
   );

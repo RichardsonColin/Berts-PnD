@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import Gutter from '@/components/ui/Gutter';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 import BackgroundSlant from '@/components/ui/BackgroundSlant';
@@ -16,24 +17,26 @@ CallToAction.propTypes = {
 export default function CallToAction({ className = '' }) {
   return (
     <StyledSection id='call-to-action' className={className}>
-      <BackgroundSlant
-        heightMultiple={0.8}
-        slant='left'
-        degree={5}
-        backgroundColor='var(--secondary)'
-      />
-      <BackgroundSlant heightMultiple={0.8} slant='right' degree={5} />
-      <Wrapper>
-        <StyledContainer position='left'>
-          <StyledHeading level='2'>Give Us A Call!</StyledHeading>
-          <StyledText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.
-            Suspendisse bibendum justo non justo cursus sodales.
-          </StyledText>
-        </StyledContainer>
-        <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
-      </Wrapper>
+      <Gutter>
+        <BackgroundSlant
+          heightMultiple={0.8}
+          slant='left'
+          degree={5}
+          backgroundColor='var(--secondary)'
+        />
+        <BackgroundSlant heightMultiple={0.8} slant='right' degree={5} />
+        <Wrapper>
+          <StyledContainer position='left'>
+            <StyledHeading level='2'>Give Us A Call!</StyledHeading>
+            <StyledText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              mattis neque vitae congue rhoncus. Suspendisse feugiat quam
+              tellus. Suspendisse bibendum justo non justo cursus sodales.
+            </StyledText>
+          </StyledContainer>
+          <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
+        </Wrapper>
+      </Gutter>
     </StyledSection>
   );
 }

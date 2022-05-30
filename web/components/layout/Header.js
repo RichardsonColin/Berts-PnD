@@ -2,7 +2,8 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import Section from '../ui/Section';
+import Section from '@/components/ui/Section';
+import Gutter from '@/components/ui/Gutter';
 import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
@@ -17,14 +18,16 @@ export default function Header({ children }) {
     <StyledHeader id='header'>
       <BorderSpacer size={4} position='bottom' />
       <ContentWrapper>
-        <LogoWrapper>
-          <Link href='/' passHref>
-            <LogoLink>
-              <Logo />
-            </LogoLink>
-          </Link>
-        </LogoWrapper>
-        {children}
+        <StyledGutter>
+          <LogoWrapper>
+            <Link href='/' passHref>
+              <LogoLink>
+                <Logo />
+              </LogoLink>
+            </Link>
+          </LogoWrapper>
+          {children}
+        </StyledGutter>
       </ContentWrapper>
     </StyledHeader>
   );
@@ -51,26 +54,18 @@ export const StyledHeader = styled.header`
     min-height: 90px;
   }
 `;
-const ContentWrapper = styled(Section)`
+const StyledGutter = styled(Gutter)`
   ${StyledHeader} & {
     display: flex;
     justify-content: space-between;
     height: inherit;
-    margin: 0 auto;
+  }
+`;
+const ContentWrapper = styled(Section)`
+  ${StyledHeader} & {
+    height: inherit;
     padding-top: 0;
     padding-bottom: 0;
-
-    /* min-widths */
-    @media (min-width: ${mediaQueries.tablet}) {
-      max-width: 900px;
-    }
-    @media (min-width: ${mediaQueries.laptop}) {
-      max-width: 1200px;
-    }
-    /* custom breakpoint */
-    @media (min-width: 1400px) {
-      max-width: 1350px;
-    }
   }
 `;
 const LogoWrapper = styled.div`
