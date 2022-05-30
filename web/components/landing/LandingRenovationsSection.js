@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledRenovationsSection as StyledSection } from './Styled/LandingSection';
+import { StyledRenovationsSection as StyledSection } from './styled/LandingSection';
 import DetailsList from './DetailsList';
 import LandingContent from './LandingContent';
 import Mosaic from './Mosaic';

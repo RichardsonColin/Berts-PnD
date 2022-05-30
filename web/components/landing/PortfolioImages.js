@@ -1,28 +1,30 @@
-import Image from 'next/image';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
+import PortfolioImage from '@/components/PortfolioImage';
 import LinkButton from '@/components/ui/LinkButton';
 // constants
 import { mediaQueries } from '@/src/constants';
 
 PortfolioImages.propTypes = {
-  portfolio: PropTypes.arrayOf(PropTypes.object).isRequired,
+  portfolioImages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  altText: PropTypes.string.isRequired,
 };
 
-export default function PortfolioImages({ portfolio }) {
+export default function PortfolioImages({ portfolioImages, altText }) {
   return (
     <>
-      {portfolio.map((image, index) => {
+      {portfolioImages.map((portfolioImage, index) => {
+        const { _id, title, image } = portfolioImage;
         return (
-          <ImageWrapper key={index}>
-            <StyledImage
-              src={image.image}
-              alt={`Portfolio image ${index + 1}`}
+          <ImageWrapper key={_id}>
+            <StyledPortfolioImage
+              image={image}
               layout='fill'
               objectFit='cover'
-              quality={80}
-              placeholder='blur'
+              quality={100}
+              blur={10}
+              altText={`${altText}: ${title}`}
             />
             {index === 2 && (
               <StyledLinkButton href='/portfolio'>View More</StyledLinkButton>
@@ -69,7 +71,7 @@ const ImageWrapper = styled.div`
     border-radius: 3px;
   }
 `;
-const StyledImage = styled(Image)`
+const StyledPortfolioImage = styled(PortfolioImage)`
   ${ImageWrapper} & {
     border-radius: 2px;
 

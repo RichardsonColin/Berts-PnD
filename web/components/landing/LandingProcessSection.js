@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledProcessSection as StyledSection } from './Styled/LandingSection';
+import { StyledProcessSection as StyledSection } from './styled/LandingSection';
 import ProcessCards from './ProcessCards';
 import Heading from '@/components/ui/Heading';
 import AnimatedSquareGroup from '@/components/AnimatedSquareGroup';

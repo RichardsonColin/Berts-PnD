@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledPortfolioSection as StyledSection } from './Styled/LandingSection';
+import { StyledPortfolioSection as StyledSection } from './styled/LandingSection';
 import PortfolioImages from './PortfolioImages';
 import Heading from '@/components/ui/Heading';
 import Container from '@/components/ui/Container';

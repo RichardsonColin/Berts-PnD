@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledReviewsSection as StyledSection } from './Styled/LandingSection';
+import { StyledReviewsSection as StyledSection } from './styled/LandingSection';
 import Reviews from '@/components/Reviews';
 import Heading from '@/components/ui/Heading';
 import LinkButton from '@/components/ui/LinkButton';

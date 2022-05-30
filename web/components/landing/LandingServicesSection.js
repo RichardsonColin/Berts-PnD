@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledServicesSection as StyledSection } from './Styled/LandingSection';
+import { StyledServicesSection as StyledSection } from './styled/LandingSection';
 import ServicesCards from './ServicesCards';
 import Heading from '@/components/ui/Heading';
 import LinkButton from '@/components/ui/LinkButton';
