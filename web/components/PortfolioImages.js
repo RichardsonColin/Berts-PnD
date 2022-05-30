@@ -71,6 +71,8 @@ const StyledCustomModal = styled(CustomModal)`
     width: 95vw;
     max-width: 1400px;
     min-height: 22vh;
+    border: 1px solid var(--color-grey-10);
+    box-shadow: 0px 0px 10px 1px var(--color-grey-950);
 
     /* min-widths */
     @media (min-width: 300px) {
@@ -87,6 +89,7 @@ const StyledCustomModal = styled(CustomModal)`
     }
     @media (min-width: 700px) {
       height: 50vh;
+      border: 3px solid var(--color-grey-10);
     }
     @media (min-width: 800px) {
       height: 60vh;
