@@ -33,28 +33,30 @@ const StyledReviewsSection = styled(StyledSection)`
   margin-bottom: 5rem;
 `;
 const LogoWrapper = styled.div`
-  position: absolute;
-  opacity: 0;
-  transform: rotate(-20deg);
+  ${StyledReviewsSection} & {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-20deg);
 
-  /* min-widths */
-  @media (min-width: ${mediaQueries.tablet}) {
-    top: -50px;
-    left: -50px;
-    width: 350px;
-    opacity: 0.1;
-  }
-  @media (min-width: ${mediaQueries.laptop}) {
-    left: 50px;
-    width: 400px;
-  }
-  /* custom breakpoint */
-  @media (min-width: 1300px) {
-    left: -80px;
-    width: 500px;
-  }
-  /* custom breakpoint */
-  @media (min-width: 1500px) {
-    left: -200px;
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      top: -50px;
+      left: -50px;
+      width: 350px;
+      opacity: 0.1;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      left: 50px;
+      width: 400px;
+    }
+    /* custom breakpoint */
+    @media (min-width: 1300px) {
+      left: -80px;
+      width: 500px;
+    }
+    /* custom breakpoint */
+    @media (min-width: 1500px) {
+      left: -200px;
+    }
   }
 `;
