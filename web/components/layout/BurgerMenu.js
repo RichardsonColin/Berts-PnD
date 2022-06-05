@@ -33,7 +33,7 @@ export default function BurgerMenu({ open, setOpen }) {
             </Link>
           </MenuItem>
         ))}
-        <MenuItem>
+        <MenuItem onClick={() => setOpen(!open)}>
           <QuoteLinkButton />
         </MenuItem>
       </MenuList>
