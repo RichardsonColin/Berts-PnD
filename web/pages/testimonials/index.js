@@ -29,6 +29,8 @@ export default function ReviewsPage({
         contentParams={contentParams}
         id='testimonials'
         heading='Testimonials'
+        title='Our Latest Reviews'
+        subtitle='What Customers Are Saying'
       ></ReviewsContent>
     </>
   );

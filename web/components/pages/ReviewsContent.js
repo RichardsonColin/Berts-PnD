@@ -4,14 +4,19 @@ import styled from 'styled-components';
 // components
 import PagesContent from './PagesContent';
 import { StyledReviewsSection as StyledSection } from './styled/PagesSection';
+import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
+import Gutter from '@/components/ui/Gutter';
 import Reviews from '@/components/Reviews';
 import ContentLoader from '@/components/ContentLoader';
+import Heading from '@/components/ui/Heading';
 
 ReviewsContent.propTypes = {
   contentData: PropTypes.arrayOf(PropTypes.object).isRequired,
   contentParams: PropTypes.object,
   id: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
 };
 
 export default function ReviewsContent({
@@ -19,6 +24,8 @@ export default function ReviewsContent({
   contentParams,
   id,
   heading,
+  title,
+  subtitle,
 }) {
   const [reviews, setReviews] = useState(contentData || []);
 
@@ -29,15 +36,21 @@ export default function ReviewsContent({
   return (
     <PagesContent heading={heading}>
       <StyledReviewsSection id={id}>
-        <Reviews reviews={reviews} />
-        <ContentLoader
-          content={reviews}
-          contentParams={contentParams}
-          contentType='reviews'
-          handleContent={handleContent}
-          pagesToLoad={1}
-          initialPages={2}
-        />
+        <Gutter>
+          <HeadingWrapper>
+            <span>{subtitle}</span>
+            <Heading level='2'>{title}</Heading>
+          </HeadingWrapper>
+          <Reviews reviews={reviews} />
+          <ContentLoader
+            content={reviews}
+            contentParams={contentParams}
+            contentType='reviews'
+            handleContent={handleContent}
+            pagesToLoad={1}
+            initialPages={2}
+          />
+        </Gutter>
       </StyledReviewsSection>
     </PagesContent>
   );
@@ -46,6 +59,5 @@ export default function ReviewsContent({
 // styles
 const StyledReviewsSection = styled(StyledSection)`
   text-align: center;
-  max-width: 1100px;
   margin: auto;
 `;

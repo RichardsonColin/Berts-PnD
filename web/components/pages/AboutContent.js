@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PagesContent from './PagesContent';
 import { StyledAboutSection as StyledSection } from './styled/PagesSection';
 import Container from '@/components/ui/Container';
+import Gutter from '@/components/ui/Gutter';
 import Heading from '@/components/ui/Heading';
 import TextHighlight from '@/components/ui/TextHighlight';
 // assets
@@ -29,53 +30,55 @@ export default function AboutContent({
   return (
     <PagesContent heading={heading}>
       <StyledAboutSection id={id}>
-        <ContentWrapper>
-          <ImageWrapper>
-            <Image
-              src={contentData.image}
-              alt={`${companyOwner} from ${companyName}`}
-              layout='fill'
-              objectFit='cover'
-              quality={80}
-              placeholder='blur'
-            />
-          </ImageWrapper>
-          <StyledContainer position='right'>
-            <span>Who We Are</span>
-            <StyledHeading level='2'>
-              About{' '}
-              <StyledTitleHighlight color='var(--primary-dark)'>
-                {companyName}
-              </StyledTitleHighlight>
-            </StyledHeading>
-            <IconWrapper>
+        <Gutter>
+          <ContentWrapper>
+            <ImageWrapper>
               <Image
-                src={icon}
-                alt='Equipment icon'
-                width={30}
-                height={30}
-                quality={100}
+                src={contentData.image}
+                alt={`${companyOwner} from ${companyName}`}
+                layout='fill'
+                objectFit='cover'
+                quality={80}
+                placeholder='blur'
               />
-            </IconWrapper>
-            <Description>{contentData.description}</Description>
-            <OwnerName>{companyOwner}</OwnerName>
-            <OwnerTitle>Owner</OwnerTitle>
-            <StatsWrapper>
-              {contentData.stats.map((stat, index) => {
-                return (
-                  <StatsContent key={index}>
-                    <h3>
-                      <StyledNumberHighlight color='var(--secondary)'>
-                        {stat.value}
-                      </StyledNumberHighlight>
-                    </h3>
-                    <h4>{stat.text}</h4>
-                  </StatsContent>
-                );
-              })}
-            </StatsWrapper>
-          </StyledContainer>
-        </ContentWrapper>
+            </ImageWrapper>
+            <StyledContainer position='right'>
+              <span>Who We Are</span>
+              <StyledHeading level='2'>
+                About{' '}
+                <StyledTitleHighlight color='var(--primary-dark)'>
+                  {companyName}
+                </StyledTitleHighlight>
+              </StyledHeading>
+              <IconWrapper>
+                <Image
+                  src={icon}
+                  alt='Equipment icon'
+                  width={30}
+                  height={30}
+                  quality={100}
+                />
+              </IconWrapper>
+              <Description>{contentData.description}</Description>
+              <OwnerName>{companyOwner}</OwnerName>
+              <OwnerTitle>Owner</OwnerTitle>
+              <StatsWrapper>
+                {contentData.stats.map((stat, index) => {
+                  return (
+                    <StatsContent key={index}>
+                      <h3>
+                        <StyledNumberHighlight color='var(--secondary)'>
+                          {stat.value}
+                        </StyledNumberHighlight>
+                      </h3>
+                      <h4>{stat.text}</h4>
+                    </StatsContent>
+                  );
+                })}
+              </StatsWrapper>
+            </StyledContainer>
+          </ContentWrapper>
+        </Gutter>
       </StyledAboutSection>
     </PagesContent>
   );
@@ -88,9 +91,6 @@ const ContentWrapper = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
 
     @media (min-width: ${mediaQueries.tablet}) {
       flex-direction: row;
@@ -100,8 +100,19 @@ const ContentWrapper = styled.div`
 `;
 const StyledContainer = styled(Container)`
   ${StyledAboutSection} & {
+    & > span {
+      margin: 0;
+      font-size: 1em;
+      font-weight: 700;
+      color: var(--secondary-light);
+
+      @media (min-width: ${mediaQueries.tablet}) {
+        font-size: 1.125em;
+      }
+    }
+
     @media (min-width: ${mediaQueries.tablet}) {
-      flex: 0 1 70%;
+      flex: 0 1 75%;
       padding-left: 3rem;
     }
   }
@@ -180,28 +191,42 @@ const OwnerTitle = styled.p`
 `;
 const StatsWrapper = styled.div`
   ${StyledAboutSection} & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 3rem;
 
     /* custom breakpoint */
     @media (min-width: 500px) {
-      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
     }
   }
 `;
 const StatsContent = styled.div`
   ${StyledAboutSection} & {
-    width: 125px;
+    margin-bottom: 1.25rem;
+    text-align: center;
+
+    h3 {
+      margin-bottom: 0.25rem;
+    }
 
     /* custom breakpoint */
     @media (min-width: 500px) {
-      flex: 0 1 100%;
-      padding-right: 2rem;
+      flex: 0 1 33%;
+      margin-bottom: 0;
+
+      h3 {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 `;
 const StyledTitleHighlight = styled(TextHighlight)`
   ${StyledAboutSection} & {
-    font-weight: 500;
+    font-weight: 400;
   }
 `;
 const StyledNumberHighlight = styled(TextHighlight)`

@@ -22,6 +22,8 @@ export default function ServicesPage({ contentData, companyData }) {
         contentData={contentData}
         id='services'
         heading='Services'
+        title='Check Out Our Services'
+        subtitle='What We Offer'
       />
     </>
   );

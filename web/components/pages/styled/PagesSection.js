@@ -1,32 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
-import { mediaQueries } from '@/src/constants';
+import CallToAction from '@/components/CallToAction';
 
-const FontStylings = css`
-  h2 {
-    font-size: 1.625em;
-  }
-  span {
-    margin: 0;
-    font-size: 1em;
-    font-weight: 700;
-    color: var(--secondary-light);
-
-    @media (min-width: ${mediaQueries.tablet}) {
-      font-size: 1.125em;
-    }
-  }
-`;
-export const StyledAboutSection = styled(Section)`
-  ${FontStylings}
-`;
-export const StyledServicesSection = styled(Section)`
-  ${FontStylings}
-`;
-export const StyledReviewsSection = styled(Section)`
-  ${FontStylings}
-`;
-export const StyledPortfolioSection = styled(Section)`
-  ${FontStylings}
-`;
+export const StyledCallToActionSection = styled(CallToAction)``;
+export const StyledAboutSection = styled(Section)``;
+export const StyledServicesSection = styled(Section)``;
+export const StyledReviewsSection = styled(Section)``;
+export const StyledPortfolioSection = styled(Section)``;

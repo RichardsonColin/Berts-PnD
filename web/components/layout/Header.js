@@ -2,6 +2,8 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
+import Section from '@/components/ui/Section';
+import Gutter from '@/components/ui/Gutter';
 import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
@@ -16,14 +18,16 @@ export default function Header({ children }) {
     <StyledHeader id='header'>
       <BorderSpacer size={4} position='bottom' />
       <ContentWrapper>
-        <LogoWrapper>
-          <Link href='/' passHref>
-            <LogoLink>
-              <Logo />
-            </LogoLink>
-          </Link>
-        </LogoWrapper>
-        {children}
+        <StyledGutter>
+          <LogoWrapper>
+            <Link href='/' passHref>
+              <LogoLink>
+                <Logo />
+              </LogoLink>
+            </Link>
+          </LogoWrapper>
+          {children}
+        </StyledGutter>
       </ContentWrapper>
     </StyledHeader>
   );
@@ -50,29 +54,22 @@ export const StyledHeader = styled.header`
     min-height: 90px;
   }
 `;
-const ContentWrapper = styled.div`
+const StyledGutter = styled(Gutter)`
   ${StyledHeader} & {
-    position: relative;
+    display: flex;
+    justify-content: space-between;
     height: inherit;
-    margin: 0 auto;
-
-    /* min-widths */
-    @media (min-width: ${mediaQueries.laptop}) {
-      max-width: 1350px;
-    }
-    /* custom max-width for edge space */
-    @media (max-width: 1400px) {
-      padding-right: 1rem;
-    }
+  }
+`;
+const ContentWrapper = styled(Section)`
+  ${StyledHeader} & {
+    height: inherit;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 `;
 const LogoWrapper = styled.div`
   ${StyledHeader} & {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,10 +83,6 @@ const LogoWrapper = styled.div`
     @media (min-width: ${mediaQueries.laptop}) {
       width: 200px;
       justify-content: flex-start;
-    }
-    /* custom max-width for edge space */
-    @media (max-width: 1400px) {
-      padding-left: 1rem;
     }
   }
 `;

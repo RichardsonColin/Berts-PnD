@@ -43,23 +43,16 @@ const StyledContent = styled(Container)`
   ${Wrapper} && {
     /* min-widths */
     @media (min-width: ${mediaQueries.tablet}) {
-      width: 630px;
       margin: auto;
     }
     @media (min-width: ${mediaQueries.laptop}) {
-      width: 480px;
+      width: 540px;
     }
     ${({ split }) => {
       if (split === 'left') {
         return css`
           @media (min-width: ${mediaQueries.laptop}) {
             margin: 0;
-            margin-left: 3.5rem;
-          }
-          /* custom breakpoint */
-          @media (min-width: 1300px) {
-            width: 560px;
-            margin-left: 0;
           }
         `;
       }
@@ -67,15 +60,14 @@ const StyledContent = styled(Container)`
       if (split === 'right') {
         return css`
           @media (min-width: ${mediaQueries.laptop}) {
-            margin-right: 3.5rem;
+            margin-right: 0;
           }
           /* custom breakpoints */
           @media (min-width: 1300px) {
-            width: 560px;
             margin-right: 0;
           }
           @media (min-width: 1500px) {
-            margin-right: -2rem;
+            margin-right: -1rem;
           }
         `;
       }

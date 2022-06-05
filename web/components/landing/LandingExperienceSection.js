@@ -2,7 +2,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 // components
-import { StyledExperienceSection as StyledSection } from './Styled/LandingSection';
+import { StyledExperienceSection as StyledSection } from './styled/LandingSection';
 import ExperienceItems from './ExperienceItems';
 import Heading from '@/components/ui/Heading';
 // constants

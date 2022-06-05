@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledRenovationsSection as StyledSection } from './Styled/LandingSection';
+import { StyledRenovationsSection as StyledSection } from './styled/LandingSection';
 import DetailsList from './DetailsList';
 import LandingContent from './LandingContent';
 import Mosaic from './Mosaic';
@@ -56,7 +56,6 @@ const StyledRenovationsSection = styled(StyledSection)`
     }
     /* custom breakpoint */
     @media (min-width: 1500px) {
-      max-width: 1400px;
       margin-bottom: 5rem;
     }
   }

@@ -110,7 +110,7 @@ const StyledMosaic = styled.div`
       }
       if (split === 'right') {
         return css`
-          right: 20px;
+          right: 30px;
         `;
       }
     }}
@@ -131,7 +131,7 @@ const StyledMosaic = styled.div`
     ${({ split }) => {
       if (split === 'left') {
         return css`
-          left: 20px;
+          left: 32px;
         `;
       }
     }}
@@ -184,7 +184,7 @@ const CutCorner = css`
   height: 100px;
   background-color: var(--color-grey-10);
   transform: rotateZ(135deg);
-  z-index: 1;
+  z-index: 10;
   overflow: hidden;
 `;
 const CutCornerTopLeft = css`

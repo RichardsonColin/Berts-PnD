@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import HeroAlternate from '@/components/HeroAlternate';
-import CallToAction from '@/components/CallToAction';
+import { StyledCallToActionSection as CallToAction } from './styled/PagesSection';
 // constants
 import { mediaQueries } from '@/src/constants';
 

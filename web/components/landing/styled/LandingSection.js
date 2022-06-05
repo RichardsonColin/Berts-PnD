@@ -11,10 +11,14 @@ const SectionWrapper = css`
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
-    max-width: 700px;
+    max-width: 900px;
   }
   @media (min-width: ${mediaQueries.laptop}) {
     max-width: 1200px;
+  }
+  /* custom breakpoint */
+  @media (min-width: 1400px) {
+    max-width: 1350px;
   }
 `;
 const SectionCentered = css`
@@ -25,8 +29,8 @@ const SectionCentered = css`
     margin-left: auto;
     margin-right: auto;
 
-    @media (min-width: ${mediaQueries.tablet}) {
-      max-width: 670px;
+    @media (min-width: ${mediaQueries.laptop}) {
+      max-width: 700px;
     }
   }
   p {
@@ -38,14 +42,6 @@ const SectionCentered = css`
 `;
 const SectionSplit = css`
   position: relative;
-
-  /* custom breakpoints */
-  @media (min-width: 1300px) {
-    max-width: 1200px;
-  }
-  @media (min-width: 1500px) {
-    max-width: 1350px;
-  }
 `;
 const FontStylings = css`
   h2 {

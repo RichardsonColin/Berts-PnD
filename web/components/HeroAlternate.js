@@ -59,7 +59,7 @@ const StyledHeading = styled(Heading)`
     justify-content: center;
     width: 200px;
     margin-top: 2rem;
-    font-size: 4.5em;
+    font-size: 3.75em;
     text-align: center;
     text-shadow: 1px 1px 2px var(--color-grey-800);
     z-index: 2;
@@ -74,6 +74,10 @@ const StyledHeading = styled(Heading)`
       height: 200px;
       border: 10px solid var(--secondary-light);
       z-index: -1;
+    }
+
+    @media (min-width: ${mediaQueries.tablet}) {
+      font-size: 4.5em;
     }
   }
 `;

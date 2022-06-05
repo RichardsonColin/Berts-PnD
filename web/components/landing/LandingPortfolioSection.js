@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
-import { StyledPortfolioSection as StyledSection } from './Styled/LandingSection';
+import { StyledPortfolioSection as StyledSection } from './styled/LandingSection';
 import PortfolioImages from './PortfolioImages';
 import Heading from '@/components/ui/Heading';
 import Container from '@/components/ui/Container';
@@ -11,16 +11,21 @@ import { mediaQueries } from '@/src/constants';
 
 LandingPortfolioSection.propTypes = {
   portfolio: PropTypes.arrayOf(PropTypes.object).isRequired,
+  companyData: PropTypes.object.isRequired,
 };
 
-export default function LandingPortfolioSection({ portfolio }) {
+export default function LandingPortfolioSection({ portfolio, companyData }) {
+  const { companyName } = companyData;
   return (
     <StyledPortfolioSection id='portfolio'>
       <BackgroundSlant slant='left' />
       <span>Take A Look At Our Work</span>
       <StyledHeading level='2'>Our Portfolio</StyledHeading>
       <StyledContainer>
-        <PortfolioImages portfolio={portfolio} />
+        <PortfolioImages
+          portfolioImages={portfolio}
+          altText={`${companyName} portfolio work`}
+        />
       </StyledContainer>
     </StyledPortfolioSection>
   );
@@ -106,7 +111,7 @@ const StyledContainer = styled(Container)`
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-evenly;
-      max-width: 1480px;
+      max-width: 1350px;
       margin: 22.5rem auto 7rem;
     }
   }
