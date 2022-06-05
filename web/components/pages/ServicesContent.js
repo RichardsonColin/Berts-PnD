@@ -151,12 +151,13 @@ const ImageWrapper = styled.div`
   ${StyledServicesSection} & {
     position: relative;
     flex: 1 0 250px;
+    align-self: center;
     width: 250px;
     height: 250px;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     overflow: hidden;
 
-    /* cut corners */
+    /* cut corner left */
     &:before {
       content: '';
       position: absolute;
@@ -166,8 +167,9 @@ const ImageWrapper = styled.div`
       height: 80px;
       background-color: var(--color-grey-10);
       transform: rotate(45deg);
-      z-index: 1;
+      z-index: 10;
     }
+    /* cut corner right */
     &:after {
       content: '';
       position: absolute;
@@ -177,11 +179,12 @@ const ImageWrapper = styled.div`
       height: 80px;
       background-color: var(--color-grey-10);
       transform: rotate(45deg);
-      z-index: 1;
+      z-index: 10;
     }
 
     @media (min-width: ${mediaQueries.laptop}) {
       flex: 1 0 400px;
+      align-self: flex-start;
       width: 400px;
       height: 400px;
     }

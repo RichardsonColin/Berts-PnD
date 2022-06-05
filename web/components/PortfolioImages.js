@@ -70,17 +70,11 @@ const StyledCustomModal = styled(CustomModal)`
     position: relative;
     width: 95vw;
     max-width: 1400px;
-    min-height: 22vh;
+    min-height: 35vh;
     border: 1px solid var(--color-grey-10);
     box-shadow: 0px 0px 10px 1px var(--color-grey-950);
 
     /* min-widths */
-    @media (min-width: 300px) {
-      height: 25vh;
-    }
-    @media (min-width: 400px) {
-      height: 30vh;
-    }
     @media (min-width: 500px) {
       height: 37vh;
     }

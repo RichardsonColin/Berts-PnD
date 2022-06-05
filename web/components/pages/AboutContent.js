@@ -206,6 +206,7 @@ const StatsWrapper = styled.div`
 `;
 const StatsContent = styled.div`
   ${StyledAboutSection} & {
+    margin-bottom: 1.25rem;
     text-align: center;
 
     h3 {
@@ -214,6 +215,9 @@ const StatsContent = styled.div`
 
     /* custom breakpoint */
     @media (min-width: 500px) {
+      flex: 0 1 33%;
+      margin-bottom: 0;
+
       h3 {
         margin-bottom: 0.5rem;
       }
