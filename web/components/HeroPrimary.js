@@ -24,6 +24,7 @@ export default function HeroPrimary() {
       </HeroContentWrapper>
       <HeroImageWrapper>
         <Image
+          fetchpriority='high'
           priority={true}
           src={heroImage}
           alt='Hero image'

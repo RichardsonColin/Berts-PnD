@@ -17,7 +17,8 @@ export default function HeroAlternate({ heading }) {
     <StyledHero id='hero'>
       <ImageFilter aria-hidden='true' />
       <Image
-        priority
+        fetchpriority='high'
+        priority={true}
         src={heroImage}
         alt='Hero image'
         layout='fill'

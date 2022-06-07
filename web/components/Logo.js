@@ -8,6 +8,7 @@ import logoImage from '@/public/images/logo.webp';
 export default function Logo() {
   return (
     <StyledImage
+      fetchpriority='high'
       priority={true}
       src={logoImage}
       alt={`${COMPANY_NAME} logo`}
