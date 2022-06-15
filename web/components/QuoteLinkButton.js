@@ -28,6 +28,7 @@ export default function QuoteLinkButton({
 }
 
 const StyledQuoteLinkButton = styled(LinkButton)`
-  &:hover {
+  && {
+    min-width: 150px;
   }
 `;

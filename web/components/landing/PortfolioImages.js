@@ -86,6 +86,7 @@ const StyledLinkButton = styled(LinkButton)`
     position: absolute;
     bottom: -120px;
     left: 105%;
+    min-width: 115px;
     transform: translateX(-50%);
 
     /* min-widths */

@@ -7,6 +7,7 @@ import { StyledReviewsSection as StyledSection } from './styled/PagesSection';
 import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
 import Gutter from '@/components/ui/Gutter';
 import Reviews from '@/components/Reviews';
+import GoogleReview from '@/components/GoogleReview';
 import ContentLoader from '@/components/ContentLoader';
 import Heading from '@/components/ui/Heading';
 
@@ -41,6 +42,7 @@ export default function ReviewsContent({
             <span>{subtitle}</span>
             <Heading level='2'>{title}</Heading>
           </HeadingWrapper>
+          <StyledGoogleReview />
           <Reviews reviews={reviews} />
           <ContentLoader
             content={reviews}
@@ -60,4 +62,9 @@ export default function ReviewsContent({
 const StyledReviewsSection = styled(StyledSection)`
   text-align: center;
   margin: auto;
+`;
+const StyledGoogleReview = styled(GoogleReview)`
+  ${StyledReviewsSection} & {
+    margin: -1.5rem auto 4rem;
+  }
 `;

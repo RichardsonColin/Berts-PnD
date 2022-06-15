@@ -31,7 +31,7 @@ export default function LandingProductsSection({ products }) {
           quam dolor.
         </p>
         <DetailsList details={products} />
-        <StyledQuoteLinkButton>Get In Touch</StyledQuoteLinkButton>
+        <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
       </LandingContent>
       <Mosaic
         title='Exceptional Quality'
@@ -55,5 +55,6 @@ const StyledQuoteLinkButton = styled(QuoteLinkButton)`
   ${StyledProductsSection} & {
     display: block;
     margin: auto;
+    max-width: 150px;
   }
 `;
