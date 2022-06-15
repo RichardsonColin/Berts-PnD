@@ -27,15 +27,13 @@ export default function LinkButton({
 // styles
 const StyledLinkButton = styled.a`
   display: inline-block;
-  width: 175px;
-  padding: 1rem 0;
+  padding: 0.75rem 1rem;
   border-radius: 2px;
   font-size: 1em;
   font-weight: 500;
   text-align: center;
   color: var(--color-grey-10);
-  box-shadow: 1px 1px 2px 0px var(--color-grey-800);
-  text-shadow: 1px 1px var(--color-grey-950);
+  box-shadow: 0 0 3px 0 var(--color-grey-950);
   transition: 0.2s ease;
 
   ${({ isPrimary }) => {
@@ -43,6 +41,7 @@ const StyledLinkButton = styled.a`
       return css`
         && {
           background-color: var(--primary);
+          text-shadow: 1px 1px var(--color-grey-700);
 
           &:hover {
             background-color: var(--primary-dark);
