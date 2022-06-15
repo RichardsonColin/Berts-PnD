@@ -42,7 +42,7 @@ export default function ReviewsContent({
             <span>{subtitle}</span>
             <Heading level='2'>{title}</Heading>
           </HeadingWrapper>
-          <GoogleReview />
+          <StyledGoogleReview />
           <Reviews reviews={reviews} />
           <ContentLoader
             content={reviews}
@@ -62,4 +62,9 @@ export default function ReviewsContent({
 const StyledReviewsSection = styled(StyledSection)`
   text-align: center;
   margin: auto;
+`;
+const StyledGoogleReview = styled(GoogleReview)`
+  ${StyledReviewsSection} & {
+    margin: -1.5rem auto 4rem;
+  }
 `;
