@@ -21,7 +21,7 @@ export default function GoogleReview({ className }) {
         eros et pellentesque pharetra.
       </p>
       <StyledLink target='_blank' href={COMPANY_REVIEW_LINK}>
-        Leave Your Own Review!
+        Leave a Google Review!
       </StyledLink>
     </StyledContainer>
   );
