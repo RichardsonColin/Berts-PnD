@@ -33,7 +33,7 @@ export default function LandingRenovationsSection({ renovations }) {
           quam dolor.
         </p>
         <DetailsList details={renovations} />
-        <StyledQuoteLinkButton>Get In Touch</StyledQuoteLinkButton>
+        <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
       </LandingContent>
       <Mosaic
         title='Free Estimates'
@@ -64,5 +64,6 @@ const StyledQuoteLinkButton = styled(QuoteLinkButton)`
   ${StyledRenovationsSection} & {
     display: block;
     margin: auto;
+    max-width: 150px;
   }
 `;
