@@ -1,0 +1,21 @@
+{
+  "name": "mailer",
+  "version": "1.0.0",
+  "description": "netlify functions - manage email delivery from nextjs site form submission",
+  "main": "mailer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "apis",
+    "email",
+    "js"
+  ],
+  "author": "Netlify",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.112.0"
+  }
+}
