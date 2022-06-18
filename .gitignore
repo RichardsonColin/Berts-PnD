@@ -38,3 +38,6 @@ yarn-error.log*
 
 # private notes
 /NOTES.md
+
+# Local Netlify folder
+.netlify
