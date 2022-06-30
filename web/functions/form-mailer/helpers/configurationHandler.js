@@ -1,27 +1,44 @@
 /*
  *
  */
-exports.configurationHandler = (property) => {
+exports.configurationHandler = (type) => {
   const { configurations } = require('../configurations');
 
   function retrieve() {
     validate();
-    return configurations[property];
+    return configurations[type];
   }
   function validate() {
-    const configuration = configurations[property];
+    const configuration = configurations[type];
 
     if (configuration === undefined)
-      throw Error("Configuration doesn't exist.");
+      throw new ConfigurationError("Configuration doesn't exist.");
     if (!Object.keys(configuration.params).length)
-      throw Error('Configuration requires params.');
+      throw new ConfigurationError('Configuration requires params.');
     if (configuration.templates.body === undefined)
-      throw Error('Configuration requires a body template.');
+      throw new ConfigurationError('Configuration requires a body template.');
     if (configuration.templates.subject === undefined)
-      throw Error('Configuration requires a subject template.');
+      throw new ConfigurationError(
+        'Configuration requires a subject template.'
+      );
   }
 
   return {
     retrieve,
   };
 };
+
+class ConfigurationError extends Error {
+  constructor(message = 'Error occured during mail configuration.', ...params) {
+    super(...params);
+
+    // Maintains proper stack trace for where our error was thrown (only available on V8)
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ConfigurationError);
+    }
+
+    this.name = 'ConfigurationError';
+    this.message = message;
+    this.date = new Date();
+  }
+}
