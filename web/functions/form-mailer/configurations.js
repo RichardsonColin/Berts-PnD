@@ -1,6 +1,10 @@
 exports.configurations = {
   quote: {
     params: {
+      quote: {
+        name: 'type',
+        isRequired: true,
+      },
       name: {
         name: 'name',
         isRequired: true,
@@ -24,21 +28,30 @@ exports.configurations = {
         isRequired: true,
       },
       interior: {
-        name: 'is_interior_checked',
+        name: 'interior',
         isRequired: false,
       },
       exterior: {
-        name: 'is_exterior_checked',
+        name: 'exterior',
         isRequired: false,
       },
       decorating: {
-        name: 'is_decorating_checked',
+        name: 'decorating',
         isRequired: false,
       },
     },
     templates: {
       subject: 'Website Quote Request From {{name}}!',
-      body: '<h3>Quote Request From {{name}}</h3><p><strong>Email:</strong> {{email}}</p><p><strong>Original message:</strong></p><blockquote>{{details}}</blockquote>',
+      body: `<h3>Quote Request From {{name}}</h3>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Job Type:</strong></p>
+        <blockquote>
+        <span>Interior: {{interior}}</span>&#xa0;&#xa0;|&#xa0;&#xa0;
+        <span>Exterior: {{exterior}}</span>&#xa0;&#xa0;|&#xa0;&#xa0;
+        <span>Decorating: {{decorating}}</span>
+        </blockquote>
+        <p><strong>Details:</strong></p>
+        <blockquote>{{details}}</blockquote>`,
     },
   },
   contact: {
