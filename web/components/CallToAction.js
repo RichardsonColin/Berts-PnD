@@ -14,17 +14,17 @@ CallToAction.propTypes = {
   className: PropTypes.string,
 };
 
-export default function CallToAction({ className = '' }) {
+export default function CallToAction({ className }) {
   return (
     <StyledSection id='call-to-action' className={className}>
       <Gutter>
         <BackgroundSlant
-          heightMultiple={0.8}
+          heightMultiple={0.6}
           slant='left'
           degree={5}
           backgroundColor='var(--secondary)'
         />
-        <BackgroundSlant heightMultiple={0.8} slant='right' degree={5} />
+        <BackgroundSlant heightMultiple={0.6} slant='right' degree={5} />
         <Wrapper>
           <StyledContainer position='left'>
             <StyledHeading level='2'>Give Us A Call!</StyledHeading>
@@ -44,9 +44,16 @@ export default function CallToAction({ className = '' }) {
 // styles
 export const StyledSection = styled(Section)`
   position: relative;
-  padding-bottom: 10rem;
-  color: var(--color-grey-900);
+  padding-top: 0;
   z-index: 0;
+
+  /* min-widths */
+  @media (min-width: ${mediaQueries.mobileL}) {
+    padding-top: 1rem;
+  }
+  @media (min-width: ${mediaQueries.laptop}) {
+    padding-top: 7rem;
+  }
 `;
 const Wrapper = styled.div`
   ${StyledSection} & {
@@ -56,25 +63,25 @@ const Wrapper = styled.div`
     margin: 0 auto;
 
     @media (min-width: ${mediaQueries.laptop}) {
-      flex-direction: row;
+      margin-top: 1rem;
       justify-content: space-between;
     }
   }
 `;
 const StyledContainer = styled(Container)`
   ${StyledSection} & {
-    max-width: 550px;
+    max-width: 750px;
     margin: 0;
     text-align: center;
-
-    @media (min-width: ${mediaQueries.laptop}) {
-      text-align: left;
-    }
   }
 `;
 const StyledHeading = styled(Heading)`
   ${StyledSection} & {
-    font-size: 2.25em;
+    font-size: 2em;
+
+    @media (min-width: ${mediaQueries.mobileL}) {
+      font-size: 2.25em;
+    }
   }
 `;
 const StyledText = styled.p`
