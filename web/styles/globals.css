@@ -7,6 +7,7 @@
   --secondary: hsl(220, 56%, 22%);
   --secondary-light: hsl(210, 35%, 47%);
   --secondary-dark: hsl(219, 86%, 9%);
+  --secondary-fade: hsl(210deg 100% 50% / 12%);
   --secondary-accent: hsl(265, 29%, 29%);
 
   --color-grey-10: hsl(264, 100%, 99%);
@@ -22,6 +23,9 @@
   --color-grey-900: hsl(280, 5%, 13%);
   --color-grey-950: hsl(300, 6%, 6%);
   --color-grey-990: hsl(300, 8%, 3%);
+
+  --color-info: hsl(220, 56%, 22%);
+  --color-error: hsl(0, 54%, 46%);
 }
 
 * {
