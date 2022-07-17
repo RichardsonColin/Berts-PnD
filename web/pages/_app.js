@@ -6,6 +6,10 @@ import Layout from '@/components/layout/Layout';
 import { ModalProvider, BaseModalBackground } from 'styled-react-modal';
 // constants
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/src/constants';
+// font-awesome
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 // styles
 import '../styles/globals.css';
 
