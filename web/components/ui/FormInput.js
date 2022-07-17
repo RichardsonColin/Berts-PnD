@@ -8,11 +8,20 @@ FormInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   className: PropTypes.string,
 };
 
-export default function FormInput({ id, name, type, className }) {
-  return <StyledInput className={className} id={id} name={name} type={type} />;
+export default function FormInput({ id, name, type, placeholder, className }) {
+  return (
+    <StyledInput
+      className={className}
+      id={id}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+    />
+  );
 }
 
 // styles

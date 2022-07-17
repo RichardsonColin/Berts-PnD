@@ -7,11 +7,19 @@ import styled from 'styled-components';
 FormTextArea.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   className: PropTypes.string,
 };
 
-export default function FormTextArea({ id, name, className }) {
-  return <StyledTextArea className={className} id={id} name={name} />;
+export default function FormTextArea({ id, name, placeholder, className }) {
+  return (
+    <StyledTextArea
+      className={className}
+      id={id}
+      name={name}
+      placeholder={placeholder}
+    />
+  );
 }
 
 // styles

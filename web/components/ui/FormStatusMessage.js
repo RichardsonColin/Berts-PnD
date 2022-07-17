@@ -21,12 +21,10 @@ const FormMessage = styled.p`
   height: 0px;
   margin: 0 auto;
   padding: 0;
-  background-color: var(--secondary-light);
-  color: var(--color-grey-10);
+  background-color: var(--secondary-fade);
+  color: var(--secondary);
   font-size: 1.3em;
-  font-weight: 500;
-  text-transform: capitalize;
-  box-shadow: 0px 0px 2px var(--color-grey-950);
+  font-weight: 300;
   opacity: 0;
   transition: all 0.2s linear;
 
@@ -34,7 +32,7 @@ const FormMessage = styled.p`
     isDisplayed &&
     css`
       height: auto;
-      margin: 2rem auto 0;
+      margin: 1rem auto 0;
       padding: 0.75rem;
       opacity: 1;
     `}

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 // components
-import FormikStatusMessage from '@/components/ui/Formik/FormikStatusMessage';
-import Button from '@/components/ui/Button';
+import FormStatusMessage from '@/components/ui/FormStatusMessage';
+import FormSubmitButton from '@/components/ui/FormSubmitButton';
 // style
 import styled from 'styled-components';
 
@@ -16,43 +16,50 @@ FormikForm.propTypes = {
 };
 
 export default function FormikForm({
+  verificationHandler,
   initialValues,
   validations,
   requestUrl,
   children,
   className,
 }) {
-  const [shouldShowStatus, setShouldShowStatus] = useState(false);
+  const [isStatusDisplayed, setIsStatusDisplayed] = useState(false);
 
   const handleSubmit = async (
     values,
     { setSubmitting, setStatus, setErrors, resetForm }
   ) => {
     try {
+      // ensure that the form is able to send using a verification on the user
+      // currently using reCAPTCHAv2
+      const isVerified = await verificationHandler();
+      if (!isVerified) {
+        handleStatus(setStatus, "reCAPTCHA verification wasn't successful.");
+        return;
+      }
+      // send form data
       const response = await handleRequest(values);
 
+      // display errors for improperly filled form fields
       if ('errors' in response) {
         setErrors(response.errors);
+        setSubmitting(false);
+        return;
       }
 
+      // clear all fields
       resetForm();
-
-      if ('message' in response) {
-        handleStatus(setStatus, response?.message || '', 7500);
-      }
-
+      // remove disable on submit button
       setSubmitting(false);
+      // disaply form msg for submitter
+      handleStatus(setStatus, "We'll be in touch!");
     } catch (error) {
-      resetForm();
-      handleStatus(
-        setStatus,
-        'Sorry, service is temporarily unavailable.',
-        7500
-      );
+      handleStatus(setStatus, 'Sorry, service is temporarily unavailable.');
       setSubmitting(false);
     }
   };
 
+  // send form data
   const handleRequest = async (data) => {
     const response = await fetch(requestUrl, {
       method: 'POST',
@@ -64,15 +71,15 @@ export default function FormikForm({
     return await response.json();
   };
 
-  const handleStatus = (setStatus, message, timeToDisplayInMs) => {
+  // display form message for a set amout of time
+  const handleStatus = (setStatus, message, timeToDisplayInMs = 5000) => {
     setStatus({ msg: message });
-    setShouldShowStatus(true);
+    setIsStatusDisplayed(true);
     setTimeout(() => {
-      setShouldShowStatus(false);
+      setIsStatusDisplayed(false);
     }, timeToDisplayInMs);
   };
 
-  // TODO: Add captcha
   return (
     <FormWrapper className={className}>
       <Formik
@@ -83,12 +90,14 @@ export default function FormikForm({
         {({ isSubmitting, status }) => (
           <Form>
             {children}
-            <StyledSubmit type='submit' disabled={isSubmitting}>
-              Submit
-            </StyledSubmit>
-            <FormikStatusMessage
+            <FormSubmitButton
+              text='Submit'
+              isSubmitting={isSubmitting}
+              disabled={isSubmitting}
+            />
+            <FormStatusMessage
               msg={status?.msg || ''}
-              isDisplayed={shouldShowStatus}
+              isDisplayed={isStatusDisplayed}
             />
           </Form>
         )}
@@ -99,14 +108,3 @@ export default function FormikForm({
 
 // styles
 const FormWrapper = styled.div``;
-const StyledSubmit = styled(Button)`
-  && {
-    padding: 0.75rem 5rem;
-    color: var(--color-grey-50);
-    background-color: var(--secondary);
-
-    &:hover {
-      background-color: var(--secondary-dark);
-    }
-  }
-`;

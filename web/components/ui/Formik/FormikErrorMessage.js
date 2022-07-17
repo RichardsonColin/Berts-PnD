@@ -8,7 +8,7 @@ FormikErrorMessage.propTypes = {
   className: PropTypes.string,
 };
 
-export default function FormikErrorMessage({ name, className = '' }) {
+export default function FormikErrorMessage({ name, className }) {
   return (
     <StyledErrorMessage className={className} name={name} component='div' />
   );
@@ -16,5 +16,5 @@ export default function FormikErrorMessage({ name, className = '' }) {
 
 const StyledErrorMessage = styled(ErrorMessage)`
   text-transform: capitalize;
-  color: #b63636;
+  color: var(--color-error);
 `;
