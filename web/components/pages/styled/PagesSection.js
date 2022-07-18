@@ -9,3 +9,4 @@ export const StyledServicesSection = styled(Section)``;
 export const StyledReviewsSection = styled(Section)``;
 export const StyledPortfolioSection = styled(Section)``;
 export const StyledQuoteSection = styled(Section)``;
+export const StyledContactSection = styled(Section)``;
