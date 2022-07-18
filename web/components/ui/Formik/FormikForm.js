@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 // components
+import { Formik, Form } from 'formik';
 import FormStatusMessage from '@/components/ui/FormStatusMessage';
 import FormSubmitButton from '@/components/ui/FormSubmitButton';
 // style

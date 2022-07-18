@@ -1,6 +1,6 @@
-import { Field } from 'formik';
 import PropTypes from 'prop-types';
 // components
+import { Field } from 'formik';
 import FormikErrorMessage from './FormikErrorMessage';
 
 FormikTextArea.propTypes = {
