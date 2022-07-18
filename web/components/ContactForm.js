@@ -19,7 +19,7 @@ export default function ContactForm() {
     type: 'contact',
     name: '',
     email: '',
-    details: '',
+    comments: '',
   };
 
   const handleValidations = (values) => {
@@ -32,8 +32,8 @@ export default function ContactForm() {
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
       errors.email = 'Invalid email address';
     }
-    if (!values.details) {
-      errors.details = 'Required';
+    if (!values.comments) {
+      errors.comments = 'Required';
     }
     return errors;
   };
@@ -66,11 +66,11 @@ export default function ContactForm() {
         </FormGroup>
       </FormGroupFlex>
       <FormGroup>
-        <FormLabel htmlFor='details'>Details</FormLabel>
+        <FormLabel htmlFor='comments'>Comments</FormLabel>
         <FormTextArea
-          id='details'
-          name='details'
-          placeholder='Describe the job in detail'
+          id='comments'
+          name='comments'
+          placeholder='Describe your questions or comments'
         />
       </FormGroup>
     </StyledForm>
