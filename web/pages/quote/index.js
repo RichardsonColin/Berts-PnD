@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 // components
-import PagesContent from '@/components/pages/PagesContent';
+import QuoteContent from '@/components/pages/QuoteContent';
 // constants
 import { companyData } from '@/src/data/company';
 
@@ -16,7 +16,12 @@ export default function QuotePage({ companyData }) {
       <Head>
         <title>Quote | {companyName}</title>
       </Head>
-      <PagesContent id='quote' heading='Request Quote'></PagesContent>
+      <QuoteContent
+        id='quote'
+        heading='Request Quote'
+        title='Send us a Quote Request'
+        subtitle='Free Estimates'
+      />
     </>
   );
 }
