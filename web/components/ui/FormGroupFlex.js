@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+// components
+import FormGroup from '@/components/ui/FormGroup';
 // constants
 import { mediaQueries } from '@/src/constants';
 // style
@@ -19,8 +21,12 @@ export default function FormGroupFlex({ children, className }) {
 const StyledFormGroupFlex = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   & > * {
+    padding-top: 0;
+    padding-bottom: 0;
     flex-grow: 1;
   }
 

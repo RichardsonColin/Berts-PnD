@@ -71,6 +71,7 @@ const StyledForm = styled(FormikForm)`
 // ensures reCAPTCHA doesn't cause shift
 const StyledFormGroup = styled(FormGroup)`
   ${StyledForm} & {
+    padding-top: 0;
     min-height: 144px;
 
     @media (min-width: ${mediaQueries.mobileL}) {

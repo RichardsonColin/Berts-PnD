@@ -13,6 +13,6 @@ export default function FormGroup({ children, className }) {
 
 // styles
 const StyledFormGroup = styled.div`
-  margin: 1rem;
+  padding: 1rem;
   text-align: left;
 `;
