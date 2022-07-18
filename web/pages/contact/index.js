@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 // components
-import PagesContent from '@/components/pages/PagesContent';
+import ContactContent from '@/components/pages/ContactContent';
 // constants
 import { companyData } from '@/src/data/company';
 
@@ -16,7 +16,12 @@ export default function ContactPage({ companyData }) {
       <Head>
         <title>Contact | {companyName}</title>
       </Head>
-      <PagesContent id='contact' heading='Contact Us'></PagesContent>
+      <ContactContent
+        id='contact'
+        heading='Contact Us'
+        title='Get in Touch'
+        subtitle='Inquiry within'
+      />
     </>
   );
 }
