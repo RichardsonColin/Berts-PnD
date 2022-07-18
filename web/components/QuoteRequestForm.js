@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 // components
 import Form from '@/components/ui/Form';
+import FormTitle from '@/components/ui/FormTitle';
 import FormGroup from '@/components/ui/FormGroup';
 import FormGroupFlex from '@/components/ui/FormGroupFlex';
 import FormLabel from '@/components/ui/FormLabel';
@@ -48,7 +49,7 @@ export default function QuoteRequestForm() {
       requestUrl={FORM_MAILER_PATH}
     >
       <FormGroup>
-        <StyledTitle>Tell us about the job</StyledTitle>
+        <FormTitle>Tell us about the job</FormTitle>
       </FormGroup>
       <FormGroupFlex>
         <FormGroup>
@@ -119,17 +120,6 @@ const StyledCheckboxLabel = styled(FormLabel)`
 
     @media (min-width: ${mediaQueries.tablet}) {
       flex-direction: row;
-    }
-  }
-`;
-const StyledTitle = styled.h3`
-  ${StyledForm} & {
-    font-size: 1.3em;
-    font-weight: 500;
-    text-transform: capitalize;
-
-    @media (min-width: ${mediaQueries.tablet}) {
-      font-size: 1.5em;
     }
   }
 `;

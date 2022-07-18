@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 // components
 import Form from '@/components/ui/Form';
+import FormTitle from '@/components/ui/FormTitle';
 import FormGroup from '@/components/ui/FormGroup';
 import FormGroupFlex from '@/components/ui/FormGroupFlex';
 import FormLabel from '@/components/ui/FormLabel';
 import FormInput from '@/components/ui/FormInput';
 import FormTextArea from '@/components/ui/FormTextArea';
 // constants
-import { mediaQueries } from '@/src/constants';
 import { FORM_MAILER_PATH } from '@/src/constants';
 // style
 import styled from 'styled-components';
@@ -45,7 +45,7 @@ export default function ContactForm() {
       requestUrl={FORM_MAILER_PATH}
     >
       <FormGroup>
-        <StyledTitle>We're here for all your questions</StyledTitle>
+        <FormTitle>We're here for all your questions</FormTitle>
       </FormGroup>
       <FormGroupFlex>
         <FormGroup>
@@ -81,14 +81,3 @@ export default function ContactForm() {
 
 // styles
 const StyledForm = styled(Form)``;
-const StyledTitle = styled.h3`
-  ${StyledForm} & {
-    font-size: 1.3em;
-    font-weight: 500;
-    text-transform: capitalize;
-
-    @media (min-width: ${mediaQueries.tablet}) {
-      font-size: 1.5em;
-    }
-  }
-`;
