@@ -2,20 +2,30 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 Button.propTypes = {
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
   isPrimary: PropTypes.bool,
-  onClick: PropTypes.func,
+  handleClick: PropTypes.func,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 
 export default function Button({
+  type,
+  disabled,
   isPrimary = true,
-  onClick,
+  handleClick,
   children,
-  className = '',
+  className,
 }) {
   return (
-    <StyledButton isPrimary={isPrimary} onClick={onClick} className={className}>
+    <StyledButton
+      type={type}
+      disabled={disabled}
+      isPrimary={isPrimary}
+      onClick={handleClick}
+      className={className}
+    >
       {children}
     </StyledButton>
   );
