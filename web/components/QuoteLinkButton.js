@@ -14,7 +14,7 @@ export default function QuoteLinkButton({
   href,
   isPrimary,
   children,
-  className = '',
+  className,
 }) {
   return (
     <StyledQuoteLinkButton

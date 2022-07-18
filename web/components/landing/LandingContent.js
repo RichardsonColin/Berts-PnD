@@ -15,7 +15,7 @@ LandingContent.propTypes = {
 export default function LandingContent({
   position,
   split,
-  className = '',
+  className,
   children,
 }) {
   return (

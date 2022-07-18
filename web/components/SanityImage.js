@@ -25,7 +25,7 @@ export default function SanityImage({
   quality = 80,
   blur = 20,
   altText,
-  className = '',
+  className,
 }) {
   const customImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder

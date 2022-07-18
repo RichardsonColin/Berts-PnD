@@ -11,7 +11,7 @@ Mosaic.propTypes = {
   className: PropTypes.string,
 };
 
-export default function Mosaic({ title, images, split, className = '' }) {
+export default function Mosaic({ title, images, split, className }) {
   const [boxTwoImage, boxThreeImage, boxFourImage] = images;
   return (
     <StyledMosaic className={className} split={split}>

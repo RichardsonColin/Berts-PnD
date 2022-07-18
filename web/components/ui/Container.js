@@ -10,7 +10,7 @@ Container.propTypes = {
 // position: aligns the container to either center, left or right
 export default function Container({
   position = 'center',
-  className = '',
+  className,
   children,
 }) {
   return (

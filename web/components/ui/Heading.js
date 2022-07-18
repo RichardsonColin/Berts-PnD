@@ -7,7 +7,7 @@ Heading.propTypes = {
   className: PropTypes.string,
 };
 
-export default function Heading({ level = 1, className = '', children }) {
+export default function Heading({ level = 1, className, children }) {
   return (
     <StyledHeading as={`h${level}`} level={level} className={className}>
       {children}

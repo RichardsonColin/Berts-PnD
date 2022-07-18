@@ -9,7 +9,7 @@ Section.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default function Section({ id, className = '', children }) {
+export default function Section({ id, className, children }) {
   return (
     <StyledSection id={id} className={className}>
       {children}

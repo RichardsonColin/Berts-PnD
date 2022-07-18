@@ -17,7 +17,7 @@ export default function BorderSpacer({
   size = 2,
   position,
   backgroundColor = 'var(--primary)',
-  className = '',
+  className,
 }) {
   const { width } = useWindowDimensions();
   // size of border spacer in px

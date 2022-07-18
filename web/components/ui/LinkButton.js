@@ -9,12 +9,7 @@ LinkButton.propTypes = {
   className: PropTypes.string,
 };
 
-export default function LinkButton({
-  href,
-  isPrimary,
-  children,
-  className = '',
-}) {
+export default function LinkButton({ href, isPrimary, children, className }) {
   return (
     <Link href={href} passHref>
       <StyledLinkButton className={className} isPrimary={isPrimary}>

@@ -26,7 +26,7 @@ export default function AnimatedSquare({
   color = 'var(--primary)',
   opacity = 1,
   animationDuration = 12,
-  className = '',
+  className,
 }) {
   return (
     <AnimatedSquareShift

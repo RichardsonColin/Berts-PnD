@@ -11,7 +11,7 @@ CustomModal.propTypes = {
   className: PropTypes.string,
 };
 
-export default function CustomModal({ children, content, className = '' }) {
+export default function CustomModal({ children, content, className }) {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 

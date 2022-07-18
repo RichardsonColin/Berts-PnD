@@ -6,7 +6,7 @@ Gutter.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default function Gutter({ className = '', children }) {
+export default function Gutter({ className, children }) {
   return <StyledGutter className={className}>{children}</StyledGutter>;
 }
 
