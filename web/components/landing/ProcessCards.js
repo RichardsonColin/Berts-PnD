@@ -26,44 +26,46 @@ export default function ProcessCards({ process }) {
 
 // styles
 const StyledCard = styled(Card)`
-  position: relative;
-  padding: 4rem 1.875rem 1.875rem;
-  margin-bottom: 5rem;
-  text-align: center;
-  background: #fff;
-
-  &:nth-of-type(1) {
-    margin-top: 5rem;
-
-    @media (min-width: ${mediaQueries.tablet}) {
-      margin-top: 8.75rem;
-    }
-  }
-
-  &:nth-of-type(odd) {
-    @media (min-width: ${mediaQueries.laptop}) {
-      transform: translateX(-120px);
-    }
-  }
-  &:nth-of-type(even) {
-    @media (min-width: ${mediaQueries.laptop}) {
-      transform: translateX(120px);
-    }
-  }
-
-  /* min-widths */
-  @media (min-width: ${mediaQueries.tablet}) {
-    max-width: 500px;
-    margin: auto;
-    margin-bottom: 6.25rem;
-  }
-  @media (min-width: ${mediaQueries.laptop}) {
+  && {
     position: relative;
-    padding-top: 1.5rem;
-    padding-left: 3rem;
-    text-align: left;
+    padding: 4rem 1.875rem 1.875rem;
+    margin-bottom: 5rem;
+    text-align: center;
     background: #fff;
-    z-index: 1;
+
+    &:nth-of-type(1) {
+      margin-top: 5rem;
+
+      @media (min-width: ${mediaQueries.tablet}) {
+        margin-top: 8.75rem;
+      }
+    }
+
+    &:nth-of-type(odd) {
+      @media (min-width: ${mediaQueries.laptop}) {
+        transform: translateX(-120px);
+      }
+    }
+    &:nth-of-type(even) {
+      @media (min-width: ${mediaQueries.laptop}) {
+        transform: translateX(120px);
+      }
+    }
+
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      max-width: 500px;
+      margin: auto;
+      margin-bottom: 6.25rem;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      position: relative;
+      padding-top: 1.5rem;
+      padding-left: 3rem;
+      text-align: left;
+      background: #fff;
+      z-index: 1;
+    }
   }
 `;
 const StyledHeading = styled(Heading)`
