@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // components
 import ReCAPTCHA from 'react-google-recaptcha';
+import FormError from '@/components/ui/FormError';
 // hooks
 import useMediaQuery from '@/hooks/useMediaQuery';
 // style
@@ -47,11 +48,15 @@ export default function ReCaptcha({
         size={isBreakPoint ? 'compact' : 'normal'}
         tabindex={tabIndex}
       />
-      {message && <ReCaptchaMessage>{message}</ReCaptchaMessage>}
+      {message && (
+        <FormError>
+          <ReCaptchaMessage>{message}</ReCaptchaMessage>
+        </FormError>
+      )}
     </>
   );
 }
 
 const ReCaptchaMessage = styled.span`
-  color: var(--color-error);
+  text-transform: none;
 `;
