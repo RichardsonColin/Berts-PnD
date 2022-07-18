@@ -35,6 +35,7 @@ const StyledCallToAction = styled(CallToAction)`
       margin-bottom: 12rem;
     }
     @media (min-width: ${mediaQueries.tablet}) {
+      margin-top: 10rem;
       margin-bottom: 15rem;
     }
     @media (min-width: ${mediaQueries.laptop}) {

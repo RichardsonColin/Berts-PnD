@@ -21,7 +21,13 @@ export default function CallToAction({ className }) {
         <BackgroundSlant
           heightMultiple={0.6}
           slant='left'
-          degree={5}
+          degree={8}
+          backgroundColor='var(--primary)'
+        />
+        <BackgroundSlant
+          heightMultiple={0.6}
+          slant='left'
+          degree={2}
           backgroundColor='var(--secondary)'
         />
         <BackgroundSlant heightMultiple={0.6} slant='right' degree={5} />
