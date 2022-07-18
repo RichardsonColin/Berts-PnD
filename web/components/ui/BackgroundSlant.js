@@ -43,7 +43,7 @@ const StyledBackgroundSlant = styled.div`
     left: 50%;
     display: block;
     width: 1000px;
-    height: 350px;
+    height: 400px;
     background-color: ${({ backgroundColor }) => backgroundColor};
     opacity: 1;
     z-index: -1;
@@ -60,11 +60,11 @@ const StyledBackgroundSlant = styled.div`
     @media (min-width: 600px) {
       width: 3000px;
       height: ${({ heightMultiple }) =>
-        `${parseInt(Math.ceil(heightMultiple * 418))}px`};
+        `${parseInt(Math.ceil(heightMultiple * 500))}px`};
     }
     @media (min-width: ${mediaQueries.tablet}) {
       height: ${({ heightMultiple }) =>
-        `${parseInt(Math.ceil(heightMultiple * 520))}px`};
+        `${parseInt(Math.ceil(heightMultiple * 650))}px`};
     }
     @media (min-width: ${mediaQueries.laptop}) {
       height: ${({ heightMultiple }) =>
