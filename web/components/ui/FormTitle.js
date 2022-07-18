@@ -15,10 +15,11 @@ export default function FormTitle({ children, className }) {
 
 // styles
 const StyledFormTitle = styled.h3`
-  margin-bottom: 0;
+  margin: 0 0 1rem 1rem;
   font-size: 1.3em;
   font-weight: 500;
   text-transform: capitalize;
+  text-align: left;
 
   @media (min-width: ${mediaQueries.tablet}) {
     font-size: 1.5em;

@@ -48,9 +48,7 @@ export default function QuoteRequestForm() {
       validations={handleValidations}
       requestUrl={FORM_MAILER_PATH}
     >
-      <FormGroup>
-        <FormTitle>Tell us about the job</FormTitle>
-      </FormGroup>
+      <FormTitle>Tell us about the job</FormTitle>
       <FormGroupFlex>
         <FormGroup>
           <FormLabel htmlFor='name'>Name</FormLabel>

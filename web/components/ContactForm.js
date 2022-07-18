@@ -44,9 +44,7 @@ export default function ContactForm() {
       validations={handleValidations}
       requestUrl={FORM_MAILER_PATH}
     >
-      <FormGroup>
-        <FormTitle>We're here for all your questions</FormTitle>
-      </FormGroup>
+      <FormTitle>We're here for all your questions</FormTitle>
       <FormGroupFlex>
         <FormGroup>
           <FormLabel htmlFor='name'>Name</FormLabel>
