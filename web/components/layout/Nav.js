@@ -8,15 +8,12 @@ import useClickOutside from '@/hooks/useClickOutside';
 import NavList from './NavList';
 import Burger from '@/components/layout/Burger';
 import BurgerMenu from '@/components/layout/BurgerMenu';
-// constants
-import { mediaQueries } from '@/src/constants';
 
 export default function Nav() {
   const [loaded, setLoaded] = useState(false);
   const [open, setOpen] = useState(false);
   const node = useRef();
-  const breakPointWidth = Number(mediaQueries.laptop.replace('px', ''));
-  const isBreakPoint = useMediaQuery(breakPointWidth);
+  const isBreakPoint = useMediaQuery('laptop');
 
   // ensure DOM is ready before setting a nav to display
   useEffect(() => {
