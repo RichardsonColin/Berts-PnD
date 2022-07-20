@@ -26,7 +26,7 @@ export default function Burger({ open, setOpen }) {
 const StyledBurger = styled.button`
   position: absolute;
   top: 50%;
-  right: 35px;
+  right: 24px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -38,10 +38,6 @@ const StyledBurger = styled.button`
   background-color: transparent;
   cursor: pointer;
   z-index: 10;
-
-  :focus {
-    outline: none;
-  }
 
   span {
     position: relative;

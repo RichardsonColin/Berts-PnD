@@ -12,9 +12,11 @@ import { FORM_MAILER_PATH } from '@/src/constants';
 // style
 import styled from 'styled-components';
 
-ContactForm.propTypes = {};
+ContactForm.propTypes = {
+  className: PropTypes.string,
+};
 
-export default function ContactForm() {
+export default function ContactForm({ className }) {
   const staticFormValues = {
     type: 'contact',
     name: '',
@@ -43,6 +45,7 @@ export default function ContactForm() {
       initialValues={staticFormValues}
       validations={handleValidations}
       requestUrl={FORM_MAILER_PATH}
+      className={className}
     >
       <FormTitle>We're here for all your questions</FormTitle>
       <FormGroupFlex>
@@ -78,4 +81,6 @@ export default function ContactForm() {
 }
 
 // styles
-const StyledForm = styled(Form)``;
+const StyledForm = styled(Form)`
+  max-width: 800px;
+`;

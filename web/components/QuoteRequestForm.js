@@ -13,9 +13,11 @@ import { FORM_MAILER_PATH } from '@/src/constants';
 // style
 import styled from 'styled-components';
 
-QuoteRequestForm.propTypes = {};
+QuoteRequestForm.propTypes = {
+  className: PropTypes.string,
+};
 
-export default function QuoteRequestForm() {
+export default function QuoteRequestForm({ className }) {
   const staticFormValues = {
     type: 'quote',
     name: '',
@@ -47,6 +49,7 @@ export default function QuoteRequestForm() {
       initialValues={staticFormValues}
       validations={handleValidations}
       requestUrl={FORM_MAILER_PATH}
+      className={className}
     >
       <FormTitle>Tell us about the job</FormTitle>
       <FormGroupFlex>
@@ -96,13 +99,15 @@ export default function QuoteRequestForm() {
 }
 
 // styles
-const StyledForm = styled(Form)``;
+const StyledForm = styled(Form)`
+  max-width: 800px;
+`;
 const StyledCheckboxGroup = styled(FormGroup)`
   ${StyledForm} & {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: flex-start;
+    flex-wrap: wrap;
 
     @media (min-width: ${mediaQueries.tablet}) {
       flex-direction: row;
@@ -112,8 +117,8 @@ const StyledCheckboxGroup = styled(FormGroup)`
 const StyledCheckboxLabel = styled(FormLabel)`
   ${StyledForm} & {
     display: flex;
-    min-width: 150px;
     align-items: center;
+    min-width: 150px;
     margin: 0.2rem 0;
 
     @media (min-width: ${mediaQueries.tablet}) {

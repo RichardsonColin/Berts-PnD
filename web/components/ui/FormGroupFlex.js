@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-// components
-import FormGroup from '@/components/ui/FormGroup';
 // constants
 import { mediaQueries } from '@/src/constants';
 // style
@@ -26,11 +24,14 @@ const StyledFormGroupFlex = styled.div`
 
   & > * {
     padding-top: 0;
-    padding-bottom: 0;
     flex-grow: 1;
+  }
+  & > *:last-child {
+    padding-bottom: 0;
   }
 
   @media (min-width: ${mediaQueries.tablet}) {
     flex-direction: row;
+    padding-bottom: 0;
   }
 `;
