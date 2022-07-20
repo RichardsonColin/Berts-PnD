@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import FormStatusMessage from '@/components/ui/FormStatusMessage';
 import FormSubmitButton from '@/components/ui/FormSubmitButton';
+import FormGroup from '@/components/ui/FormGroup';
+import ReCaptcha from '@/components/ReCaptcha';
+// hooks
+import useReCaptcha from '@/hooks/useReCaptcha';
+// constants
+import { mediaQueries } from '@/src/constants';
 // style
 import styled from 'styled-components';
 
@@ -16,7 +22,6 @@ FormikForm.propTypes = {
 };
 
 export default function FormikForm({
-  verificationHandler,
   initialValues,
   validations,
   requestUrl,
@@ -24,6 +29,8 @@ export default function FormikForm({
   className,
 }) {
   const [isStatusDisplayed, setIsStatusDisplayed] = useState(false);
+  const { reCaptchaRef, reCaptchaError, setToken, verifyReCaptcha } =
+    useReCaptcha();
 
   const handleSubmit = async (
     values,
@@ -32,7 +39,7 @@ export default function FormikForm({
     try {
       // ensure that the form is able to send using a verification on the user
       // currently using reCAPTCHAv2
-      const isVerified = await verificationHandler();
+      const isVerified = await handleVerification();
       if (!isVerified) {
         handleStatus(setStatus, "reCAPTCHA verification wasn't successful.");
         return;
@@ -80,6 +87,11 @@ export default function FormikForm({
     }, timeToDisplayInMs);
   };
 
+  // authorizes form submission
+  const handleVerification = async () => {
+    return await verifyReCaptcha();
+  };
+
   return (
     <FormWrapper className={className}>
       <Formik
@@ -88,18 +100,26 @@ export default function FormikForm({
         onSubmit={handleSubmit}
       >
         {({ isSubmitting, status }) => (
-          <Form>
+          <StyledForm>
             {children}
-            <FormSubmitButton
-              text='Submit'
-              isSubmitting={isSubmitting}
-              disabled={isSubmitting}
-            />
-            <FormStatusMessage
+            <StyledFormGroup>
+              <ReCaptcha
+                reCaptchaRef={reCaptchaRef}
+                setToken={setToken}
+                reCaptchaError={reCaptchaError}
+                tabIndex={100}
+              />
+              <StyledFormSubmitButton
+                text='Submit'
+                isSubmitting={isSubmitting}
+                disabled={isSubmitting}
+              />
+            </StyledFormGroup>
+            <StyledFormStatusMessage
               msg={status?.msg || ''}
               isDisplayed={isStatusDisplayed}
             />
-          </Form>
+          </StyledForm>
         )}
       </Formik>
     </FormWrapper>
@@ -108,3 +128,46 @@ export default function FormikForm({
 
 // styles
 const FormWrapper = styled.div``;
+const StyledForm = styled(Form)`
+  margin: 0 auto;
+  padding: 1rem 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 3px var(--color-grey-500);
+
+  @media (min-width: ${mediaQueries.tablet}) {
+    padding: 1.5rem;
+  }
+`;
+const StyledFormSubmitButton = styled(FormSubmitButton)`
+  ${StyledForm} & {
+    margin-top: 1rem;
+
+    @media (min-width: ${mediaQueries.tablet}) {
+      margin-top: 0;
+    }
+  }
+`;
+const StyledFormGroup = styled(FormGroup)`
+  ${StyledForm} & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0;
+    min-height: 144px;
+
+    /* min-widths */
+    @media (min-width: ${mediaQueries.mobileL}) {
+      min-height: 78px;
+    }
+    @media (min-width: ${mediaQueries.tablet}) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+`;
+const StyledFormStatusMessage = styled(FormStatusMessage)`
+  ${StyledForm} & {
+    text-align: center;
+  }
+`;
