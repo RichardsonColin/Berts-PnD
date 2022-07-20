@@ -32,7 +32,7 @@ export default function Nav() {
           </FocusLock>
         </MobileNavWrapper>
       ) : (
-        <StyledNav loaded={loaded} aria-label='Main'>
+        <StyledNav loaded={loaded} role='navigation' aria-label='Main'>
           <NavList />
         </StyledNav>
       )}
