@@ -129,7 +129,6 @@ export default function FormikForm({
 // styles
 const FormWrapper = styled.div``;
 const StyledForm = styled(Form)`
-  margin: 0 auto;
   padding: 1rem 0.5rem;
   background-color: #fff;
   box-shadow: 0 0 3px var(--color-grey-500);
