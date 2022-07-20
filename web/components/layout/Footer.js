@@ -8,7 +8,6 @@ import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
 import {
   COMPANY_NAME,
-  COMPANY_EMAIL,
   COMPANY_PHONE_MAIN,
   COMPANY_ADDRESS_CITY,
   COMPANY_ADDRESS_PROVINCE,
@@ -31,9 +30,6 @@ export default function Footer() {
         </ContactPhone>
         <StyledDot aria-hidden='true' />
         <ContactAddress>{`${COMPANY_ADDRESS_CITY}, ${COMPANY_ADDRESS_PROVINCE}`}</ContactAddress>
-        <ContactEmail href={`mailto:${COMPANY_PHONE_MAIN}`}>
-          {COMPANY_EMAIL}
-        </ContactEmail>
       </ContentWrapper>
       <ContentWrapper>
         <nav aria-label='Main'>
@@ -50,7 +46,7 @@ export default function Footer() {
 // styles
 export const StyledFooter = styled.footer`
   position: relative;
-  min-height: 350px;
+  min-height: 300px;
   padding-top: 3rem;
   color: var(--color-grey-50);
   background-color: var(--secondary-dark);
