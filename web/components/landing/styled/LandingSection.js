@@ -6,7 +6,7 @@ import { mediaQueries } from '@/src/constants';
 // styles
 const SectionWrapper = css`
   width: 100%;
-  max-width: 450px;
+  max-width: 800px;
   margin: auto;
 
   /* min-widths */
@@ -111,6 +111,4 @@ export const StyledReviewsSection = styled(Section)`
   ${SectionWrapper}
 
   ${FontStylings}
-
-  ${SectionCentered}
 `;

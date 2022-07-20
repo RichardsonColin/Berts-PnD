@@ -31,6 +31,7 @@ export default function LandingReviewsSection({ reviews }) {
 const StyledReviewsSection = styled(StyledSection)`
   position: relative;
   margin-bottom: 5rem;
+  text-align: center;
 `;
 const LogoWrapper = styled.div`
   ${StyledReviewsSection} & {
