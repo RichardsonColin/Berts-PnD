@@ -69,7 +69,8 @@ const spin = keyframes`
 const FontAwesomeWrapper = styled.span`
   ${StyledSubmit} & {
     position: absolute;
-    right: -50%;
+    right: -125%;
+    font-size: 1.3em;
     animation: ${spin} 1s ease-in-out infinite;
   }
 `;
