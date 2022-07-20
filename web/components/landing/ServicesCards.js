@@ -55,12 +55,13 @@ export default function ServicesCards({ services }) {
 const CardsWrapper = styled(Container)`
   max-width: 900px;
   margin-top: 6rem;
+  justify-content: center;
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 6.125rem;
     margin-bottom: 2rem;
@@ -77,6 +78,7 @@ const StyledCard = styled(Card)`
   ${CardsWrapper} & {
     position: relative;
     width: 285px;
+    /* margin: 0; */
     margin-bottom: 3.125rem;
     padding: 0;
     padding-bottom: 1.5rem;
@@ -88,6 +90,11 @@ const StyledCard = styled(Card)`
       bottom: 0;
       right: 0;
       width: 285px;
+    }
+
+    @media (min-width: ${mediaQueries.laptop}) {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 `;
