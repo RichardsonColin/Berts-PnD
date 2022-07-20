@@ -47,6 +47,7 @@ const StyledBackgroundSlant = styled.div`
     background-color: ${({ backgroundColor }) => backgroundColor};
     opacity: 1;
     z-index: -1;
+    box-shadow: 0 0 4px var(--color-grey-900);
     transform: ${({ slant, degree }) => {
       let rotate = slant === 'left' ? `-${degree}` : degree;
       return css`
