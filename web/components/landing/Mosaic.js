@@ -184,7 +184,7 @@ const CutCorner = css`
   height: 100px;
   background-color: var(--color-grey-10);
   transform: rotateZ(135deg);
-  z-index: 10;
+  z-index: 1;
   overflow: hidden;
 `;
 const CutCornerTopLeft = css`
