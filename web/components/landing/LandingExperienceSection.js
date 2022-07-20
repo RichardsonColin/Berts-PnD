@@ -43,13 +43,15 @@ export default function LandingExperienceSection({ experience }) {
 
 // styles
 const StyledExperienceSection = styled(StyledSection)`
-  position: relative;
-  height: 1100px;
-  padding-left: 0;
-  padding-right: 0;
+  & {
+    position: relative;
+    height: 1100px;
+    padding-left: 0;
+    padding-right: 0;
 
-  @media (min-width: ${mediaQueries.laptop}) {
-    height: 1200px;
+    @media (min-width: ${mediaQueries.laptop}) {
+      height: 1200px;
+    }
   }
 `;
 const ContentWrapper = styled.div`
