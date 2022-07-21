@@ -105,12 +105,12 @@ const StyledMosaic = styled.div`
     ${({ split }) => {
       if (split === 'left') {
         return css`
-          left: -25px;
+          left: -55px;
         `;
       }
       if (split === 'right') {
         return css`
-          right: 30px;
+          right: 0;
         `;
       }
     }}
@@ -131,7 +131,7 @@ const StyledMosaic = styled.div`
     ${({ split }) => {
       if (split === 'left') {
         return css`
-          left: 32px;
+          left: 0;
         `;
       }
     }}

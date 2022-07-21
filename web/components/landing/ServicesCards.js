@@ -53,7 +53,7 @@ export default function ServicesCards({ services }) {
 
 // styles
 const CardsWrapper = styled(Container)`
-  max-width: 900px;
+  max-width: 700px;
   margin-top: 6rem;
   justify-content: center;
 
@@ -67,18 +67,17 @@ const CardsWrapper = styled(Container)`
     margin-bottom: 2rem;
   }
   @media (min-width: ${mediaQueries.laptop}) {
-    max-width: 690px;
+    max-width: 800px;
   }
   /* custom breakpoint */
   @media (min-width: 1300px) {
-    max-width: 1310px;
+    max-width: 100%;
   }
 `;
 const StyledCard = styled(Card)`
   ${CardsWrapper} & {
     position: relative;
     width: 285px;
-    /* margin: 0; */
     margin-bottom: 3.125rem;
     padding: 0;
     padding-bottom: 1.5rem;

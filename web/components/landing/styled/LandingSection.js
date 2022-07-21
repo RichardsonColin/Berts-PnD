@@ -6,20 +6,6 @@ import { mediaQueries } from '@/src/constants';
 // styles
 const SectionWrapper = css`
   width: 100%;
-  max-width: 800px;
-  margin: auto;
-
-  /* min-widths */
-  @media (min-width: ${mediaQueries.tablet}) {
-    max-width: 900px;
-  }
-  @media (min-width: ${mediaQueries.laptop}) {
-    max-width: 1200px;
-  }
-  /* custom breakpoint */
-  @media (min-width: 1400px) {
-    max-width: 1350px;
-  }
 `;
 const SectionCentered = css`
   margin: auto;

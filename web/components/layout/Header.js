@@ -64,6 +64,7 @@ const StyledGutter = styled(Gutter)`
 const ContentWrapper = styled(Section)`
   ${StyledHeader} & {
     height: inherit;
+    margin: 0 auto;
     padding-top: 0;
     padding-bottom: 0;
   }
