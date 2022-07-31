@@ -1,24 +1,27 @@
 const process = require('process');
 // AWS
 const { SendEmailCommand } = require('@aws-sdk/client-ses');
-const { sesClient } = require('../lib/aws/sesClient');
+const { sesClient } = require('../../../lib/ses/client');
 // helpers
-const { mailBuilder } = require('./mailBuilder');
+const { mailBuilderHandler } = require('./mailBuilderHandler');
 const { logger } = require('./logger');
 
 // send mail to developer in case of issue
 exports.notify = async (message) => {
   try {
-    const notifyMailBuilder = mailBuilder({ message, type: 'notify' });
-    const request = notifyMailBuilder.buildMailRequest({
+    const mailBuilder = mailBuilderHandler({
+      message,
+      type: 'notify',
+    }).getSESMailBuilder();
+    const mail = mailBuilder.createMail({
       source: process.env.AWS_SES_SOURCE_ADDRESS,
       toAddresses: [process.env.AWS_SES_DEBUG_ADDRESS],
-      subject: notifyMailBuilder.buildSubject(),
-      body: notifyMailBuilder.buildBody(),
+      subject: mailBuilder.buildSubject(),
+      body: mailBuilder.buildBody(),
     });
 
     // send mail
-    await sesClient.send(new SendEmailCommand(request));
+    await sesClient.send(new SendEmailCommand(mail));
   } catch (err) {
     logger(err.stack, 'error');
   }
