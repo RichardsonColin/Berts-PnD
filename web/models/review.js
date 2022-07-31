@@ -1,15 +1,15 @@
 // helpers
-import { query, parseParams } from './helpers';
+import { sanityQuery, sanityParseParams } from '@/lib/sanity/helpers';
 
 const TYPE = 'review';
 
 export const fetchReviews = async (params) => {
   const result = { data: [], status: '' };
   try {
-    const statementParams = parseParams(params);
+    const statementParams = sanityParseParams(params);
 
     // build result object
-    result.data = await query(TYPE, statementParams);
+    result.data = await sanityQuery(TYPE, statementParams);
     result.status = 'success';
 
     return result;
