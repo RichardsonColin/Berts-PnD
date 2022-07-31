@@ -1,7 +1,7 @@
 // assets
 import aboutImage from '@/public/images/hero-primary.webp';
 // contants
-import { COMPANY_NAME, COMPANY_OWNER } from '@/src/constants';
+import { COMPANY_NAME, COMPANY_OWNER } from '@/utils/constants';
 
 export const aboutData = {
   companyName: COMPANY_NAME,
