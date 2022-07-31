@@ -1,3 +1,5 @@
+const { COMPANY_DOMAIN } = require('../../utils/constants');
+
 exports.configurations = {
   quote: {
     params: {
@@ -44,14 +46,15 @@ exports.configurations = {
       subject: 'Website Quote Request From {{name}}!',
       body: `<h3>Quote Request From {{name}}</h3>
         <p><strong>Email:</strong> {{email}}</p>
-        <p><strong>Job Type:</strong></p>
+        <p><strong>Requesting:</strong></p>
         <blockquote>
-        <span>Interior: {{interior}}</span>&#xa0;&#xa0;|&#xa0;&#xa0;
-        <span>Exterior: {{exterior}}</span>&#xa0;&#xa0;|&#xa0;&#xa0;
-        <span>Decorating: {{decorating}}</span>
+        <span>{{interior}} Interior</span></br>
+        <span>{{exterior}} Exterior</span></br>
+        <span>{{decorating}} Decorating</span>
         </blockquote>
         <p><strong>Details:</strong></p>
-        <blockquote>{{details}}</blockquote>`,
+        <blockquote>{{details}}</blockquote>
+        <p><i>Sent from ${COMPANY_DOMAIN} quote request form.</i></p>`,
     },
   },
   contact: {
@@ -74,14 +77,18 @@ exports.configurations = {
           return null;
         },
       },
-      details: {
-        name: 'details',
+      comments: {
+        name: 'comments',
         isRequired: true,
       },
     },
     templates: {
       subject: 'Inquiry From {{name}}!',
-      body: '<h3>Inquiry From {{name}}</h3><p><strong>Email:</strong> {{email}}</p><p><strong>Original message:</strong></p><blockquote>{{details}}</blockquote>',
+      body: `<h3>Inquiry From {{name}}</h3>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Message:</strong></p>
+        <blockquote>{{comments}}</blockquote>
+        <p><i>Sent from ${COMPANY_DOMAIN} contact form.</i></p>`,
     },
   },
   notify: {
