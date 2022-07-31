@@ -23,9 +23,7 @@ exports.configurationHandler = (type) => {
       );
   }
 
-  return {
-    retrieve,
-  };
+  return retrieve();
 };
 
 class ConfigurationError extends Error {
