@@ -1,11 +1,11 @@
 const process = require('process');
 // AWS
+const { sesClient } = require('../../lib/ses/client');
 const { SendEmailCommand } = require('@aws-sdk/client-ses');
-const { sesClient } = require('./lib/aws/sesClient');
 // helpers
-const { mailBuilder } = require('./helpers/mailBuilder');
+const { mailBuilderHandler } = require('./helpers/mailBuilderHandler');
 const { notify } = require('./helpers/notify');
-const { logger } = require('./helpers/logger');
+const { logger, cacheLogger } = require('./helpers/logger');
 
 /*
  * Form-Mailer Handler
@@ -24,64 +24,85 @@ const ACCEPTED_HTTP_METHODS = ['POST'];
 const handler = async (event) => {
   if (!ACCEPTED_HTTP_METHODS.includes(event.httpMethod)) {
     logger(`Incorrect request method.`, 'error');
-    return { statusCode: 400, body: buildResponseObj() };
+    return buildResponseObj(400);
   }
 
   try {
     // handle request
     const reqBody = JSON.parse(event.body);
-    const SESMailBuilder = mailBuilder(reqBody);
+    const mailBuilder = mailBuilderHandler(reqBody).getSESMailBuilder();
 
-    logger(`Validating request params`);
+    logger(`Validating ${reqBody?.type} request params`);
 
     // validate request params
-    const errors = SESMailBuilder.validateParams();
+    const errors = mailBuilder.params.validate();
     if (Object.keys(errors).length) {
-      return {
-        statusCode: 400,
-        body: buildResponseObj('Invalid params', errors),
-      };
+      return buildResponseObj(400, 'Missing required information', errors);
     }
 
     // build mail request object
-    const mailRequest = SESMailBuilder.buildMailRequest({
+    const mail = mailBuilder.createMail({
       source: process.env.AWS_SES_SOURCE_ADDRESS,
       toAddresses: process.env.AWS_SES_TO_ADDRESSES.split(','),
       replyToAddresses: [reqBody.email],
-      subject: SESMailBuilder.buildSubject(),
-      body: SESMailBuilder.buildBody(),
+      subject: mailBuilder.buildSubject(),
+      body: mailBuilder.buildBody(),
     });
 
     logger(`Initiating delivery for ${reqBody.email}`);
 
     // send mail
-    const response = await sesClient.send(new SendEmailCommand(mailRequest));
+    const response = await sesClient.send(new SendEmailCommand(mail));
 
-    // TODO: log mailRequest and response in S3 bucket
-
+    // log info
+    await cacheLogger(
+      JSON.stringify({ status: 'success', request: mail, response }),
+      'success'
+    );
     logger(`Mail sent successfully`);
 
     // send netlify function response
-    return { statusCode: 201, body: buildResponseObj('Success') };
+    return buildResponseObj(201, "We'll be in touch!");
   } catch (err) {
+    // log error
     logger(err.stack, 'error');
-    // TODO: log error S3 bucket
+    await cacheLogger(
+      JSON.stringify({ status: 'fail', error: err.message }),
+      'fail'
+    );
+    // send mail with error issue
     await notify(`[Mailer Error] ${err.stack}`);
-    return { statusCode: 500, body: buildResponseObj('Error') };
+
+    // Configuration Handler issue; Mail Builder Handler issue
+    if (err.name === 'ConfigurationError' || err.name === 'MailBuilderError') {
+      // send response
+      return buildResponseObj(
+        400,
+        'Sorry, email service is temporarily unavailable.'
+      );
+    } else {
+      // send response
+      return buildResponseObj(
+        500,
+        'Sorry, email service is temporarily unavailable.'
+      );
+    }
   }
 };
 
 // structures netlify function response object
-function buildResponseObj(message = '', errors = {}) {
-  const response = {};
+function buildResponseObj(statusCode, message = '', errors = {}) {
+  if (typeof statusCode !== 'number')
+    throw new Error('Response object requires a proper status code.');
+  const body = {};
 
   // add message prop
-  if (typeof message === 'string') response.message = message;
+  if (typeof message === 'string') body.message = message;
 
   // add errors prop
-  if (Object.keys(errors).length) response.errors = errors;
+  if (Object.keys(errors).length) body.errors = errors;
 
-  return JSON.stringify(response);
+  return { statusCode, body: JSON.stringify(body) };
 }
 
 module.exports = { handler };
