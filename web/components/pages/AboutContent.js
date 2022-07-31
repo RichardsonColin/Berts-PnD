@@ -11,7 +11,7 @@ import TextHighlight from '@/components/ui/TextHighlight';
 // assets
 import icon from '@/public/images/paint-roller.svg';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 AboutContent.propTypes = {
   contentData: PropTypes.object.isRequired,

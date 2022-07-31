@@ -9,7 +9,7 @@ import ReCaptcha from '@/components/ReCaptcha';
 // hooks
 import useReCaptcha from '@/hooks/useReCaptcha';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // style
 import styled from 'styled-components';
 
@@ -40,10 +40,7 @@ export default function FormikForm({
       // ensure that the form is able to send using a verification on the user
       // currently using reCAPTCHAv2
       const isVerified = await handleVerification();
-      if (!isVerified) {
-        handleStatus(setStatus, "reCAPTCHA verification wasn't successful.");
-        return;
-      }
+      if (!isVerified) return;
       // send form data
       const response = await handleRequest(values);
 
@@ -59,7 +56,7 @@ export default function FormikForm({
       // remove disable on submit button
       setSubmitting(false);
       // disaply form msg for submitter
-      handleStatus(setStatus, "We'll be in touch!");
+      handleStatus(setStatus, response.message);
     } catch (error) {
       handleStatus(setStatus, 'Sorry, service is temporarily unavailable.');
       setSubmitting(false);

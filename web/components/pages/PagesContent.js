@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import HeroAlternate from '@/components/HeroAlternate';
 import { StyledCallToActionSection as CallToAction } from './styled/PagesSection';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 PagesContent.propTypes = {
   heading: PropTypes.string,

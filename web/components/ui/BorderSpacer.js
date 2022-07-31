@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // hooks
 import useWindowDimensions from '@/hooks/useWindowDimensions';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 BorderSpacer.propTypes = {
   size: PropTypes.number,

@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // constants
-import { COMPANY_REVIEW_LINK } from '@/src/constants';
-import { mediaQueries } from '@/src/constants';
+import { COMPANY_REVIEW_LINK } from '@/utils/constants';
+import { mediaQueries } from '@/utils/constants';
 
 GoogleReview.propTypes = {
   className: PropTypes.string,

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 // styles
 const SectionWrapper = css`

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // components
 import QuoteContent from '@/components/pages/QuoteContent';
 // constants
-import { companyData } from '@/src/data/company';
+import { companyData } from '@/data/company';
 
 QuotePage.propTypes = {
   companyData: PropTypes.object.isRequired,

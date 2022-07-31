@@ -8,7 +8,7 @@ import Heading from '@/components/ui/Heading';
 import Container from '@/components/ui/Container';
 import BackgroundSlant from '@/components/ui/BackgroundSlant';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 LandingPortfolioSection.propTypes = {
   portfolio: PropTypes.arrayOf(PropTypes.object).isRequired,

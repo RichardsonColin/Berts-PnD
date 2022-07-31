@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PortfolioImage from '@/components/PortfolioImage';
 import CustomModal from '@/components/ui/CustomModal';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 PortfolioImages.propTypes = {
   portfolioImages: PropTypes.arrayOf(PropTypes.object).isRequired,

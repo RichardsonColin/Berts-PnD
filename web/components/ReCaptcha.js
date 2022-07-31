@@ -6,7 +6,7 @@ import FormError from '@/components/ui/FormError';
 // hooks
 import useMediaQuery from '@/hooks/useMediaQuery';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // style
 import styled from 'styled-components';
 
@@ -36,6 +36,7 @@ export default function ReCaptcha({
 
   const onChange = (value) => {
     setToken(value);
+    setMessage('');
   };
 
   const onErrored = () => {

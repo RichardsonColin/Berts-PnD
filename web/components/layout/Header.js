@@ -7,7 +7,7 @@ import Gutter from '@/components/ui/Gutter';
 import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 Header.propTypes = {
   children: PropTypes.node.isRequired,

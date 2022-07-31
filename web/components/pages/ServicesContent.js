@@ -9,7 +9,7 @@ import Gutter from '@/components/ui/Gutter';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 ServicesContent.propTypes = {
   contentData: PropTypes.arrayOf(PropTypes.object).isRequired,

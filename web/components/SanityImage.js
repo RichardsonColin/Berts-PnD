@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import sanityClient from '../sanityClient';
+import sanityClient from '../lib/sanity/client';
 import { useNextSanityImage } from 'next-sanity-image';
 import PropTypes from 'prop-types';
 

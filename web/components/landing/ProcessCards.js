@@ -4,7 +4,7 @@ import styled, { css, keyframes } from 'styled-components';
 import Card from '@/components/ui/Card';
 import Heading from '@/components/ui/Heading';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 ProcessCards.propTypes = {
   process: PropTypes.arrayOf(PropTypes.object).isRequired,

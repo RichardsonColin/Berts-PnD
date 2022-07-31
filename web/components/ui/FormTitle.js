@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // style
 import styled from 'styled-components';
 

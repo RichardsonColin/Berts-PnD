@@ -6,7 +6,7 @@ import useCurrentRoute from '@/hooks/useCurrentRoute';
 // components
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 // constants
-import { siteRoutes, mediaQueries } from '@/src/constants';
+import { siteRoutes, mediaQueries } from '@/utils/constants';
 
 BurgerMenu.propTypes = {
   open: PropTypes.bool.isRequired,

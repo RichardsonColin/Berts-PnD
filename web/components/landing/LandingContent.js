@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 // components
 import Container from '@/components/ui/Container';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 LandingContent.propTypes = {
   position: PropTypes.string,

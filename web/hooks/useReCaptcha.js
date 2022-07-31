@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 // constants
-import { RECAPTCHA_VERIFY_PATH } from '@/src/constants';
+import { RECAPTCHA_VERIFY_PATH } from '@/utils/constants';
 
 export default function useReCaptcha() {
   const reCaptchaRef = useRef(null);
@@ -12,6 +12,7 @@ export default function useReCaptcha() {
       setReCaptchaError('Please check, "I\'m not a robot."');
       return false;
     }
+
     const { success } = await handleRequest();
     reset();
     return success;

@@ -6,9 +6,9 @@ import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // helpers
-import { searchString } from '@/src/helpers';
+import { searchString } from '@/utils/helpers';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 ServicesCards.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,

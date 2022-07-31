@@ -9,7 +9,7 @@ import Mosaic from './Mosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // assets
 import mosaicImageOne from '@/public/images/hero-primary.webp';
 import mosaicImageTwo from '@/public/images/hero-primary.webp';

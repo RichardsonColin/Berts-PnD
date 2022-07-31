@@ -8,7 +8,7 @@ import FormLabel from '@/components/ui/FormLabel';
 import FormInput from '@/components/ui/FormInput';
 import FormTextArea from '@/components/ui/FormTextArea';
 // constants
-import { FORM_MAILER_PATH } from '@/src/constants';
+import { FORM_MAILER_PATH } from '@/utils/constants';
 // style
 import styled from 'styled-components';
 

@@ -8,7 +8,7 @@ import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 import BackgroundSlant from '@/components/ui/BackgroundSlant';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 CallToAction.propTypes = {
   className: PropTypes.string,
@@ -33,7 +33,7 @@ export default function CallToAction({ className }) {
         <BackgroundSlant heightMultiple={0.6} slant='right' degree={5} />
         <Wrapper>
           <StyledContainer position='left'>
-            <StyledHeading level='2'>Give Us A Call!</StyledHeading>
+            <StyledHeading level='2'>Get in Touch!</StyledHeading>
             <StyledText>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               mattis neque vitae congue rhoncus. Suspendisse feugiat quam

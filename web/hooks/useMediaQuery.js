@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 export default function useMediaQuery(breakpointLabel) {
   const [targetReached, setTargetReached] = useState(false);

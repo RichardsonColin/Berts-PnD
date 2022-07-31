@@ -6,7 +6,7 @@ import { StyledExperienceSection as StyledSection } from './styled/LandingSectio
 import ExperienceItems from './ExperienceItems';
 import Heading from '@/components/ui/Heading';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // assets
 import backgroundImage from '@/public/images/hero-primary.webp';
 

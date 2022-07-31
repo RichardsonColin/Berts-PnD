@@ -8,7 +8,7 @@ import Heading from '@/components/ui/Heading';
 import LinkButton from '@/components/ui/LinkButton';
 import Logo from '@/components/Logo';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 LandingReviewsSection.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,

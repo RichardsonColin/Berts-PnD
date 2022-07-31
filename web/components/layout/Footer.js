@@ -12,7 +12,7 @@ import {
   COMPANY_ADDRESS_CITY,
   COMPANY_ADDRESS_PROVINCE,
   mediaQueries,
-} from '@/src/constants';
+} from '@/utils/constants';
 
 export default function Footer() {
   const route = useCurrentRoute();
