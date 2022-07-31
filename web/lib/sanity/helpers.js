@@ -1,11 +1,12 @@
-import sanityClient from '../sanityClient';
+import sanityClient from '@/lib/sanity/client';
 
 // general sanity query
-export const query = async (type, params) => {
+export const sanityQuery = async (type, params) => {
   let query = '';
   try {
     const { filterFor, orderBy, rangeWithin } = params;
-    query = `*[_type == "${type}"${filterFor}]${orderBy}${rangeWithin}`.trim();
+    query =
+      `*[_type == "${type}" && !(_id in path('drafts.**')) ${filterFor}] ${orderBy}${rangeWithin}`.trim();
 
     return await sanityClient.fetch(query);
   } catch (error) {
@@ -17,7 +18,7 @@ export const query = async (type, params) => {
 };
 
 // common params used to filter GROQ query statements; defaults to 10 resources per query
-export const parseParams = ({ page, perPage = 10, filter, order }) => {
+export const sanityParseParams = ({ page, perPage = 10, filter, order }) => {
   // check for params
   const hasPage = page !== undefined;
   const hasFilter = filter !== undefined;
@@ -27,8 +28,8 @@ export const parseParams = ({ page, perPage = 10, filter, order }) => {
   const rangeTo = hasPage ? Number.parseInt(page) * perPage : -1;
   // query statements
   const rangeWithin = hasPage ? `[${rangeFrom}...${rangeTo}]` : '';
-  const filterFor = hasFilter ? ` && ${filter}` : '';
-  const orderBy = hasOrder ? ` | order(${order})` : '';
+  const filterFor = hasFilter ? `&& ${filter}` : '';
+  const orderBy = hasOrder ? `| order(${order})` : '';
 
   return {
     rangeWithin,
