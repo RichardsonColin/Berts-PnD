@@ -32,7 +32,7 @@ export default function ContactDetails({ companyData, className }) {
     <StyledContainer className={className}>
       <StyledHeading level='2'>Connect With Us</StyledHeading>
       <StyledDetails>
-        <StyledLink href={`tel:+1${companyPhoneMain.replaceAll('-', '')}`}>
+        <StyledLink href={`tel:+1${companyPhoneMain?.replaceAll('-', '')}`}>
           <FontAwesomeWrapper aria-hidden='true'>
             <StyledFontAwesomeIcon icon={faPhone} />
           </FontAwesomeWrapper>
@@ -40,7 +40,7 @@ export default function ContactDetails({ companyData, className }) {
         </StyledLink>
       </StyledDetails>
       <StyledDetails>
-        <StyledLink href={`tel:+1${companyPhoneCell.replaceAll('-', '')}`}>
+        <StyledLink href={`tel:+1${companyPhoneCell?.replaceAll('-', '')}`}>
           <FontAwesomeWrapper aria-hidden='true'>
             <StyledFontAwesomeIcon icon={faMobile} />
           </FontAwesomeWrapper>
