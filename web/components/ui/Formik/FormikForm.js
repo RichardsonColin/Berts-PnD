@@ -107,7 +107,7 @@ export default function FormikForm({
                 tabIndex={100}
               />
               <StyledFormSubmitButton
-                text='Submit'
+                text='Send'
                 isSubmitting={isSubmitting}
                 disabled={isSubmitting}
               />
@@ -128,7 +128,7 @@ const FormWrapper = styled.div``;
 const StyledForm = styled(Form)`
   padding: 1rem 0.5rem;
   background-color: #fff;
-  box-shadow: 0 0 3px var(--color-grey-500);
+  box-shadow: 0 0 2px var(--color-grey-800);
 
   @media (min-width: ${mediaQueries.tablet}) {
     padding: 1.5rem;
