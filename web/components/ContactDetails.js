@@ -106,8 +106,12 @@ const StyledDetails = styled.p`
       margin-bottom: 0;
     }
 
+    /* min-widths */
     @media (min-width: ${mediaQueries.tablet}) {
-      font-size: 0.95em;
+      font-size: 1em;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      margin-bottom: 2rem;
     }
   }
 `;
@@ -122,10 +126,10 @@ const FontAwesomeWrapper = styled.span`
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   ${StyledContainer} & {
     position: absolute;
-    top: -15px;
+    top: -16px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--primary-light);
+    color: var(--primary);
     font-size: 1.3em;
   }
 `;
