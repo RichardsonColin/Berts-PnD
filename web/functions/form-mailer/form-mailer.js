@@ -28,6 +28,11 @@ const handler = async (event) => {
   }
 
   try {
+    // TODO: Restricts usage - remove temp response when ready
+    return buildResponseObj(
+      500,
+      'Sorry, email service is temporarily unavailable.'
+    );
     // handle request
     const reqBody = JSON.parse(event.body);
     const mailBuilder = mailBuilderHandler(reqBody).getSESMailBuilder();
