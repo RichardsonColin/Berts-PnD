@@ -100,7 +100,7 @@ export default function QuoteRequestForm({ className }) {
 
 // styles
 const StyledForm = styled(Form)`
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 `;
 const StyledCheckboxGroup = styled(FormGroup)`
