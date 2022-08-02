@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 // components
 import ServicesContent from '@/components/pages/ServicesContent';
 // constants
-import { servicesData } from '@/src/data/services';
-import { companyData } from '@/src/data/company';
+import { servicesData } from '@/data/services';
+import { companyData } from '@/data/company';
 
 ServicesPage.propTypes = {
   contentData: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // components
 import PortfolioContent from '@/components/pages/PortfolioContent';
 // constants
-import { companyData } from '@/src/data/company';
+import { companyData } from '@/data/company';
 // models
 import { fetchPortfolioImages } from '@/models/portfolioImage';
 

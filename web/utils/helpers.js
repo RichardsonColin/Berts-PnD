@@ -1,4 +1,4 @@
-export function searchString(string, regExpPattern) {
+exports.searchString = (string, regExpPattern) => {
   try {
     if (typeof string !== 'string' || !string) return null;
 
@@ -10,4 +10,13 @@ export function searchString(string, regExpPattern) {
     console.error(error);
     return null;
   }
-}
+};
+
+exports.isJsonString = (string) => {
+  try {
+    JSON.parse(string);
+  } catch (err) {
+    return false;
+  }
+  return true;
+};

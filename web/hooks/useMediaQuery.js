@@ -1,7 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
+// constants
+import { mediaQueries } from '@/utils/constants';
 
-export default function useMediaQuery(width) {
+export default function useMediaQuery(breakpointLabel) {
   const [targetReached, setTargetReached] = useState(false);
+  const width = Number(mediaQueries[breakpointLabel].replace('px', ''));
 
   const updateTarget = useCallback((event) => {
     if (event.matches) {

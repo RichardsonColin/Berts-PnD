@@ -8,12 +8,11 @@ import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
 import {
   COMPANY_NAME,
-  COMPANY_EMAIL,
   COMPANY_PHONE_MAIN,
   COMPANY_ADDRESS_CITY,
   COMPANY_ADDRESS_PROVINCE,
   mediaQueries,
-} from '@/src/constants';
+} from '@/utils/constants';
 
 export default function Footer() {
   const route = useCurrentRoute();
@@ -21,6 +20,7 @@ export default function Footer() {
   return (
     <StyledFooter id='footer'>
       <BorderSpacer size={8} position='top' />
+      <BorderCutout aria-hidden='true' />
       <LogoWrapper isLanding={isLanding}>
         <Logo />
       </LogoWrapper>
@@ -30,9 +30,6 @@ export default function Footer() {
         </ContactPhone>
         <StyledDot aria-hidden='true' />
         <ContactAddress>{`${COMPANY_ADDRESS_CITY}, ${COMPANY_ADDRESS_PROVINCE}`}</ContactAddress>
-        <ContactEmail href={`mailto:${COMPANY_PHONE_MAIN}`}>
-          {COMPANY_EMAIL}
-        </ContactEmail>
       </ContentWrapper>
       <ContentWrapper>
         <nav aria-label='Main'>
@@ -49,7 +46,7 @@ export default function Footer() {
 // styles
 export const StyledFooter = styled.footer`
   position: relative;
-  min-height: 350px;
+  min-height: 300px;
   padding-top: 3rem;
   color: var(--color-grey-50);
   background-color: var(--secondary-dark);
@@ -59,7 +56,7 @@ const ContentWrapper = styled.div`
     margin-top: 3.5rem;
 
     /* Company info content */
-    :nth-child(3) {
+    :nth-child(4) {
       width: 275px;
       margin-left: auto;
       margin-right: auto;
@@ -84,50 +81,71 @@ const ContactEmail = styled.a`
     text-decoration: underline;
   }
 `;
-const LogoWrapper = styled.div`
-  position: absolute;
-  top: -46px;
-  right: 50%;
-  transform: translateX(50%);
-  width: 230px;
-  padding: 1rem;
-  background: linear-gradient(to right, var(--primary) 4px, transparent 4px) 0
-      100%,
-    linear-gradient(to left, var(--primary) 4px, transparent 4px) 0 100%,
-    linear-gradient(to top, var(--primary) 4px, transparent 4px) 0 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 34px;
-  background-color: var(--color-grey-10);
-
-  /* min-widths */
-  @media (min-width: ${mediaQueries.tablet}) {
-    top: -50px;
-    width: 250px;
-    background-size: 100% 41.5%;
-  }
-  @media (min-width: ${mediaQueries.laptop}) {
-    top: -55px;
-    width: 300px;
-    background: linear-gradient(to right, var(--primary) 8px, transparent 8px) 0
+const BorderCutout = styled.div`
+  ${StyledFooter} & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 230px;
+    margin: auto;
+    padding: 1rem;
+    background: linear-gradient(to right, var(--primary) 4px, transparent 4px) 0
         100%,
-      linear-gradient(to left, var(--primary) 8px, transparent 8px) 0 100%,
-      linear-gradient(to top, var(--primary) 8px, transparent 8px) 0 100%;
+      linear-gradient(to left, var(--primary) 4px, transparent 4px) 0 100%,
+      linear-gradient(to top, var(--primary) 4px, transparent 4px) 0 100%;
     background-repeat: no-repeat;
-    background-size: 100% 41px;
-    background-color: ${({ isLanding }) =>
-      isLanding ? css`var(--color-grey-10)` : css`var(--secondary-light)`};
+    background-size: 100% 34px;
+    background-color: var(--color-grey-10);
+
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      width: 250px;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      width: 300px;
+      background: linear-gradient(to right, var(--primary) 8px, transparent 8px)
+          0 100%,
+        linear-gradient(to left, var(--primary) 8px, transparent 8px) 0 100%,
+        linear-gradient(to top, var(--primary) 8px, transparent 8px) 0 100%;
+      background-size: 100% 41px;
+      background-color: var(--color-grey-10);
+    }
+  }
+`;
+const LogoWrapper = styled.div`
+  ${StyledFooter} & {
+    position: absolute;
+    top: -26px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 210px;
+    background-color: var(--color-grey-10);
+
+    /* min-widths */
+    @media (min-width: ${mediaQueries.tablet}) {
+      top: -31px;
+      width: 230px;
+      background-size: 100% 41px;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      top: -45px;
+      width: 272px;
+    }
   }
 `;
 const StyledDot = styled.span`
-  &:after {
-    content: '';
-    position: relative;
-    display: inline-block;
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
-    background: var(--primary);
-    vertical-align: middle;
-    margin: 0 8px;
+  ${StyledFooter} & {
+    &:after {
+      content: '';
+      position: relative;
+      display: inline-block;
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      background: var(--primary);
+      vertical-align: middle;
+      margin: 0 8px;
+    }
   }
 `;

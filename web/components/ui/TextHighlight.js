@@ -7,7 +7,7 @@ TextHighlight.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default function TextHighlight({ color, className = '', children }) {
+export default function TextHighlight({ color, className, children }) {
   return (
     <StyledTextHighlight color={color} className={className}>
       {children}

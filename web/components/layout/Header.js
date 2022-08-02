@@ -7,7 +7,7 @@ import Gutter from '@/components/ui/Gutter';
 import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 Header.propTypes = {
   children: PropTypes.node.isRequired,
@@ -64,6 +64,7 @@ const StyledGutter = styled(Gutter)`
 const ContentWrapper = styled(Section)`
   ${StyledHeader} & {
     height: inherit;
+    margin: 0 auto;
     padding-top: 0;
     padding-bottom: 0;
   }

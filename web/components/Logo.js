@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 // constants
-import { COMPANY_NAME } from '@/src/constants';
+import { COMPANY_NAME } from '@/utils/constants';
 // assets
 import logoImage from '@/public/images/logo.webp';
 

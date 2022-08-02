@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // components
 import Heading from '@/components/ui/Heading';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // assets
 import heroImage from '@/public/images/hero-alternate.webp';
 

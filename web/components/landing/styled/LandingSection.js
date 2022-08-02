@@ -1,25 +1,11 @@
 import styled, { css } from 'styled-components';
 // components
 import Section from '@/components/ui/Section';
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 // styles
 const SectionWrapper = css`
   width: 100%;
-  max-width: 450px;
-  margin: auto;
-
-  /* min-widths */
-  @media (min-width: ${mediaQueries.tablet}) {
-    max-width: 900px;
-  }
-  @media (min-width: ${mediaQueries.laptop}) {
-    max-width: 1200px;
-  }
-  /* custom breakpoint */
-  @media (min-width: 1400px) {
-    max-width: 1350px;
-  }
 `;
 const SectionCentered = css`
   margin: auto;
@@ -111,6 +97,4 @@ export const StyledReviewsSection = styled(Section)`
   ${SectionWrapper}
 
   ${FontStylings}
-
-  ${SectionCentered}
 `;

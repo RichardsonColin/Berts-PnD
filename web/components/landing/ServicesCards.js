@@ -6,9 +6,9 @@ import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // helpers
-import { searchString } from '@/src/helpers';
+import { searchString } from '@/utils/helpers';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 ServicesCards.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -53,24 +53,25 @@ export default function ServicesCards({ services }) {
 
 // styles
 const CardsWrapper = styled(Container)`
-  max-width: 900px;
+  max-width: 700px;
   margin-top: 6rem;
+  justify-content: center;
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 6.125rem;
     margin-bottom: 2rem;
   }
   @media (min-width: ${mediaQueries.laptop}) {
-    max-width: 690px;
+    max-width: 800px;
   }
   /* custom breakpoint */
   @media (min-width: 1300px) {
-    max-width: 1310px;
+    max-width: 100%;
   }
 `;
 const StyledCard = styled(Card)`
@@ -88,6 +89,11 @@ const StyledCard = styled(Card)`
       bottom: 0;
       right: 0;
       width: 285px;
+    }
+
+    @media (min-width: ${mediaQueries.laptop}) {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 `;

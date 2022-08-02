@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // hooks
 import useWindowDimensions from '@/hooks/useWindowDimensions';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 BorderSpacer.propTypes = {
   size: PropTypes.number,
@@ -17,7 +17,7 @@ export default function BorderSpacer({
   size = 2,
   position,
   backgroundColor = 'var(--primary)',
-  className = '',
+  className,
 }) {
   const { width } = useWindowDimensions();
   // size of border spacer in px

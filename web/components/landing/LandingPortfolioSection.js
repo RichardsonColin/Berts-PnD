@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import { StyledPortfolioSection as StyledSection } from './styled/LandingSection';
+import Gutter from '@/components/ui/Gutter';
 import PortfolioImages from './PortfolioImages';
 import Heading from '@/components/ui/Heading';
 import Container from '@/components/ui/Container';
 import BackgroundSlant from '@/components/ui/BackgroundSlant';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 LandingPortfolioSection.propTypes = {
   portfolio: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -19,14 +20,16 @@ export default function LandingPortfolioSection({ portfolio, companyData }) {
   return (
     <StyledPortfolioSection id='portfolio'>
       <BackgroundSlant slant='left' />
-      <span>Take A Look At Our Work</span>
-      <StyledHeading level='2'>Our Portfolio</StyledHeading>
-      <StyledContainer>
-        <PortfolioImages
-          portfolioImages={portfolio}
-          altText={`${companyName} portfolio work`}
-        />
-      </StyledContainer>
+      <Gutter>
+        <span>Take A Look At Our Work</span>
+        <StyledHeading level='2'>Our Portfolio</StyledHeading>
+        <StyledContainer>
+          <PortfolioImages
+            portfolioImages={portfolio}
+            altText={`${companyName} portfolio work`}
+          />
+        </StyledContainer>
+      </Gutter>
     </StyledPortfolioSection>
   );
 }
@@ -67,7 +70,6 @@ const StyledPortfolioSection = styled(StyledSection)`
     }
     @media (min-width: ${mediaQueries.tablet}) {
       height: 1350px;
-      padding-top: 6.5rem;
     }
     /* custom breakpoints */
     @media (min-width: 850px) {
@@ -110,9 +112,9 @@ const StyledContainer = styled(Container)`
     @media (min-width: 1500px) {
       display: flex;
       flex-wrap: nowrap;
-      justify-content: space-evenly;
-      max-width: 1350px;
-      margin: 22.5rem auto 7rem;
+      justify-content: space-between;
+      max-width: 100%;
+      margin: 22.5rem 0 7rem;
     }
   }
 `;

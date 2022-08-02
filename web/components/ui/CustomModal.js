@@ -3,7 +3,7 @@ import Modal from 'styled-react-modal';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 CustomModal.propTypes = {
   children: PropTypes.node.isRequired,
@@ -11,7 +11,7 @@ CustomModal.propTypes = {
   className: PropTypes.string,
 };
 
-export default function CustomModal({ children, content, className = '' }) {
+export default function CustomModal({ children, content, className }) {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 

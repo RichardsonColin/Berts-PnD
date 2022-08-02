@@ -9,7 +9,7 @@ import QuoteLinkButton from '@/components/QuoteLinkButton';
 import { StyledHeader as StyledHeaderWrapper } from '@/components/layout/Header';
 import { StyledFooter as StyledFooterWrapper } from '@/components/layout/Footer';
 // constants
-import { siteRoutes, mediaQueries } from '@/src/constants';
+import { siteRoutes, mediaQueries } from '@/utils/constants';
 
 NavList.propTypes = {
   showCallToAction: PropTypes.bool,

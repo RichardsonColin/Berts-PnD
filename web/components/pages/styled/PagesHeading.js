@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 export const PagesHeadingWrapper = styled.div`
   && {

@@ -19,7 +19,7 @@ export default function PortfolioImage({
   objectFit,
   quality = 80,
   blur = 20,
-  className = '',
+  className,
 }) {
   return (
     <SanityImage

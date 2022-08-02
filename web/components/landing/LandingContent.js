@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 // components
 import Container from '@/components/ui/Container';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 LandingContent.propTypes = {
   position: PropTypes.string,
@@ -15,7 +15,7 @@ LandingContent.propTypes = {
 export default function LandingContent({
   position,
   split,
-  className = '',
+  className,
   children,
 }) {
   return (
@@ -46,7 +46,14 @@ const StyledContent = styled(Container)`
       margin: auto;
     }
     @media (min-width: ${mediaQueries.laptop}) {
-      width: 540px;
+      width: 550px;
+    }
+    /* custom breakpoints */
+    @media (min-width: 1200px) {
+      width: 600px;
+    }
+    @media (min-width: 1400px) {
+      width: 680px;
     }
     ${({ split }) => {
       if (split === 'left') {
@@ -65,9 +72,6 @@ const StyledContent = styled(Container)`
           /* custom breakpoints */
           @media (min-width: 1300px) {
             margin-right: 0;
-          }
-          @media (min-width: 1500px) {
-            margin-right: -1rem;
           }
         `;
       }

@@ -5,7 +5,7 @@ import QuoteLinkButton from '@/components/QuoteLinkButton';
 import { default as SquareOne } from '@/components/ui/AnimatedSquare';
 import { default as SquareTwo } from '@/components/ui/AnimatedSquare';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 // assets
 import heroImage from '@/public/images/hero-primary.webp';
 

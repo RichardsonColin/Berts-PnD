@@ -2,7 +2,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 Mosaic.propTypes = {
   title: PropTypes.string.isRequired,
@@ -11,7 +11,7 @@ Mosaic.propTypes = {
   className: PropTypes.string,
 };
 
-export default function Mosaic({ title, images, split, className = '' }) {
+export default function Mosaic({ title, images, split, className }) {
   const [boxTwoImage, boxThreeImage, boxFourImage] = images;
   return (
     <StyledMosaic className={className} split={split}>
@@ -105,12 +105,12 @@ const StyledMosaic = styled.div`
     ${({ split }) => {
       if (split === 'left') {
         return css`
-          left: -25px;
+          left: -55px;
         `;
       }
       if (split === 'right') {
         return css`
-          right: 30px;
+          right: 0;
         `;
       }
     }}
@@ -131,7 +131,7 @@ const StyledMosaic = styled.div`
     ${({ split }) => {
       if (split === 'left') {
         return css`
-          left: 32px;
+          left: 0;
         `;
       }
     }}
@@ -184,7 +184,7 @@ const CutCorner = css`
   height: 100px;
   background-color: var(--color-grey-10);
   transform: rotateZ(135deg);
-  z-index: 10;
+  z-index: 1;
   overflow: hidden;
 `;
 const CutCornerTopLeft = css`

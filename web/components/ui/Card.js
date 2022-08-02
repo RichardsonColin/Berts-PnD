@@ -6,7 +6,7 @@ Card.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default function Card({ className = '', children }) {
+export default function Card({ className, children }) {
   return <StyledCard className={className}>{children}</StyledCard>;
 }
 

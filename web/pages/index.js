@@ -12,12 +12,12 @@ import ReviewsSection from '@/components/landing/LandingReviewsSection';
 import { fetchReviews } from '@/models/review';
 import { fetchPortfolioImages } from '@/models/portfolioImage';
 // constants
-import { companyData } from '@/src/data/company';
-import { servicesData } from '@/src/data/services';
-import { productsData } from '@/src/data/products';
-import { renovationsData } from '@/src/data/renovations';
-import { experienceData } from '@/src/data/experience';
-import { processData } from '@/src/data/process';
+import { companyData } from '@/data/company';
+import { servicesData } from '@/data/services';
+import { productsData } from '@/data/products';
+import { renovationsData } from '@/data/renovations';
+import { experienceData } from '@/data/experience';
+import { processData } from '@/data/process';
 
 Home.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,

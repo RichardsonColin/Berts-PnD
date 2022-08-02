@@ -9,7 +9,7 @@ import Gutter from '@/components/ui/Gutter';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 ServicesContent.propTypes = {
   contentData: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -167,7 +167,7 @@ const ImageWrapper = styled.div`
       height: 80px;
       background-color: var(--color-grey-10);
       transform: rotate(45deg);
-      z-index: 10;
+      z-index: 1;
     }
     /* cut corner right */
     &:after {
@@ -179,7 +179,7 @@ const ImageWrapper = styled.div`
       height: 80px;
       background-color: var(--color-grey-10);
       transform: rotate(45deg);
-      z-index: 10;
+      z-index: 1;
     }
 
     @media (min-width: ${mediaQueries.laptop}) {

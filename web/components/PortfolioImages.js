@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PortfolioImage from '@/components/PortfolioImage';
 import CustomModal from '@/components/ui/CustomModal';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 PortfolioImages.propTypes = {
   portfolioImages: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -42,7 +42,7 @@ const ImageWrapper = styled.div`
   display: inline-block;
   width: 100%;
   min-height: 200px;
-  margin: 0.25rem;
+  margin: 1rem 0;
   box-shadow: 0px 0px 2px var(--color-grey-900);
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
@@ -58,6 +58,7 @@ const ImageWrapper = styled.div`
   @media (min-width: ${mediaQueries.mobileL}) {
     width: 350px;
     min-height: 350px;
+    margin: 1rem;
   }
   @media (min-width: ${mediaQueries.tablet}) {
     width: 375px;

@@ -9,4 +9,6 @@ export default function Main({ children }) {
   return <StyledMain id='main'>{children}</StyledMain>;
 }
 
-const StyledMain = styled.main``;
+const StyledMain = styled.main`
+  margin-bottom: 5rem;
+`;

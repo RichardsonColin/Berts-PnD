@@ -35,8 +35,9 @@ export default function ContentLoader({
   return (
     <StyledLoaderButton
       isPrimary={false}
+      type='button'
       disabled={isLoadingMore || isReachingEnd}
-      onClick={() => setSize(size + 1)}
+      handleClick={() => setSize(size + 1)}
     >
       {isLoadingMore ? 'loading...' : isReachingEnd ? '' : 'View More'}
     </StyledLoaderButton>

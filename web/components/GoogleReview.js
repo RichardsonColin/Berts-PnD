@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
 // constants
-import { COMPANY_REVIEW_LINK } from '@/src/constants';
-import { mediaQueries } from '@/src/constants';
+import { COMPANY_REVIEW_LINK } from '@/utils/constants';
+import { mediaQueries } from '@/utils/constants';
 
 GoogleReview.propTypes = {
   className: PropTypes.string,
@@ -30,12 +30,21 @@ export default function GoogleReview({ className }) {
 // styles
 const CutCorner = css`
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 70px;
+  height: 70px;
   background-color: var(--color-grey-10);
   transform: rotateZ(135deg);
-  z-index: 5;
+  z-index: 1;
   overflow: hidden;
+
+  @media (min-width: ${mediaQueries.mobileL}) {
+    width: 100px;
+    height: 100px;
+  }
+  @media (min-width: ${mediaQueries.tablet}) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 const StyledContainer = styled(Container)`
   position: relative;
@@ -50,16 +59,31 @@ const StyledContainer = styled(Container)`
   &:before {
     ${CutCorner}
     content: '';
-    bottom: -110px;
-    left: -110px;
+    bottom: -42px;
+    left: -42px;
   }
   &:after {
     ${CutCorner}
     content: '';
-    bottom: -110px;
-    right: -110px;
+    bottom: -42px;
+    right: -42px;
   }
 
+  /* min-widths */
+  @media (min-width: ${mediaQueries.mobileL}) {
+    &:before {
+      ${CutCorner}
+      content: '';
+      bottom: -52px;
+      left: -52px;
+    }
+    &:after {
+      ${CutCorner}
+      content: '';
+      bottom: -52px;
+      right: -52px;
+    }
+  }
   @media (min-width: ${mediaQueries.tablet}) {
     /* angled corners */
     &:before {

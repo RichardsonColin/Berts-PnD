@@ -2,7 +2,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 ExperienceItems.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,

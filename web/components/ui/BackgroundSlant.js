@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 BackgroundSlant.propTypes = {
   slant: PropTypes.string,
@@ -43,10 +43,11 @@ const StyledBackgroundSlant = styled.div`
     left: 50%;
     display: block;
     width: 1000px;
-    height: 350px;
+    height: 400px;
     background-color: ${({ backgroundColor }) => backgroundColor};
     opacity: 1;
     z-index: -1;
+    box-shadow: 0 0 4px var(--color-grey-900);
     transform: ${({ slant, degree }) => {
       let rotate = slant === 'left' ? `-${degree}` : degree;
       return css`
@@ -60,11 +61,11 @@ const StyledBackgroundSlant = styled.div`
     @media (min-width: 600px) {
       width: 3000px;
       height: ${({ heightMultiple }) =>
-        `${parseInt(Math.ceil(heightMultiple * 418))}px`};
+        `${parseInt(Math.ceil(heightMultiple * 500))}px`};
     }
     @media (min-width: ${mediaQueries.tablet}) {
       height: ${({ heightMultiple }) =>
-        `${parseInt(Math.ceil(heightMultiple * 520))}px`};
+        `${parseInt(Math.ceil(heightMultiple * 650))}px`};
     }
     @media (min-width: ${mediaQueries.laptop}) {
       height: ${({ heightMultiple }) =>

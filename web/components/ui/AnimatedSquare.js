@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { css, keyframes } from 'styled-components';
 // constants
-import { mediaQueries } from '@/src/constants';
+import { mediaQueries } from '@/utils/constants';
 
 AnimatedSquare.propTypes = {
   size: PropTypes.number.isRequired,
@@ -26,7 +26,7 @@ export default function AnimatedSquare({
   color = 'var(--primary)',
   opacity = 1,
   animationDuration = 12,
-  className = '',
+  className,
 }) {
   return (
     <AnimatedSquareShift
