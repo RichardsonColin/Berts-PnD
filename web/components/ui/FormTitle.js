@@ -10,7 +10,11 @@ FormTitle.propTypes = {
 };
 
 export default function FormTitle({ children, className }) {
-  return <StyledFormTitle className={className}>{children}</StyledFormTitle>;
+  return (
+    <StyledFormTitle className={className}>
+      <Highlight>{children}</Highlight>
+    </StyledFormTitle>
+  );
 }
 
 // styles
@@ -23,5 +27,18 @@ const StyledFormTitle = styled.h3`
 
   @media (min-width: ${mediaQueries.tablet}) {
     font-size: 1.5em;
+  }
+`;
+const Highlight = styled.span`
+  ${StyledFormTitle} & {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      width: 100%;
+      height: 35%;
+      background-color: var(--secondary-fade);
+    }
   }
 `;
