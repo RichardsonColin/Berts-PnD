@@ -35,8 +35,8 @@ export default function ContactContent({
             <Heading level='2'>{title}</Heading>
           </HeadingWrapper>
           <ContentWrapper>
-            <StyledContactForm />
             <StyledContactDetails companyData={companyData} />
+            <StyledContactForm />
           </ContentWrapper>
         </Gutter>
       </StyledContactSection>
@@ -48,6 +48,9 @@ export default function ContactContent({
 const StyledContactSection = styled(StyledSection)``;
 const ContentWrapper = styled.div`
   ${StyledContactSection} & {
+    padding: 1rem;
+    background-color: var(--secondary);
+
     @media (min-width: ${mediaQueries.laptop}) {
       display: flex;
       flex-wrap: wrap;
@@ -58,22 +61,20 @@ const ContentWrapper = styled.div`
 `;
 const StyledContactForm = styled(ContactForm)`
   ${StyledContactSection} & {
-    margin: 0 auto 5rem;
+    margin: 0 auto;
 
     @media (min-width: ${mediaQueries.laptop}) {
-      flex-grow: 3;
-      margin: 0 5rem 0 0;
+      max-width: 950px;
+      margin: 0;
+      flex-grow: 4;
     }
   }
 `;
 const StyledContactDetails = styled(ContactDetails)`
   ${StyledContactSection} & {
-    max-width: 500px;
-
     @media (min-width: ${mediaQueries.laptop}) {
-      max-width: 400px;
+      margin: 0 1rem 0 0;
       flex-grow: 2;
-      margin: 0;
     }
   }
 `;
