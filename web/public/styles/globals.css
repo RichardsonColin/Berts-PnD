@@ -1,6 +1,7 @@
 :root {
   /* TODO: Convert into JS constants for IE support */
   --primary: hsl(44, 36%, 52%);
+  --primary-fade: hsl(44deg 36% 52% / 12%);
   --primary-light: hsl(42, 94%, 80%);
   --primary-dark: hsl(43, 58%, 20%);
   --primary-accent: hsl(28, 39%, 51%);
