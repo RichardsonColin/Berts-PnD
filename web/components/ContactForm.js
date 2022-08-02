@@ -47,7 +47,7 @@ export default function ContactForm({ className }) {
       requestUrl={FORM_MAILER_PATH}
       className={className}
     >
-      <FormTitle>We're here for all your questions</FormTitle>
+      <FormTitle>Reach Out</FormTitle>
       <FormGroupFlex>
         <FormGroup>
           <FormLabel htmlFor='name'>Name</FormLabel>
