@@ -7,6 +7,9 @@ module.exports = {
 
     return config;
   },
+  compiler: {
+    styledComponents: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
@@ -20,9 +23,5 @@ module.exports = {
     SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
     SANITY_DATASET: process.env.SANITY_DATASET,
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
-  },
-  experimental: {
-    // ssr and displayName are configured by default
-    styledComponents: true,
   },
 };

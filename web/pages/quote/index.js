@@ -11,10 +11,11 @@ QuotePage.propTypes = {
 
 export default function QuotePage({ companyData }) {
   const { companyName } = companyData;
+  const title = `Quote | ${companyName}`;
   return (
     <>
       <Head>
-        <title>Quote | {companyName}</title>
+        <title>{title}</title>
       </Head>
       <QuoteContent
         id='quote'

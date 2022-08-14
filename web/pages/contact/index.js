@@ -11,10 +11,11 @@ ContactPage.propTypes = {
 
 export default function ContactPage({ companyData }) {
   const { companyName } = companyData;
+  const title = `Contact | ${companyName}`;
   return (
     <>
       <Head>
-        <title>Contact | {companyName}</title>
+        <title>{title}</title>
       </Head>
       <ContactContent
         companyData={companyData}

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import sanityClient from '../lib/sanity/client';
-import { useNextSanityImage } from 'next-sanity-image';
+import { useNextSanityImage } from '@richardsoncolin/next-sanity-image';
 import PropTypes from 'prop-types';
 
 SanityImage.propTypes = {

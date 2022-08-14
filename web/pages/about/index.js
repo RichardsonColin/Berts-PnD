@@ -13,10 +13,11 @@ AboutPage.propTypes = {
 
 export default function AboutPage({ contentData, companyData }) {
   const { companyName } = companyData;
+  const title = `About | ${companyName}`;
   return (
     <>
       <Head>
-        <title>About | {companyName}</title>
+        <title>{title}</title>
       </Head>
       <AboutContent
         contentData={contentData}

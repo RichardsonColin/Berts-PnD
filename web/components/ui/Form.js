@@ -24,16 +24,18 @@ export default function Form({
   className,
 }) {
   return (
-    <StyledForm
-      initialValues={initialValues}
-      validations={validations}
-      requestUrl={requestUrl}
-      className={className}
-    >
-      {children}
-    </StyledForm>
+    <FormWrapper className={className}>
+      <FormikForm
+        initialValues={initialValues}
+        validations={validations}
+        requestUrl={requestUrl}
+        className={className}
+      >
+        {children}
+      </FormikForm>
+    </FormWrapper>
   );
 }
 
 // styles
-const StyledForm = styled(FormikForm)``;
+const FormWrapper = styled.div``;
