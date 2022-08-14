@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import FormStatusMessage from '@/components/ui/FormStatusMessage';
 import FormSubmitButton from '@/components/ui/FormSubmitButton';
 import FormGroup from '@/components/ui/FormGroup';
-import ReCaptcha from '@/components/ReCaptcha';
+import ReCaptchaPolicy from '@/components/ReCaptchaPolicy';
 // hooks
 import useReCaptcha from '@/hooks/useReCaptcha';
 // constants
@@ -18,7 +18,6 @@ FormikForm.propTypes = {
   validations: PropTypes.func.isRequired,
   requestUrl: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };
 
 export default function FormikForm({
@@ -26,11 +25,9 @@ export default function FormikForm({
   validations,
   requestUrl,
   children,
-  className,
 }) {
   const [isStatusDisplayed, setIsStatusDisplayed] = useState(false);
-  const { reCaptchaRef, reCaptchaError, setToken, verifyReCaptcha } =
-    useReCaptcha();
+  const { verifyReCaptcha } = useReCaptcha();
 
   const handleSubmit = async (
     values,
@@ -38,9 +35,15 @@ export default function FormikForm({
   ) => {
     try {
       // ensure that the form is able to send using a verification on the user
-      // currently using reCAPTCHAv2
-      const isVerified = await handleVerification();
-      if (!isVerified) return;
+      // via reCaptcha v3
+      const isVerified = await verifyReCaptcha();
+      if (!isVerified) {
+        handleStatus(
+          setStatus,
+          'Google ReCaptcha verification was unsuccsessful. Please refresh the page and try again.'
+        );
+        return;
+      }
       // send form data
       const response = await handleRequest(values);
 
@@ -84,47 +87,38 @@ export default function FormikForm({
     }, timeToDisplayInMs);
   };
 
-  // authorizes form submission
-  const handleVerification = async () => {
-    return await verifyReCaptcha();
-  };
-
   return (
-    <FormWrapper className={className}>
-      <Formik
-        initialValues={initialValues}
-        validate={validations}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting, status }) => (
-          <StyledForm>
-            {children}
-            <StyledFormGroup>
-              <ReCaptcha
-                reCaptchaRef={reCaptchaRef}
-                setToken={setToken}
-                reCaptchaError={reCaptchaError}
-                tabIndex={100}
-              />
-              <StyledFormSubmitButton
-                text='Send'
-                isSubmitting={isSubmitting}
-                disabled={isSubmitting}
-              />
-            </StyledFormGroup>
+    <Formik
+      initialValues={initialValues}
+      validate={validations}
+      onSubmit={handleSubmit}
+    >
+      {({ isSubmitting, status }) => (
+        <StyledForm>
+          {children}
+          <StyledButtonFormGroup>
+            <StyledFormSubmitButton
+              text='Send'
+              isSubmitting={isSubmitting}
+              disabled={isSubmitting}
+            />
+          </StyledButtonFormGroup>
+          <StyledTextFormGroup>
+            <ReCaptchaPolicy />
+          </StyledTextFormGroup>
+          <StyledTextFormGroup>
             <StyledFormStatusMessage
               msg={status?.msg || ''}
               isDisplayed={isStatusDisplayed}
             />
-          </StyledForm>
-        )}
-      </Formik>
-    </FormWrapper>
+          </StyledTextFormGroup>
+        </StyledForm>
+      )}
+    </Formik>
   );
 }
 
 // styles
-const FormWrapper = styled.div``;
 const StyledForm = styled(Form)`
   padding: 1rem 0.5rem;
   background-color: #fff;
@@ -136,30 +130,27 @@ const StyledForm = styled(Form)`
 `;
 const StyledFormSubmitButton = styled(FormSubmitButton)`
   ${StyledForm} & {
-    margin-top: 1rem;
+    padding: 0.75rem 4rem;
 
     @media (min-width: ${mediaQueries.tablet}) {
       margin-top: 0;
     }
   }
 `;
-const StyledFormGroup = styled(FormGroup)`
+const StyledButtonFormGroup = styled(FormGroup)`
   ${StyledForm} & {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 0;
-    min-height: 144px;
+    text-align: center;
 
     /* min-widths */
     @media (min-width: ${mediaQueries.mobileL}) {
-      min-height: 78px;
+      text-align: left;
     }
-    @media (min-width: ${mediaQueries.tablet}) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+  }
+`;
+const StyledTextFormGroup = styled(FormGroup)`
+  ${StyledForm} & {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 `;
 const StyledFormStatusMessage = styled(FormStatusMessage)`

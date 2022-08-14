@@ -1,24 +1,27 @@
-import { useState, useRef } from 'react';
+import { useCallback } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 // constants
 import { RECAPTCHA_VERIFY_PATH } from '@/utils/constants';
 
 export default function useReCaptcha() {
-  const reCaptchaRef = useRef(null);
-  const [token, setToken] = useState('');
-  const [reCaptchaError, setReCaptchaError] = useState('');
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const verifyReCaptcha = async () => {
-    if (!token) {
-      setReCaptchaError('Please check, "I\'m not a robot."');
-      return false;
-    }
-
-    const { success } = await handleRequest();
-    reset();
+    const token = await handleReCaptchaVerify();
+    const { success } = await handleRequest(token);
     return success;
   };
 
-  const handleRequest = async () => {
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.warn('reCAPTCHA not yet available.');
+      return;
+    }
+
+    return await executeRecaptcha();
+  }, [executeRecaptcha]);
+
+  const handleRequest = async (token) => {
     const response = await fetch(RECAPTCHA_VERIFY_PATH, {
       method: 'POST',
       body: JSON.stringify({ token }),
@@ -29,21 +32,7 @@ export default function useReCaptcha() {
     return response.json();
   };
 
-  const reset = () => {
-    // clear error
-    setReCaptchaError('');
-    // reset ReCAPTCHA
-    reCaptchaRef.current.reset();
-    // set token state to default state => ''
-    setToken(reCaptchaRef.current.getValue());
-  };
-
   return {
-    reCaptchaRef,
-    token,
-    setToken,
-    reCaptchaError,
-    setReCaptchaError,
     verifyReCaptcha,
   };
 }
