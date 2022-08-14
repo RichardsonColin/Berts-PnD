@@ -19,10 +19,11 @@ export default function ReviewsPage({
   companyData,
 }) {
   const { companyName } = companyData;
+  const title = `Testimonials | ${companyName}`;
   return (
     <>
       <Head>
-        <title>Testimonials | {companyName}</title>
+        <title>{title}</title>
       </Head>
       <ReviewsContent
         contentData={contentData}
@@ -40,7 +41,6 @@ export default function ReviewsPage({
 export async function getStaticProps() {
   const contentParams = { perPage: 5, order: 'date desc' };
   const { data } = await fetchReviews({ page: 1, ...contentParams });
-  console.log(data);
   return {
     props: { contentData: data, contentParams, companyData },
     revalidate: 60,

@@ -19,10 +19,11 @@ export default function PortfolioPage({
   companyData,
 }) {
   const { companyName } = companyData;
+  const title = `Portfolio | ${companyName}`;
   return (
     <>
       <Head>
-        <title>Portfolio | {companyName}</title>
+        <title>{title}</title>
       </Head>
       <PortfolioContent
         contentData={contentData}
