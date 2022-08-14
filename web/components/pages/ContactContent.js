@@ -53,7 +53,6 @@ const ContentWrapper = styled.div`
 
     @media (min-width: ${mediaQueries.laptop}) {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
     }
@@ -64,17 +63,17 @@ const StyledContactForm = styled(ContactForm)`
     margin: 0 auto;
 
     @media (min-width: ${mediaQueries.laptop}) {
+      width: 100%;
       max-width: 950px;
       margin: 0;
-      flex-grow: 4;
     }
   }
 `;
 const StyledContactDetails = styled(ContactDetails)`
   ${StyledContactSection} & {
     @media (min-width: ${mediaQueries.laptop}) {
+      min-width: 250px;
       margin: 0 1rem 0 0;
-      flex-grow: 2;
     }
   }
 `;
