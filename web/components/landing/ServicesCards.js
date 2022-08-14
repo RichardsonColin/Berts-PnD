@@ -77,7 +77,6 @@ const CardsWrapper = styled(Container)`
 const StyledCard = styled(Card)`
   ${CardsWrapper} & {
     position: relative;
-    width: 285px;
     margin-bottom: 3.125rem;
     padding: 0;
     padding-bottom: 1.5rem;
@@ -91,6 +90,9 @@ const StyledCard = styled(Card)`
       width: 285px;
     }
 
+    @media (min-width: ${mediaQueries.mobileS}) {
+      width: 285px;
+    }
     @media (min-width: ${mediaQueries.laptop}) {
       margin-left: 0;
       margin-right: 0;
