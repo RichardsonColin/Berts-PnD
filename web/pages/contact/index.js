@@ -2,6 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 // components
 import ContactContent from '@/components/pages/ContactContent';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // constants
 import { companyData } from '@/data/company';
 
@@ -17,13 +18,18 @@ export default function ContactPage({ companyData }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <ContactContent
-        companyData={companyData}
-        id='contact'
-        heading='Contact Us'
-        title='Get in Touch'
-        subtitle='Inquiry within'
-      />
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env['RECAPTCHA_SITE_KEY']}
+        scriptProps={{ defer: true }}
+      >
+        <ContactContent
+          companyData={companyData}
+          id='contact'
+          heading='Contact Us'
+          title='Get in Touch'
+          subtitle='Inquiry within'
+        />
+      </GoogleReCaptchaProvider>
     </>
   );
 }

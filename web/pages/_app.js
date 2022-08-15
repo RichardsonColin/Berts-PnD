@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // components
 import Layout from '@/components/layout/Layout';
 import { ModalProvider, BaseModalBackground } from 'styled-react-modal';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // constants
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/utils/constants';
 // font-awesome
@@ -29,12 +28,7 @@ export default function MyApp({ Component, pageProps }) {
           <meta name='description' content={COMPANY_DESCRIPTION} />
         </Head>
         <ModalProvider backgroundComponent={FadingBackground}>
-          <GoogleReCaptchaProvider
-            reCaptchaKey={process.env['RECAPTCHA_SITE_KEY']}
-            scriptProps={{ defer: true }}
-          >
-            <Component {...pageProps} />
-          </GoogleReCaptchaProvider>
+          <Component {...pageProps} />
         </ModalProvider>
       </Layout>
     </>
