@@ -72,6 +72,12 @@ export default function Home({
       <HeroPrimary />
       <ServicesSection services={services} />
       <Suspense fallback={`Loading...`}>
+        {/* <RenovationsSection renovations={renovations} />
+        <ExperienceSection experience={experience} />
+        <ProductsSection products={products} />
+        <PortfolioSection portfolio={portfolio} companyData={companyData} />
+        <ProcessSection process={process} />
+        <ReviewsSection reviews={reviews} /> */}
         <DynamicRenovationsSection renovations={renovations} />
         <DynamicExperienceSection experience={experience} />
         <DynamicProductsSection products={products} />
