@@ -1,13 +1,15 @@
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 // components
 import HeroPrimary from '@/components/HeroPrimary';
 import ServicesSection from '@/components/landing/LandingServicesSection';
-import RenovationsSection from '@/components/landing/LandingRenovationsSection';
-import ExperienceSection from '@/components/landing/LandingExperienceSection';
-import ProductsSection from '@/components/landing/LandingProductsSection';
-import ProcessSection from '@/components/landing/LandingProcessSection';
-import PortfolioSection from '@/components/landing/LandingPortfolioSection';
-import ReviewsSection from '@/components/landing/LandingReviewsSection';
+// import RenovationsSection from '@/components/landing/LandingRenovationsSection';
+// import ExperienceSection from '@/components/landing/LandingExperienceSection';
+// import ProductsSection from '@/components/landing/LandingProductsSection';
+// import ProcessSection from '@/components/landing/LandingProcessSection';
+// import PortfolioSection from '@/components/landing/LandingPortfolioSection';
+// import ReviewsSection from '@/components/landing/LandingReviewsSection';
 // models
 import { fetchReviews } from '@/models/review';
 import { fetchPortfolioImages } from '@/models/portfolioImage';
@@ -29,6 +31,32 @@ Home.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
+// dynamic imports
+const DynamicPortfolioSection = dynamic(
+  () => import('../components/landing/LandingPortfolioSection'),
+  { suspense: true }
+);
+const DynamicRenovationsSection = dynamic(
+  () => import('../components/landing/LandingRenovationsSection'),
+  { suspense: true }
+);
+const DynamicExperienceSection = dynamic(
+  () => import('../components/landing/LandingExperienceSection'),
+  { suspense: true }
+);
+const DynamicProductsSection = dynamic(
+  () => import('../components/landing/LandingProductsSection'),
+  { suspense: true }
+);
+const DynamicProcessSection = dynamic(
+  () => import('../components/landing/LandingProcessSection'),
+  { suspense: true }
+);
+const DynamicReviewsSection = dynamic(
+  () => import('../components/landing/LandingReviewsSection'),
+  { suspense: true }
+);
+
 export default function Home({
   services,
   renovations,
@@ -43,12 +71,17 @@ export default function Home({
     <>
       <HeroPrimary />
       <ServicesSection services={services} />
-      <RenovationsSection renovations={renovations} />
-      <ExperienceSection experience={experience} />
-      <ProductsSection products={products} />
-      <PortfolioSection portfolio={portfolio} companyData={companyData} />
-      <ProcessSection process={process} />
-      <ReviewsSection reviews={reviews} />
+      <Suspense fallback={`Loading...`}>
+        <DynamicRenovationsSection renovations={renovations} />
+        <DynamicExperienceSection experience={experience} />
+        <DynamicProductsSection products={products} />
+        <DynamicPortfolioSection
+          portfolio={portfolio}
+          companyData={companyData}
+        />
+        <DynamicProcessSection process={process} />
+        <DynamicReviewsSection reviews={reviews} />
+      </Suspense>
     </>
   );
 }
