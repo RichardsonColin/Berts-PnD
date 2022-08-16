@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import Heading from '@/components/ui/Heading';
+// hooks
+import useMediaQuery from '@/hooks/useMediaQuery';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
@@ -13,6 +15,7 @@ HeroAlternate.propTypes = {
 };
 
 export default function HeroAlternate({ heading }) {
+  const isBreakPoint = useMediaQuery('tablet');
   return (
     <StyledHero id='hero'>
       <ImageFilter aria-hidden='true' />
@@ -22,7 +25,7 @@ export default function HeroAlternate({ heading }) {
         alt='Hero image'
         layout='fill'
         objectFit='cover'
-        quality={100}
+        quality={isBreakPoint ? 100 : 70}
       />
       <StyledHeading level='1'>{heading}</StyledHeading>
     </StyledHero>
