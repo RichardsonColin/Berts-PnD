@@ -3,7 +3,6 @@ import FocusLock from 'react-focus-lock';
 import styled from 'styled-components';
 // hooks
 import useMediaQuery from '@/hooks/useMediaQuery';
-import useClickOutside from '@/hooks/useClickOutside';
 import useHasMounted from '@/hooks/useHasMounted';
 // components
 import NavList from './NavList';
@@ -18,13 +17,9 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const isLargeViewport = useMediaQuery(`(min-width: ${mediaQueries.laptop})`);
 
-  // close BurgerMenu by clicking outside of node
-  useClickOutside(node, () => setOpen(false));
-
   if (!hasMounted) {
     return null;
   }
-
   return (
     <>
       {!isLargeViewport ? (

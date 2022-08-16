@@ -49,7 +49,7 @@ const StyledBurgerMenu = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: 50%;
+  min-width: 100%;
   min-height: 100vh;
   padding: 1.5rem 1rem;
   background-color: var(--primary);
@@ -66,7 +66,6 @@ const StyledBurgerMenu = styled.nav`
   }
   @media (min-width: ${mediaQueries.tablet}) {
     top: 50px;
-    min-width: 33%;
     font-size: 1.25em;
   }
   @media (min-width: ${mediaQueries.laptop}) {
