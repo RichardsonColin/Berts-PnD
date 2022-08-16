@@ -20,6 +20,7 @@ export default function Nav() {
   if (!hasMounted) {
     return null;
   }
+
   return (
     <>
       {!isLargeViewport ? (
@@ -46,3 +47,4 @@ const StyledNav = styled.nav`
   align-items: center;
   height: inherit;
 `;
+// const StyledBurgerMenu

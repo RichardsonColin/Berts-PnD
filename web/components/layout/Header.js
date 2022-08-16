@@ -16,7 +16,7 @@ Header.propTypes = {
 export default function Header({ children }) {
   return (
     <StyledHeader id='header'>
-      <BorderSpacer size={4} position='bottom' />
+      <BorderSpacer size={3} position='bottom' />
       <ContentWrapper>
         <StyledGutter>
           <LogoWrapper>

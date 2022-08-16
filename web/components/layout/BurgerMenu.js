@@ -19,7 +19,7 @@ export default function BurgerMenu({ open, setOpen }) {
   const tabIndex = isHidden ? 0 : -1;
   return (
     <StyledBurgerMenu aria-label='Main' aria-hidden={!isHidden} open={open}>
-      <MenuList>
+      <MenuList open={open}>
         {siteRoutes.map((route) => (
           <MenuItem key={route}>
             <Link href={route} passHref>
@@ -45,17 +45,18 @@ export default function BurgerMenu({ open, setOpen }) {
 const StyledBurgerMenu = styled.nav`
   position: absolute;
   top: 42px;
-  right: -1px;
+  right: 0px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: 100%;
+  width: 100%;
   min-height: 100vh;
   padding: 1.5rem 1rem;
   background-color: var(--primary);
   text-align: right;
   transition: transform 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
+  overflow: hidden;
 
   /* min-widths */
   @media (min-width: ${mediaQueries.mobileS}) {
@@ -79,7 +80,7 @@ const StyledBurgerMenu = styled.nav`
 `;
 const MenuList = styled.ul`
   ${StyledBurgerMenu} & {
-    display: flex;
+    display: ${({ open }) => (open ? 'flex' : 'none')};
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;

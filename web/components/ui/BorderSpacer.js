@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 // hooks
-import useWindowDimensions from '@/hooks/useWindowDimensions';
-import useHasMounted from '@/hooks/useHasMounted';
+import useMediaQuery from '@/hooks/useMediaQuery';
 // constants
 import { mediaQueries } from '@/utils/constants';
 
@@ -20,24 +19,16 @@ export default function BorderSpacer({
   backgroundColor = 'var(--primary)',
   className,
 }) {
-  const hasMounted = useHasMounted();
-  const { width } = useWindowDimensions();
+  const isLargeViewport = useMediaQuery(`(min-width: ${mediaQueries.laptop})`);
   // size of border spacer in px
   const [spacerSize, setSpacerSize] = useState(size);
 
   useEffect(() => {
-    // resize the spacer to be thinner for smaller viewports
-    const breakPointWidth = Number(mediaQueries.laptop.replace('px', ''));
     // decrease to half the size of original for smaller viewports
-    const newSpacerSize =
-      width > breakPointWidth ? size : size - Math.round(size / 2);
+    const newSpacerSize = isLargeViewport ? size : size - Math.round(size / 2);
     // defaults to 1 if calc results in 0
     setSpacerSize(newSpacerSize || 1);
-  }, [width, size]);
-
-  if (!hasMounted) {
-    return null;
-  }
+  }, [isLargeViewport]);
 
   return (
     <StyledBorderSpacer
