@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 // hooks
 import useCurrentRoute from '@/hooks/useCurrentRoute';
+import usePreventVerticalScroll from '@/hooks/usePreventVerticalScroll';
 // components
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 // constants
@@ -17,6 +18,9 @@ export default function BurgerMenu({ open, setOpen }) {
   const currentRoute = useCurrentRoute();
   const isHidden = open ? true : false;
   const tabIndex = isHidden ? 0 : -1;
+
+  usePreventVerticalScroll(open);
+
   return (
     <StyledBurgerMenu aria-label='Main' aria-hidden={!isHidden} open={open}>
       <MenuList open={open}>
@@ -54,9 +58,9 @@ const StyledBurgerMenu = styled.nav`
   padding: 1.5rem 1rem;
   background-color: var(--primary);
   text-align: right;
-  transition: transform 0.3s ease-in-out;
-  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
-  overflow: hidden;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(100%)')};
+  visibility: ${({ open }) => (open ? '' : 'hidden')};
 
   /* min-widths */
   @media (min-width: ${mediaQueries.mobileS}) {
