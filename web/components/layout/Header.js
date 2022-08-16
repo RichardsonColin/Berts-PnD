@@ -35,12 +35,12 @@ export default function Header({ children }) {
 
 // styles
 export const StyledHeader = styled.header`
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 42px;
   min-height: 42px;
   background-color: #fff;
-  box-shadow: 0px 1px 2px 0px var(--color-grey-700);
+  color: var(--color-grey-800);
   z-index: 10;
   transition: 0.2s ease;
 
@@ -50,8 +50,8 @@ export const StyledHeader = styled.header`
     min-height: 50px;
   }
   @media (min-width: ${mediaQueries.laptop}) {
-    height: 90px;
-    min-height: 90px;
+    height: 70px;
+    min-height: 70px;
   }
 `;
 const StyledGutter = styled(Gutter)`

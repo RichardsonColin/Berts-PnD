@@ -1,38 +1,26 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-// hooks
-import useCurrentRoute from '@/hooks/useCurrentRoute';
-// components
-import QuoteLinkButton from '@/components/QuoteLinkButton';
+import styled from 'styled-components';
 // styling components
 import { StyledHeader as StyledHeaderWrapper } from '@/components/layout/Header';
 import { StyledFooter as StyledFooterWrapper } from '@/components/layout/Footer';
 // constants
 import { siteRoutes, mediaQueries } from '@/utils/constants';
 
-NavList.propTypes = {
-  showCallToAction: PropTypes.bool,
-};
+NavList.propTypes = {};
 
-export default function NavList({ showCallToAction = true }) {
-  const currentRoute = useCurrentRoute();
+export default function NavList() {
   return (
     <StyledNavList>
       {siteRoutes.map((route) => (
         <NavListItem key={route}>
           <Link href={route} passHref>
-            <StyledLink isCurrentRoute={route === currentRoute}>
+            <StyledLink>
               {route === '/' ? 'home' : route.replace('/', '')}
             </StyledLink>
           </Link>
         </NavListItem>
       ))}
-      {showCallToAction && (
-        <NavListItem>
-          <QuoteLinkButton />
-        </NavListItem>
-      )}
     </StyledNavList>
   );
 }
@@ -65,7 +53,7 @@ const StyledNavList = styled.ul`
 const NavListItem = styled.li`
   /* Header */
   ${StyledHeaderWrapper} ${StyledNavList} & {
-    margin-left: 2.5rem;
+    margin-left: 1.75rem;
   }
 
   /* Footer */
@@ -75,6 +63,7 @@ const NavListItem = styled.li`
 `;
 const StyledLink = styled.a`
   position: relative;
+  padding: 0.2rem 0.3rem;
   text-decoration: none;
   font-size: 1em;
   font-weight: 400;
@@ -85,56 +74,45 @@ const StyledLink = styled.a`
   /* Custom underline */
   &:before {
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 4px;
+    top: -1px;
+    left: -1px;
+    width: 50%;
+    height: 100%;
     opacity: 0;
     content: '';
     cursor: pointer;
     transition: opacity 0.2s ease;
+    z-index: -1;
+  }
+  &:after {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 50%;
+    height: 100%;
+    opacity: 0;
+    content: '';
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    z-index: -1;
   }
 
-  /* Header */
-  ${StyledHeaderWrapper} ${StyledNavList} & {
-    &:hover {
-      color: var(--primary-dark);
-    }
-  }
-
-  /* Footer */
-  ${StyledFooterWrapper} ${StyledNavList} & {
-    font-size: 1em;
-    &:hover {
-      color: var(--primary-light);
-    }
-  }
-
-  &:hover::before {
+  &:hover::before,
+  &:hover::after {
     opacity: 1;
   }
 
   /* Header */
-  ${StyledHeaderWrapper} ${StyledNavList} &:before {
-    background-color: var(--primary-light);
+  ${StyledHeaderWrapper} ${StyledNavList} & {
+    background-color: #fff;
+    &:hover {
+      color: var(--secondary);
+    }
   }
 
-  /* Footer */
-  ${StyledFooterWrapper} ${StyledNavList} &:before {
+  /* Header */
+  ${StyledHeaderWrapper} ${StyledNavList} &:before,
+  ${StyledHeaderWrapper} ${StyledNavList} &:after {
     background-color: var(--secondary-light);
   }
-
-  ${({ isCurrentRoute }) => {
-    if (isCurrentRoute) {
-      return css`
-        /* Footer */
-        ${StyledFooterWrapper} ${StyledNavList} && {
-          color: var(--color-grey-10);
-        }
-        &&:before {
-          opacity: 1;
-        }
-      `;
-    }
-  }}
 `;

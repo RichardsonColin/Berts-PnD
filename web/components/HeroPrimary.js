@@ -4,15 +4,12 @@ import styled, { css } from 'styled-components';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 import { default as SquareOne } from '@/components/ui/AnimatedSquare';
 import { default as SquareTwo } from '@/components/ui/AnimatedSquare';
-// hooks
-import useMediaQuery from '@/hooks/useMediaQuery';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
 import heroImage from '@/public/images/hero-primary.webp';
 
 export default function HeroPrimary() {
-  const isBreakPoint = useMediaQuery('tablet');
   return (
     <StyledHero id='hero'>
       <ColorWash aria-hidden='true' />
@@ -32,7 +29,7 @@ export default function HeroPrimary() {
           alt='Hero image'
           layout='fill'
           objectFit='cover'
-          quality={isBreakPoint ? 100 : 70}
+          quality={80}
         />
       </HeroImageWrapper>
       <StyledSquareOne

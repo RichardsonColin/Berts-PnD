@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 // hooks
 import useWindowDimensions from '@/hooks/useWindowDimensions';
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 
@@ -19,6 +20,7 @@ export default function BorderSpacer({
   backgroundColor = 'var(--primary)',
   className,
 }) {
+  const hasMounted = useHasMounted();
   const { width } = useWindowDimensions();
   // size of border spacer in px
   const [spacerSize, setSpacerSize] = useState(size);
@@ -32,6 +34,11 @@ export default function BorderSpacer({
     // defaults to 1 if calc results in 0
     setSpacerSize(newSpacerSize || 1);
   }, [width, size]);
+
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <StyledBorderSpacer
       aria-hidden='true'

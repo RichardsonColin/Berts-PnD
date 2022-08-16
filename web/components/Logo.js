@@ -6,14 +6,7 @@ import { COMPANY_NAME } from '@/utils/constants';
 import logoImage from '@/public/images/logo.webp';
 
 export default function Logo() {
-  return (
-    <StyledImage
-      priority={true}
-      src={logoImage}
-      alt={`${COMPANY_NAME} logo`}
-      quality={100}
-    />
-  );
+  return <StyledImage src={logoImage} alt={`${COMPANY_NAME} logo`} />;
 }
 
 // styles

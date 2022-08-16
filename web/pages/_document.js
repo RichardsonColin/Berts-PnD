@@ -21,12 +21,7 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(context);
       return {
         ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {styleSheet.getStyleElement()}
-          </>
-        ),
+        styles: [initialProps.styles, styleSheet.getStyleElement()],
       };
     } finally {
       styleSheet.seal();

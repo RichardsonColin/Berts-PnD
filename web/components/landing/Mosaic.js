@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
+// styled
+import styled, { css } from 'styled-components';
 
 Mosaic.propTypes = {
   title: PropTypes.string.isRequired,
@@ -12,7 +15,13 @@ Mosaic.propTypes = {
 };
 
 export default function Mosaic({ title, images, split, className }) {
+  const hasMounted = useHasMounted();
   const [boxTwoImage, boxThreeImage, boxFourImage] = images;
+
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <StyledMosaic className={className} split={split}>
       <StyledBoxOne split={split}>

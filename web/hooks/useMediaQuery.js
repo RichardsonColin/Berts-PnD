@@ -1,10 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
-// constants
-import { mediaQueries } from '@/utils/constants';
 
-export default function useMediaQuery(breakpointLabel) {
+export default function useMediaQuery(query) {
   const [targetReached, setTargetReached] = useState(false);
-  const width = Number(mediaQueries[breakpointLabel].replace('px', ''));
 
   const updateTarget = useCallback((event) => {
     if (event.matches) {
@@ -15,8 +12,7 @@ export default function useMediaQuery(breakpointLabel) {
   }, []);
 
   useEffect(() => {
-    // minus one to offset for use with min-widths
-    const media = window.matchMedia(`(max-width: ${width - 1}px)`);
+    const media = window.matchMedia(query);
     media.addEventListener('change', updateTarget);
 
     // Check on mount (callback is not called until a change occurs)
@@ -25,7 +21,7 @@ export default function useMediaQuery(breakpointLabel) {
     }
 
     return () => media.removeEventListener('change', updateTarget);
-  }, [width, updateTarget]);
+  }, [query, updateTarget]);
 
   return targetReached;
 }

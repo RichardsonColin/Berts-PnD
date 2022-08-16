@@ -67,17 +67,18 @@ export default function Home({
   reviews,
 }) {
   // TODO: App wide - modify all PropTypes classNames to 'isRequired' and fix subsequent linting warnings
+  // TODO: Clean up dynamic loading. (maybe move to individual componenets themselves)
   return (
     <>
       <HeroPrimary />
       <ServicesSection services={services} />
-      <Suspense fallback={`Loading...`}>
+      <Suspense fallback={null}>
         {/* <RenovationsSection renovations={renovations} />
-        <ExperienceSection experience={experience} />
-        <ProductsSection products={products} />
-        <PortfolioSection portfolio={portfolio} companyData={companyData} />
-        <ProcessSection process={process} />
-        <ReviewsSection reviews={reviews} /> */}
+      <ExperienceSection experience={experience} />
+      <ProductsSection products={products} />
+      <PortfolioSection portfolio={portfolio} companyData={companyData} />
+      <ProcessSection process={process} />
+      <ReviewsSection reviews={reviews} /> */}
         <DynamicRenovationsSection renovations={renovations} />
         <DynamicExperienceSection experience={experience} />
         <DynamicProductsSection products={products} />

@@ -1,30 +1,33 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import FocusLock from 'react-focus-lock';
 import styled from 'styled-components';
 // hooks
 import useMediaQuery from '@/hooks/useMediaQuery';
 import useClickOutside from '@/hooks/useClickOutside';
+import useHasMounted from '@/hooks/useHasMounted';
 // components
 import NavList from './NavList';
 import Burger from '@/components/layout/Burger';
 import BurgerMenu from '@/components/layout/BurgerMenu';
+// constants
+import { mediaQueries } from '@/utils/constants';
 
 export default function Nav() {
-  const [loaded, setLoaded] = useState(false);
-  const [open, setOpen] = useState(false);
+  const hasMounted = useHasMounted();
   const node = useRef();
-  const isBreakPoint = useMediaQuery('laptop');
-
-  // ensure DOM is ready before setting a nav to display
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+  const [open, setOpen] = useState(false);
+  const isLargeViewport = useMediaQuery(`(min-width: ${mediaQueries.laptop})`);
 
   // close BurgerMenu by clicking outside of node
   useClickOutside(node, () => setOpen(false));
+
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <>
-      {isBreakPoint ? (
+      {!isLargeViewport ? (
         <MobileNavWrapper ref={node}>
           <FocusLock disabled={!open}>
             <Burger open={open} setOpen={setOpen} />
@@ -32,7 +35,7 @@ export default function Nav() {
           </FocusLock>
         </MobileNavWrapper>
       ) : (
-        <StyledNav loaded={loaded} role='navigation' aria-label='Main'>
+        <StyledNav role='navigation' aria-label='Main'>
           <NavList />
         </StyledNav>
       )}
@@ -43,7 +46,7 @@ export default function Nav() {
 // styles
 const MobileNavWrapper = styled.div``;
 const StyledNav = styled.nav`
-  display: ${({ loaded }) => (loaded ? 'flex' : 'none')};
+  display: flex;
   justify-content: flex-end;
   align-items: center;
   height: inherit;
