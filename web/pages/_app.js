@@ -1,16 +1,12 @@
 import Head from 'next/head';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 // components
 import Layout from '@/components/layout/Layout';
 import { ModalProvider, BaseModalBackground } from 'styled-react-modal';
 // constants
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/utils/constants';
-// font-awesome
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
 // styles
+import styled from 'styled-components';
 import '../public/styles/globals.css';
 
 MyApp.propTypes = {
