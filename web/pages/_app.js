@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 // components
@@ -22,6 +23,9 @@ export default function MyApp({ Component, pageProps }) {
           <title>{COMPANY_NAME}</title>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta name='description' content={COMPANY_DESCRIPTION} />
+          {/* <Script
+            src='https://kit.fontawesome.com/a237ec646f.js'
+          ></Script> */}
         </Head>
         <ModalProvider backgroundComponent={FadingBackground}>
           <Component {...pageProps} />
