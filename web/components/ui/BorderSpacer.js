@@ -28,7 +28,7 @@ export default function BorderSpacer({
     const newSpacerSize = isLargeViewport ? size : size - Math.round(size / 2);
     // defaults to 1 if calc results in 0
     setSpacerSize(newSpacerSize || 1);
-  }, [isLargeViewport]);
+  }, [size, isLargeViewport]);
 
   return (
     <StyledBorderSpacer
