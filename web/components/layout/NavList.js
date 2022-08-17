@@ -53,7 +53,7 @@ const StyledNavList = styled.ul`
 const NavListItem = styled.li`
   /* Header */
   ${StyledHeaderWrapper} ${StyledNavList} & {
-    margin-left: 1.75rem;
+    margin-left: 2rem;
   }
 
   /* Footer */

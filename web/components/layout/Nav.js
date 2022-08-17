@@ -47,4 +47,3 @@ const StyledNav = styled.nav`
   align-items: center;
   height: inherit;
 `;
-// const StyledBurgerMenu
