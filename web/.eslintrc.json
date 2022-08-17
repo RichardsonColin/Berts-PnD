@@ -9,6 +9,7 @@
     "browser": true
   },
   "extends": [
+    "next",
     "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime"
