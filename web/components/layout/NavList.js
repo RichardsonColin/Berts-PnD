@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+// hooks
+import useCurrentRoute from '@/hooks/useCurrentRoute';
 // styling components
 import { StyledHeader as StyledHeaderWrapper } from '@/components/layout/Header';
 import { StyledFooter as StyledFooterWrapper } from '@/components/layout/Footer';
@@ -10,12 +12,13 @@ import { siteRoutes, mediaQueries } from '@/utils/constants';
 NavList.propTypes = {};
 
 export default function NavList() {
+  const currentRoute = useCurrentRoute();
   return (
     <StyledNavList>
       {siteRoutes.map((route) => (
         <NavListItem key={route}>
           <Link href={route} passHref>
-            <StyledLink>
+            <StyledLink isCurrentRoute={route === currentRoute}>
               {route === '/' ? 'home' : route.replace('/', '')}
             </StyledLink>
           </Link>
@@ -63,7 +66,7 @@ const NavListItem = styled.li`
 `;
 const StyledLink = styled.a`
   position: relative;
-  padding: 0.2rem 0.3rem;
+  padding: 0.4rem 0.5rem;
   text-decoration: none;
   font-size: 1em;
   font-weight: 400;
@@ -71,13 +74,14 @@ const StyledLink = styled.a`
   cursor: pointer;
   transition: 0.2s ease;
 
-  /* Custom underline */
+  /* Custom border */
   &:before {
     position: absolute;
     top: -1px;
     left: -1px;
     width: 50%;
     height: 100%;
+    background-color: var(--secondary-light);
     opacity: 0;
     content: '';
     cursor: pointer;
@@ -90,6 +94,7 @@ const StyledLink = styled.a`
     right: -1px;
     width: 50%;
     height: 100%;
+    background-color: var(--secondary-light);
     opacity: 0;
     content: '';
     cursor: pointer;
@@ -99,6 +104,7 @@ const StyledLink = styled.a`
 
   &:hover::before,
   &:hover::after {
+    background-color: var(--secondary-light);
     opacity: 1;
   }
 
@@ -110,9 +116,30 @@ const StyledLink = styled.a`
     }
   }
 
-  /* Header */
-  ${StyledHeaderWrapper} ${StyledNavList} &:before,
-  ${StyledHeaderWrapper} ${StyledNavList} &:after {
-    background-color: var(--secondary-light);
+  /* Footer */
+  ${StyledFooterWrapper} ${StyledNavList} & {
+    &:hover {
+      color: var(--primary-light);
+    }
   }
+
+  ${({ isCurrentRoute }) => {
+    if (isCurrentRoute) {
+      return css`
+        /* Header */
+        ${StyledHeaderWrapper} ${StyledNavList} && {
+          color: var(--secondary);
+        }
+        ${StyledHeaderWrapper} ${StyledNavList} &&:before,
+        ${StyledHeaderWrapper} ${StyledNavList} &&:after {
+          opacity: 1;
+        }
+
+        /* Footer */
+        ${StyledFooterWrapper} ${StyledNavList} && {
+          color: var(--primary-light);
+        }
+      `;
+    }
+  }}
 `;
