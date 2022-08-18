@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import ContactContent from '@/components/pages/ContactContent';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // font-awesome
-// import { config } from '@fortawesome/fontawesome-svg-core';
-// import '@fortawesome/fontawesome-svg-core/styles.css';
-// config.autoAddCss = false;
+// TODO: In version 6, there should be a fix to remove the configuration
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 // constants
 import { companyData } from '@/data/company';
 
