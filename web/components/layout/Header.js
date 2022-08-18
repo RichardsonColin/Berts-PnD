@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+// hooks
+import useScrollPosition from '@/hooks/useScrollPosition';
 // components
 import Section from '@/components/ui/Section';
 import Gutter from '@/components/ui/Gutter';
@@ -14,8 +17,21 @@ Header.propTypes = {
 };
 
 export default function Header({ children }) {
+  const [sticky, setSticky] = useState(true);
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isShow = currPos.y > prevPos.y;
+      if (isShow !== sticky) setSticky(isShow);
+    },
+    [sticky],
+    null,
+    false,
+    1000
+  );
+
   return (
-    <StyledHeader id='header'>
+    <StyledHeader id='header' sticky={sticky}>
       <BorderSpacer size={3} position='bottom' />
       <ContentWrapper>
         <StyledGutter>
@@ -35,14 +51,23 @@ export default function Header({ children }) {
 
 // styles
 export const StyledHeader = styled.header`
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 42px;
   min-height: 42px;
   background-color: #fff;
   color: var(--color-grey-800);
-  z-index: 10;
+  z-index: 100;
   transition: 0.2s ease;
+  ${({ sticky }) => {
+    return sticky
+      ? css`
+          transform: translateY(0px);
+        `
+      : css`
+          transform: translateY(-80px);
+        `;
+  }};
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
