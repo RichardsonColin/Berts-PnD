@@ -30,19 +30,22 @@ export default function useScrollPosition(
     throttleTimeout = null;
   };
 
-  useLayoutEffect(() => {
-    const handleScroll = () => {
-      if (wait) {
-        if (throttleTimeout === null) {
-          throttleTimeout = setTimeout(callBack, wait);
+  // temp fix to silence SSR warnings
+  if (isBrowser) {
+    useLayoutEffect(() => {
+      const handleScroll = () => {
+        if (wait) {
+          if (throttleTimeout === null) {
+            throttleTimeout = setTimeout(callBack, wait);
+          }
+        } else {
+          callBack();
         }
-      } else {
-        callBack();
-      }
-    };
+      };
 
-    window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, deps);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, deps);
+  }
 }
