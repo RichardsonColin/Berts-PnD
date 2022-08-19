@@ -6,13 +6,18 @@ import Gutter from '@/components/ui/Gutter';
 import ServicesCards from './ServicesCards';
 import Heading from '@/components/ui/Heading';
 import LinkButton from '@/components/ui/LinkButton';
-import AnimatedSquareGroup from '@/components/AnimatedSquareGroup';
+import Particles from '@/components/ui/Particles';
+// hooks
+import useMediaQuery from '@/hooks/useMediaQuery';
+// constants
+import { mediaQueries } from '@/utils/constants';
 
 LandingServicesSection.propTypes = {
   services: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default function LandingServicesSection({ services }) {
+  const isTabletViewport = useMediaQuery(`(max-width: ${mediaQueries.tablet})`);
   return (
     <StyledServicesSection id='services'>
       <Gutter>
@@ -29,17 +34,7 @@ export default function LandingServicesSection({ services }) {
         <ServicesCards services={services} />
         <LinkButton href='/services'>View Services</LinkButton>
       </Gutter>
-      <AnimatedSquareWrapper>
-        <AnimatedSquareGroup
-          sizes={[400, 200, 100]}
-          angles={[35, 35, 35]}
-          colors={[
-            'var(--primary-light)',
-            'var(--primary)',
-            'var(--secondary-light)',
-          ]}
-        />
-      </AnimatedSquareWrapper>
+      <StyledParticles numOfParticles={isTabletViewport ? 50 : 100} />
     </StyledServicesSection>
   );
 }
@@ -50,11 +45,33 @@ const StyledServicesSection = styled(StyledSection)`
     position: relative;
   }
 `;
-const AnimatedSquareWrapper = styled.div`
+const StyledParticles = styled(Particles)`
   ${StyledServicesSection} & {
     position: absolute;
-    top: 50px;
-    margin: auto;
-    margin-left: -250px;
+    top: -200px;
+    right: 65%;
+    transform: rotate(45deg);
+
+    /* min-widths */
+    @media (min-width: ${mediaQueries.mobileM}) {
+      top: -150px;
+      right: 75%;
+    }
+    @media (min-width: ${mediaQueries.mobileL}) {
+      top: -200px;
+      right: 80%;
+    }
+    @media (min-width: ${mediaQueries.tablet}) {
+      right: 90%;
+      top: -300px;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      top: -240px;
+      right: 85%;
+    }
+    /* custom breakpoint */
+    @media (min-width: 1500px) {
+      top: -150px;
+    }
   }
 `;
