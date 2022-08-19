@@ -27,7 +27,7 @@ export default function Header({ children }) {
     [sticky],
     null,
     false,
-    1000
+    sticky ? 500 : 200
   );
 
   return (
