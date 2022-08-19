@@ -33,14 +33,14 @@ export default function CallToAction({ className }) {
         <BackgroundSlant heightMultiple={0.6} slant='right' degree={5} />
         <Wrapper>
           <StyledContainer position='left'>
-            <StyledHeading level='2'>Get in Touch!</StyledHeading>
+            <StyledHeading level='2'>Free Estimates!</StyledHeading>
             <StyledText>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               mattis neque vitae congue rhoncus. Suspendisse feugiat quam
               tellus. Suspendisse bibendum justo non justo cursus sodales.
             </StyledText>
           </StyledContainer>
-          <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
+          <StyledQuoteLinkButton>Get a Quote</StyledQuoteLinkButton>
         </Wrapper>
       </Gutter>
     </StyledSection>
