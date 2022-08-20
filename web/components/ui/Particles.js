@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
@@ -23,15 +23,14 @@ export default function Particles({
   numOfParticles = 10,
   className,
 }) {
-  const [particles, setParticles] = useState([]);
   const colors =
     colorsType in colorTemplates
       ? colorTemplates[colorsType]
       : colorTemplates.main;
   const dimension = Math.floor((numOfParticles * 10) / 2.5);
 
-  useEffect(() => {
-    setParticles(
+  const particles = useMemo(
+    () =>
       [...Array(numOfParticles)].map((e, index) => (
         <Particle
           key={index}
@@ -41,9 +40,9 @@ export default function Particles({
           shiftLeft={String(getRandomInt(0, 50)) + 'px'}
           duration={`${String(getRandomInt(0, index) - 100)}s`}
         />
-      ))
-    );
-  }, [colorsType, numOfParticles, colors, dimension]);
+      )),
+    [colorsType, numOfParticles]
+  );
 
   return (
     <StyledParticles
