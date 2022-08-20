@@ -16,7 +16,7 @@ LandingProcessSection.propTypes = {
 };
 
 export default function LandingProcessSection({ process }) {
-  const isTabletViewport = useMediaQuery(`(max-width: ${mediaQueries.tablet})`);
+  const isLargerViewport = useMediaQuery(`(min-width: ${mediaQueries.tablet})`);
   return (
     <StyledProcessSection id='process'>
       <Gutter>
@@ -32,7 +32,7 @@ export default function LandingProcessSection({ process }) {
       </Gutter>
       <StyledParticles
         colorsType={'alt'}
-        numOfParticles={isTabletViewport ? 50 : 100}
+        numOfParticles={isLargerViewport ? 100 : 50}
       />
     </StyledProcessSection>
   );

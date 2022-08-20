@@ -11,8 +11,8 @@ import { mediaQueries } from '@/utils/constants';
 import heroImage from '@/public/images/hero-primary.webp';
 
 export default function HeroPrimary() {
-  const isMobileViewport = useMediaQuery(
-    `(max-width: ${mediaQueries.mobileM})`
+  const isLargerViewport = useMediaQuery(
+    `(min-width: ${mediaQueries.mobileM})`
   );
   return (
     <StyledHero id='hero'>
@@ -37,7 +37,7 @@ export default function HeroPrimary() {
         />
       </HeroImageWrapper>
       <StyledParticles
-        colorsType={isMobileViewport ? 'main' : 'mono'}
+        colorsType={isLargerViewport ? 'mono' : 'main'}
         numOfParticles={30}
       />
     </StyledHero>

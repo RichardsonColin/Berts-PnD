@@ -17,7 +17,7 @@ LandingServicesSection.propTypes = {
 };
 
 export default function LandingServicesSection({ services }) {
-  const isTabletViewport = useMediaQuery(`(max-width: ${mediaQueries.tablet})`);
+  const isLargerViewport = useMediaQuery(`(min-width: ${mediaQueries.tablet})`);
   return (
     <StyledServicesSection id='services'>
       <Gutter>
@@ -34,7 +34,7 @@ export default function LandingServicesSection({ services }) {
         <ServicesCards services={services} />
         <LinkButton href='/services'>View Services</LinkButton>
       </Gutter>
-      <StyledParticles numOfParticles={isTabletViewport ? 50 : 100} />
+      <StyledParticles numOfParticles={isLargerViewport ? 100 : 50} />
     </StyledServicesSection>
   );
 }
