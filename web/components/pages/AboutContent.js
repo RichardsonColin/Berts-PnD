@@ -9,7 +9,7 @@ import Gutter from '@/components/ui/Gutter';
 import Heading from '@/components/ui/Heading';
 import TextHighlight from '@/components/ui/TextHighlight';
 // assets
-import icon from '@/public/images/paint-roller.svg';
+import icon from '@/public/images/icon-paint-roller.svg';
 // constants
 import { mediaQueries } from '@/utils/constants';
 

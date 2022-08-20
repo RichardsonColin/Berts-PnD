@@ -1,25 +1,25 @@
 // assets
-import productIconOne from '@/public/images/paint-roller.svg';
-import productIconTwo from '@/public/images/paint-roller.svg';
-import productIconThree from '@/public/images/paint-roller.svg';
+import paintIcon from '@/public/images/icon-paint.svg';
+import wallPaperIcon from '@/public/images/icon-wall-paper.svg';
+import primerIcon from '@/public/images/icon-primer.svg';
 
 export const productsData = [
   {
     heading: 'Paint',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
-    icon: productIconOne,
+    icon: paintIcon,
   },
   {
     heading: 'Wall Paper',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
-    icon: productIconTwo,
+    icon: wallPaperIcon,
   },
   {
     heading: 'Primer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
-    icon: productIconThree,
+    icon: primerIcon,
   },
 ];

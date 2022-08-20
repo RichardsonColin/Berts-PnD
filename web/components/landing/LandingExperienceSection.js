@@ -10,7 +10,7 @@ import Heading from '@/components/ui/Heading';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
-import backgroundImage from '@/public/images/hero-primary.webp';
+import backgroundImage from '@/public/images/section-experience.webp';
 
 LandingExperienceSection.propTypes = {
   experience: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -38,7 +38,7 @@ export default function LandingExperienceSection({ experience }) {
             alt='Painting image'
             layout='fill'
             objectFit='cover'
-            quality={80}
+            quality={70}
             placeholder='blur'
           />
         </ImageWrapper>

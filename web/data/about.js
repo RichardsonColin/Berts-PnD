@@ -1,5 +1,5 @@
 // assets
-import aboutImage from '@/public/images/hero-primary.webp';
+import aboutImage from '@/public/images/pages-about-profile.webp';
 // contants
 import { COMPANY_NAME, COMPANY_OWNER } from '@/utils/constants';
 
