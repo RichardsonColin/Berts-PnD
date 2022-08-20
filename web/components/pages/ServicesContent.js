@@ -8,6 +8,8 @@ import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
 import Gutter from '@/components/ui/Gutter';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
+// assets
+import { servicesData } from '@/data/services';
 // constants
 import { mediaQueries } from '@/utils/constants';
 
@@ -76,13 +78,13 @@ export default function ServicesContent({
             >
               {index % 2 === 0 ? (
                 <>
-                  <ContentImage {...content} />
+                  <ContentImage {...servicesData[index]} />
                   <ContentText {...content} />
                 </>
               ) : (
                 <>
                   <ContentText {...content} />
-                  <ContentImage {...content} />
+                  <ContentImage {...servicesData[index]} />
                 </>
               )}
             </StyledWrapperContainer>
