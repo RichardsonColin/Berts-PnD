@@ -30,7 +30,7 @@ export default function ServicesCards({ services }) {
               alt={service.heading}
               layout='fill'
               objectFit='cover'
-              quality={80}
+              quality={70}
               placeholder='blur'
             />
           </ImageWrapper>
