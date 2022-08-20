@@ -5,6 +5,11 @@ import styled from 'styled-components';
 import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
+// assets
+import interiorImage from '@/public/images/section-services-interior.webp';
+import exteriorImage from '@/public/images/section-services-exterior.webp';
+import decoratingImage from '@/public/images/section-services-decorating.webp';
+import accentsImage from '@/public/images/section-services-accents.webp';
 // helpers
 import { searchString } from '@/utils/helpers';
 // constants
@@ -20,13 +25,17 @@ export default function ServicesCards({ services }) {
     const firstPeriodReg = '[^.]*';
     return searchString(searchString(path, lastSlashReg), firstPeriodReg);
   };
+  // would rather source these in the data file but to work properly with next/image
+  // and the blur functionality, they have to be imported here (as opposed through
+  // getStaticProps)
+  const images = [interiorImage, exteriorImage, decoratingImage, accentsImage];
   return (
     <CardsWrapper position='center'>
-      {services.map((service) => (
+      {services.map((service, index) => (
         <StyledCard key={service.heading}>
           <ImageWrapper>
             <StyledImage
-              src={service.image}
+              src={images[index]}
               alt={service.heading}
               layout='fill'
               objectFit='cover'

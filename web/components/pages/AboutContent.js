@@ -9,6 +9,7 @@ import Gutter from '@/components/ui/Gutter';
 import Heading from '@/components/ui/Heading';
 import TextHighlight from '@/components/ui/TextHighlight';
 // assets
+import profileImage from '@/public/images/pages-about-profile.webp';
 import icon from '@/public/images/icon-paint-roller.svg';
 // constants
 import { mediaQueries } from '@/utils/constants';
@@ -34,7 +35,7 @@ export default function AboutContent({
           <ContentWrapper>
             <ImageWrapper>
               <Image
-                src={contentData.image}
+                src={profileImage}
                 alt={`${companyOwner} from ${companyName}`}
                 layout='fill'
                 objectFit='cover'
