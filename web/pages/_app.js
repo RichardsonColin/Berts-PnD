@@ -8,7 +8,13 @@ import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/utils/constants';
 // styles
 import styled from 'styled-components';
 import '../public/styles/globals.css';
-import '../public/styles/fonts.css';
+// fonts
+import '@fontsource/libre-franklin/300.css';
+import '@fontsource/libre-franklin/400.css';
+import '@fontsource/libre-franklin/500.css';
+import '@fontsource/libre-franklin/600.css';
+import '@fontsource/libre-franklin/700.css';
+import '@fontsource/libre-franklin/800.css';
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
