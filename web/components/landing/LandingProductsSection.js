@@ -11,9 +11,9 @@ import QuoteLinkButton from '@/components/QuoteLinkButton';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
-import mosaicImageOne from '@/public/images/hero-primary.webp';
-import mosaicImageTwo from '@/public/images/hero-primary.webp';
-import mosaicImageThree from '@/public/images/hero-primary.webp';
+import mosaicImageOne from '@/public/images/mosaic-1-alt.webp';
+import mosaicImageTwo from '@/public/images/mosaic-1.webp';
+import mosaicImageThree from '@/public/images/mosaic-3.webp';
 
 LandingProductsSection.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,

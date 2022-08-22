@@ -37,7 +37,7 @@ export default function ServicesContent({
           alt={`${heading} image`}
           layout='fill'
           objectFit='cover'
-          quality={80}
+          quality={100}
           placeholder='blur'
         />
       </ImageWrapper>
@@ -54,7 +54,7 @@ export default function ServicesContent({
             alt={`${heading} icon`}
             width={30}
             height={30}
-            quality={100}
+            quality={80}
           />
         </IconWrapper>
         {body.map((text, index) => (
