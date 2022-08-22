@@ -16,6 +16,7 @@
     "@aws-sdk/client-s3": "^3.145.0",
     "@aws-sdk/client-ses": "^3.145.0",
     "@aws-sdk/lib-storage": "^3.145.0",
+    "@fontsource/libre-franklin": "^4.5.9",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
