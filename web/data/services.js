@@ -29,7 +29,7 @@ export const servicesData = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
     ],
     icon: decoratingIcon,
-    image: exteriorImage,
+    image: decoratingImage,
   },
   {
     heading: 'Exterior Painting',
@@ -40,7 +40,7 @@ export const servicesData = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis neque vitae congue rhoncus. Suspendisse feugiat quam tellus.',
     ],
     icon: exteriorIcon,
-    image: decoratingImage,
+    image: exteriorImage,
   },
   {
     heading: 'Accents',
