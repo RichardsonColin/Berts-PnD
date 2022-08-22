@@ -4,19 +4,19 @@ import styled from 'styled-components';
 // constants
 import { COMPANY_NAME } from '@/utils/constants';
 // assets
-import logoImage from '@/public/images/logo.webp';
+import logoCenterImage from '@/public/images/logo-center.webp';
 
-Logo.propTypes = {
+LogoCenter.propTypes = {
   priority: PropTypes.bool,
 };
 
-export default function Logo({ priority = false }) {
+export default function LogoCenter({ priority = false }) {
   return (
     <StyledLogo
       priority={priority}
       width={400}
       height={93}
-      src={logoImage}
+      src={logoCenterImage}
       alt={`${COMPANY_NAME} logo`}
       quality={80}
     />
