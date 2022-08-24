@@ -32,10 +32,6 @@ Home.propTypes = {
 };
 
 // dynamic imports
-const DynamicPortfolioSection = dynamic(
-  () => import('../components/landing/LandingPortfolioSection'),
-  { suspense: true }
-);
 const DynamicRenovationsSection = dynamic(
   () => import('../components/landing/LandingRenovationsSection'),
   { suspense: true }
@@ -46,6 +42,10 @@ const DynamicExperienceSection = dynamic(
 );
 const DynamicProductsSection = dynamic(
   () => import('../components/landing/LandingProductsSection'),
+  { suspense: true }
+);
+const DynamicPortfolioSection = dynamic(
+  () => import('../components/landing/LandingPortfolioSection'),
   { suspense: true }
 );
 const DynamicProcessSection = dynamic(
@@ -72,13 +72,13 @@ export default function Home({
     <>
       <HeroPrimary />
       <ServicesSection services={services} />
-      <Suspense fallback={null}>
-        {/* <RenovationsSection renovations={renovations} />
+      {/* <RenovationsSection renovations={renovations} />
       <ExperienceSection experience={experience} />
       <ProductsSection products={products} />
       <PortfolioSection portfolio={portfolio} companyData={companyData} />
       <ProcessSection process={process} />
       <ReviewsSection reviews={reviews} /> */}
+      <Suspense fallback={null}>
         <DynamicRenovationsSection renovations={renovations} />
         <DynamicExperienceSection experience={experience} />
         <DynamicProductsSection products={products} />

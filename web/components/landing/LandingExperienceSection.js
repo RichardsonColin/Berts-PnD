@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-// hooks
-import useHasMounted from '@/hooks/useHasMounted';
 // components
 import { StyledExperienceSection as StyledSection } from './styled/LandingSection';
 import ExperienceItems from './ExperienceItems';
 import Heading from '@/components/ui/Heading';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
@@ -18,9 +18,6 @@ LandingExperienceSection.propTypes = {
 
 export default function LandingExperienceSection({ experience }) {
   const hasMounted = useHasMounted();
-  if (!hasMounted) {
-    return null;
-  }
   return (
     <StyledExperienceSection id='experience'>
       <ContentWrapper>
@@ -33,14 +30,16 @@ export default function LandingExperienceSection({ experience }) {
         <StyledSlantRight aria-hidden='true' />
         <ImageFilter aria-hidden='true' />
         <ImageWrapper>
-          <Image
-            src={backgroundImage}
-            alt='Painting image'
-            layout='fill'
-            objectFit='cover'
-            quality={70}
-            placeholder='blur'
-          />
+          {hasMounted ? (
+            <Image
+              src={backgroundImage}
+              alt='Painting image'
+              layout='fill'
+              objectFit='cover'
+              quality={70}
+              placeholder='blur'
+            />
+          ) : null}
         </ImageWrapper>
       </BackgroundWrapper>
     </StyledExperienceSection>

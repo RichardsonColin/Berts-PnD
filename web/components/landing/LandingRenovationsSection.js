@@ -8,6 +8,8 @@ import LandingContent from './LandingContent';
 import Mosaic from './Mosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
@@ -20,6 +22,7 @@ LandingRenovationsSection.propTypes = {
 };
 
 export default function LandingRenovationsSection({ renovations }) {
+  const hasMounted = useHasMounted();
   return (
     <StyledRenovationsSection id='renovations'>
       <StyledGutter>
@@ -37,11 +40,13 @@ export default function LandingRenovationsSection({ renovations }) {
           <DetailsList details={renovations} />
           <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
         </LandingContent>
-        <Mosaic
-          title='Free Estimates'
-          images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
-          split='right'
-        />
+        {hasMounted ? (
+          <Mosaic
+            title='Free Estimates'
+            images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
+            split='right'
+          />
+        ) : null}
       </StyledGutter>
     </StyledRenovationsSection>
   );
