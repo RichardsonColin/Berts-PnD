@@ -36,7 +36,7 @@ export default function Header({ children }) {
       <ContentWrapper>
         <StyledGutter>
           <LogoWrapper>
-            <Link href='/' passHref>
+            <Link href='/' passHref prefetch={false}>
               <LogoLink>
                 <Logo priority={true} />
               </LogoLink>

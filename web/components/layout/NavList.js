@@ -17,7 +17,7 @@ export default function NavList() {
     <StyledNavList>
       {siteRoutes.map((route) => (
         <NavListItem key={route}>
-          <Link href={route} passHref>
+          <Link href={route} passHref prefetch={false}>
             <StyledLink isCurrentRoute={route === currentRoute}>
               {route === '/' ? 'home' : route.replace('/', '')}
             </StyledLink>
