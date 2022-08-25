@@ -43,6 +43,6 @@ export async function getStaticProps() {
   const { data } = await fetchReviews({ page: 1, ...contentParams });
   return {
     props: { contentData: data, contentParams, companyData },
-    revalidate: 60,
+    revalidate: 86400,
   };
 }
