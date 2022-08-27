@@ -55,7 +55,7 @@ const StyledBurgerMenu = styled.nav`
   align-items: flex-start;
   width: 100%;
   min-height: 100vh;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 2rem;
   background-color: var(--primary);
   text-align: right;
   transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
