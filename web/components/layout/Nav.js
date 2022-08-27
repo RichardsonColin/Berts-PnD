@@ -48,5 +48,6 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: -0.5rem;
   }
 `;
