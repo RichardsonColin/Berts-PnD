@@ -19,7 +19,9 @@ export default function NavList() {
         <NavListItem key={route}>
           <Link href={route} passHref prefetch={false}>
             <StyledLink isCurrentRoute={route === currentRoute}>
-              {route === '/' ? 'home' : route.replace('/', '')}
+              <LinkText>
+                {route === '/' ? 'home' : route.replace('/', '')}
+              </LinkText>
             </StyledLink>
           </Link>
         </NavListItem>
@@ -64,6 +66,10 @@ const NavListItem = styled.li`
     margin-bottom: 0.5rem;
   }
 `;
+const LinkText = styled.span`
+  vertical-align: middle;
+  line-height: 15px;
+`;
 const StyledLink = styled.a`
   position: relative;
   padding: 0.4rem 0.5rem;
@@ -76,43 +82,36 @@ const StyledLink = styled.a`
 
   /* Custom border */
   &:before {
+    content: '';
     position: absolute;
-    top: -1px;
-    left: -1px;
+    inset: 0;
     width: 50%;
     height: 100%;
-    background-color: var(--secondary-light);
+    border-top: 1px solid var(--secondary-light);
+    border-left: 1px solid var(--secondary-light);
     opacity: 0;
-    content: '';
-    cursor: pointer;
     transition: opacity 0.2s ease;
-    z-index: -1;
   }
   &:after {
+    content: '';
     position: absolute;
-    bottom: -1px;
-    right: -1px;
+    inset: 0 0 0 auto;
     width: 50%;
     height: 100%;
-    background-color: var(--secondary-light);
+    border-bottom: 1px solid var(--secondary-light);
+    border-right: 1px solid var(--secondary-light);
     opacity: 0;
-    content: '';
-    cursor: pointer;
     transition: opacity 0.2s ease;
-    z-index: -1;
-  }
-
-  &:hover::before,
-  &:hover::after {
-    background-color: var(--secondary-light);
-    opacity: 1;
   }
 
   /* Header */
   ${StyledHeaderWrapper} ${StyledNavList} & {
-    background-color: #fff;
     &:hover {
       color: var(--secondary);
+    }
+    &:hover::before,
+    &:hover::after {
+      opacity: 1;
     }
   }
 
