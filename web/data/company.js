@@ -8,6 +8,7 @@ import {
   COMPANY_ADDRESS_CITY,
   COMPANY_ADDRESS_PROVINCE,
   COMPANY_ADDRESS_POSTAL,
+  COMPANY_ADDRESS_LINK,
   COMPANY_DESCRIPTION,
 } from '@/utils/constants';
 
@@ -20,5 +21,6 @@ export const companyData = {
   companyAddressCity: COMPANY_ADDRESS_CITY,
   companyAddressProvince: COMPANY_ADDRESS_PROVINCE,
   companyAddressPostal: COMPANY_ADDRESS_POSTAL,
+  companyAddressLink: COMPANY_ADDRESS_LINK,
   companyDescription: COMPANY_DESCRIPTION,
 };
