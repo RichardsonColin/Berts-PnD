@@ -57,7 +57,7 @@ const ImageFilter = styled.div`
 `;
 const StyledImage = styled(Image)`
   opacity: 0;
-  animation: ${fadeIn} 1s forwards;
+  animation: ${fadeIn} 1.5s forwards;
 `;
 const StyledHeading = styled(Heading)`
   ${StyledHero} & {
@@ -70,7 +70,7 @@ const StyledHeading = styled(Heading)`
     text-shadow: 1px 1px 2px var(--color-grey-800);
     z-index: 2;
     opacity: 0;
-    animation: ${fadeIn} 1s forwards;
+    animation: ${fadeIn} 1.5s forwards;
 
     &:before {
       content: '';

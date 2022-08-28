@@ -73,7 +73,7 @@ const HeroImageWrapper = styled.div`
     filter: brightness(90%);
     transition: 0.2s ease;
     opacity: 0;
-    animation: ${fadeIn} 1s forwards;
+    animation: ${fadeIn} 1.5s forwards;
 
     @media (min-width: ${mediaQueries.laptop}) {
       max-width: 80%;
@@ -89,7 +89,7 @@ const HeroContentWrapper = styled.div`
     text-align: center;
     z-index: 1;
     opacity: 0;
-    animation: ${fadeIn} 1s forwards;
+    animation: ${fadeIn} 1.5s forwards;
   }
 `;
 const HeroContent = styled.div`
