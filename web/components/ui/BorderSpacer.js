@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 // hooks
@@ -20,21 +19,13 @@ export default function BorderSpacer({
   className,
 }) {
   const isLargeViewport = useMediaQuery(`(min-width: ${mediaQueries.laptop})`);
-  // size of border spacer in px
-  const [spacerSize, setSpacerSize] = useState(size);
-
-  useEffect(() => {
-    // decrease to half the size of original for smaller viewports
-    const newSpacerSize = isLargeViewport ? size : size - Math.round(size / 2);
-    // defaults to 1 if calc results in 0
-    setSpacerSize(newSpacerSize || 1);
-  }, [size, isLargeViewport]);
+  const minimalSize = Math.round(size / 1.5);
 
   return (
     <StyledBorderSpacer
       aria-hidden='true'
       className={className}
-      spacerSize={spacerSize}
+      spacerSize={isLargeViewport ? size : minimalSize}
       position={position}
       backgroundColor={backgroundColor}
     ></StyledBorderSpacer>
