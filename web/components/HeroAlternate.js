@@ -18,7 +18,7 @@ export default function HeroAlternate({ heading }) {
   return (
     <StyledHero id='hero'>
       <ImageFilter aria-hidden='true' />
-      <Image
+      <StyledImage
         priority={true}
         src={heroImage}
         alt='Hero image'
@@ -40,8 +40,6 @@ const StyledHero = styled.section`
   justify-content: center;
   align-items: center;
   color: var(--color-grey-10);
-  opacity: 0;
-  animation: ${fadeIn} 1s forwards;
 
   @media (min-width: ${mediaQueries.tablet}) {
     height: 600px;
@@ -57,6 +55,10 @@ const ImageFilter = styled.div`
   opacity: 0.5;
   z-index: 1;
 `;
+const StyledImage = styled(Image)`
+  opacity: 0;
+  animation: ${fadeIn} 1s forwards;
+`;
 const StyledHeading = styled(Heading)`
   ${StyledHero} & {
     display: flex;
@@ -67,6 +69,8 @@ const StyledHeading = styled(Heading)`
     text-align: center;
     text-shadow: 1px 1px 2px var(--color-grey-800);
     z-index: 2;
+    opacity: 0;
+    animation: ${fadeIn} 1s forwards;
 
     &:before {
       content: '';
