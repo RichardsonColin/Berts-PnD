@@ -32,7 +32,7 @@ export default function Header({ children }) {
 
   return (
     <StyledHeader id='header' sticky={sticky}>
-      <BorderSpacer size={3} position='bottom' />
+      <BorderSpacer size={2} position='bottom' />
       <ContentWrapper>
         <StyledGutter>
           <LogoWrapper>
