@@ -7,6 +7,8 @@ import Heading from '@/components/ui/Heading';
 import { mediaQueries } from '@/utils/constants';
 // assets
 import heroImage from '@/public/images/hero-alternate.webp';
+// animations
+import { fadeIn } from '@/components/ui/styled/Animations';
 
 HeroAlternate.propTypes = {
   heading: PropTypes.string,
@@ -38,6 +40,8 @@ const StyledHero = styled.section`
   justify-content: center;
   align-items: center;
   color: var(--color-grey-10);
+  opacity: 0;
+  animation: ${fadeIn} 1s forwards;
 
   @media (min-width: ${mediaQueries.tablet}) {
     height: 600px;

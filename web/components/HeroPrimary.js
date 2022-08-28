@@ -9,6 +9,8 @@ import useMediaQuery from '@/hooks/useMediaQuery';
 import { mediaQueries } from '@/utils/constants';
 // assets
 import heroImage from '@/public/images/hero-primary.webp';
+// animations
+import { fadeIn } from '@/components/ui/styled/Animations';
 
 export default function HeroPrimary() {
   const isLargerViewport = useMediaQuery(
@@ -70,6 +72,8 @@ const HeroImageWrapper = styled.div`
     margin-left: auto;
     filter: brightness(90%);
     transition: 0.2s ease;
+    opacity: 0;
+    animation: ${fadeIn} 1s forwards;
 
     @media (min-width: ${mediaQueries.laptop}) {
       max-width: 80%;
@@ -84,6 +88,8 @@ const HeroContentWrapper = styled.div`
     font-weight: bold;
     text-align: center;
     z-index: 1;
+    opacity: 0;
+    animation: ${fadeIn} 1s forwards;
   }
 `;
 const HeroContent = styled.div`
