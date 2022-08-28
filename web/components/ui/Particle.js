@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // helpers
 import { getRandomInt } from '@/utils/helpers';
 // styled
@@ -11,6 +13,10 @@ Particle.propTypes = {
 };
 
 export default function Particle({ nthNum, dimension, colors }) {
+  const hasMounted = useHasMounted();
+  if (!hasMounted) {
+    return null;
+  }
   return (
     <StyledParticle
       nthNum={nthNum}
