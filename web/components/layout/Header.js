@@ -11,6 +11,8 @@ import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
 import { mediaQueries } from '@/utils/constants';
+// animations
+import { fadeIn } from '@/components/ui/styled/Animations';
 
 Header.propTypes = {
   children: PropTypes.node.isRequired,
@@ -101,6 +103,7 @@ const LogoWrapper = styled.div`
     align-items: center;
     width: 130px;
     height: 100%;
+    animation: ${fadeIn} 1.5s forwards;
 
     /* min-widths */
     @media (min-width: ${mediaQueries.tablet}) {
