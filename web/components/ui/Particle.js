@@ -10,10 +10,12 @@ Particle.propTypes = {
   nthNum: PropTypes.number.isRequired,
   dimension: PropTypes.number.isRequired,
   colors: PropTypes.array.isRequired,
+  numOfColors: PropTypes.number.isRequired,
 };
 
-export default function Particle({ nthNum, dimension, colors }) {
+export default function Particle({ nthNum, dimension, colors, numOfColors }) {
   const hasMounted = useHasMounted();
+
   if (!hasMounted) {
     return null;
   }
@@ -21,7 +23,7 @@ export default function Particle({ nthNum, dimension, colors }) {
     <StyledParticle
       nthNum={nthNum}
       shiftLeft={String(getRandomInt(0, 50)) + 'px'}
-      backgroundColor={`var(${colors[getRandomInt(0, colors.length - 1)]})`}
+      backgroundColor={`var(${colors[getRandomInt(0, numOfColors - 1)]})`}
       dimension={Math.floor(dimension / 15)}
       duration={`${String(getRandomInt(0, nthNum) - 100)}s`}
       aria-hidden='true'

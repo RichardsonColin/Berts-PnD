@@ -26,24 +26,24 @@ export default function Particles({
   className,
 }) {
   const hasMounted = useHasMounted();
-  const colors =
-    colorsType in colorTemplates
-      ? colorTemplates[colorsType]
-      : colorTemplates.main;
   const dimension = Math.floor((numOfParticles * 10) / 2.5);
 
-  const particles = useMemo(
-    () =>
-      [...Array(numOfParticles)].map((e, index) => (
-        <Particle
-          key={index}
-          nthNum={index}
-          dimension={dimension}
-          colors={colors}
-        />
-      )),
-    [colorsType, numOfParticles]
-  );
+  const particles = useMemo(() => {
+    const colors =
+      colorsType in colorTemplates
+        ? colorTemplates[colorsType]
+        : colorTemplates.main;
+    const numOfColors = colors?.length;
+    return [...Array(numOfParticles)].map((e, index) => (
+      <Particle
+        key={index}
+        nthNum={index}
+        dimension={dimension}
+        colors={colors}
+        numOfColors={numOfColors}
+      />
+    ));
+  }, [colorsType, numOfParticles]);
 
   if (!hasMounted) {
     return null;
@@ -54,6 +54,8 @@ export default function Particles({
       className={className}
       dimension={dimension}
       aria-hidden='true'
+      opacityFrom={0}
+      opacityTo={0.9}
     >
       {particles}
     </StyledParticles>
@@ -68,5 +70,5 @@ const StyledParticles = styled.div`
   height: ${({ dimension }) => `${dimension}px`};
   z-index: 10;
   opacity: 0;
-  animation: ${fadeIn(0, 0.9)} 2s forwards;
+  animation: ${fadeIn} 2s forwards;
 `;
