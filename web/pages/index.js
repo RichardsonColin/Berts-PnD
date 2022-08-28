@@ -124,6 +124,5 @@ export async function getStaticProps() {
       portfolio: portfolio?.data || [],
       reviews: reviews?.data || [],
     },
-    revalidate: 86400,
   };
 }

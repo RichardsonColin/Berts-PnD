@@ -47,6 +47,5 @@ export async function getStaticProps() {
   });
   return {
     props: { contentData: data, contentParams, companyData },
-    revalidate: 86400,
   };
 }
