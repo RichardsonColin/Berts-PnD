@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // components
 import Particle from '@/components/ui/Particle';
-// helpers
-import { getRandomInt } from '@/utils/helpers';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
+// animations
+import { fadeIn } from '@/components/ui/styled/Animations';
 
 Particles.propTypes = {
   colorsType: PropTypes.string,
@@ -23,6 +25,7 @@ export default function Particles({
   numOfParticles = 10,
   className,
 }) {
+  const hasMounted = useHasMounted();
   const colors =
     colorsType in colorTemplates
       ? colorTemplates[colorsType]
@@ -36,13 +39,15 @@ export default function Particles({
           key={index}
           nthNum={index}
           dimension={dimension}
-          backgroundColor={`var(${colors[getRandomInt(0, colors.length - 1)]})`}
-          shiftLeft={String(getRandomInt(0, 50)) + 'px'}
-          duration={`${String(getRandomInt(0, index) - 100)}s`}
+          colors={colors}
         />
       )),
     [colorsType, numOfParticles]
   );
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <StyledParticles
@@ -62,5 +67,6 @@ const StyledParticles = styled.div`
   width: ${({ dimension }) => `${dimension}px`};
   height: ${({ dimension }) => `${dimension}px`};
   z-index: 10;
-  opacity: 0.9;
+  opacity: 0;
+  animation: ${fadeIn(0, 0.9)} 2s forwards;
 `;

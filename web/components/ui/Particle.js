@@ -1,35 +1,23 @@
 import PropTypes from 'prop-types';
-// hooks
-import useHasMounted from '@/hooks/useHasMounted';
+// helpers
+import { getRandomInt } from '@/utils/helpers';
 // styled
 import styled, { css, keyframes } from 'styled-components';
 
 Particle.propTypes = {
   nthNum: PropTypes.number.isRequired,
   dimension: PropTypes.number.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
-  shiftLeft: PropTypes.string.isRequired,
-  duration: PropTypes.string.isRequired,
+  colors: PropTypes.array.isRequired,
 };
 
-export default function Particle({
-  nthNum,
-  dimension,
-  backgroundColor,
-  shiftLeft,
-  duration,
-}) {
-  const hasMounted = useHasMounted();
-  if (!hasMounted) {
-    return null;
-  }
+export default function Particle({ nthNum, dimension, colors }) {
   return (
     <StyledParticle
       nthNum={nthNum}
-      shiftLeft={shiftLeft}
-      backgroundColor={backgroundColor}
+      shiftLeft={String(getRandomInt(0, 50)) + 'px'}
+      backgroundColor={`var(${colors[getRandomInt(0, colors.length - 1)]})`}
       dimension={Math.floor(dimension / 15)}
-      duration={duration}
+      duration={`${String(getRandomInt(0, nthNum) - 100)}s`}
       aria-hidden='true'
     />
   );
@@ -48,7 +36,7 @@ const orbit = keyframes`
 `;
 const animation = (props) =>
   css`
-    ${orbit} 6s linear ${props.duration} infinite;
+    ${orbit} 6s linear ${props.duration} infinite
   `;
 
 const StyledParticle = styled.div.attrs(
