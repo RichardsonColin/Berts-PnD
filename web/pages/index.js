@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 // components
 import HeroPrimary from '@/components/HeroPrimary';
 import ServicesSection from '@/components/landing/LandingServicesSection';
-// import RenovationsSection from '@/components/landing/LandingRenovationsSection';
-// import ExperienceSection from '@/components/landing/LandingExperienceSection';
-// import ProductsSection from '@/components/landing/LandingProductsSection';
-// import ProcessSection from '@/components/landing/LandingProcessSection';
-// import PortfolioSection from '@/components/landing/LandingPortfolioSection';
-// import ReviewsSection from '@/components/landing/LandingReviewsSection';
+import RenovationsSection from '@/components/landing/LandingRenovationsSection';
+import ExperienceSection from '@/components/landing/LandingExperienceSection';
+import ProductsSection from '@/components/landing/LandingProductsSection';
+import ProcessSection from '@/components/landing/LandingProcessSection';
+import PortfolioSection from '@/components/landing/LandingPortfolioSection';
+import ReviewsSection from '@/components/landing/LandingReviewsSection';
 // models
 import { fetchReviews } from '@/models/review';
 import { fetchPortfolioImages } from '@/models/portfolioImage';
@@ -32,30 +32,30 @@ Home.propTypes = {
 };
 
 // dynamic imports
-const DynamicRenovationsSection = dynamic(
-  () => import('../components/landing/LandingRenovationsSection'),
-  { suspense: true }
-);
-const DynamicExperienceSection = dynamic(
-  () => import('../components/landing/LandingExperienceSection'),
-  { suspense: true }
-);
-const DynamicProductsSection = dynamic(
-  () => import('../components/landing/LandingProductsSection'),
-  { suspense: true }
-);
-const DynamicPortfolioSection = dynamic(
-  () => import('../components/landing/LandingPortfolioSection'),
-  { suspense: true }
-);
-const DynamicProcessSection = dynamic(
-  () => import('../components/landing/LandingProcessSection'),
-  { suspense: true }
-);
-const DynamicReviewsSection = dynamic(
-  () => import('../components/landing/LandingReviewsSection'),
-  { suspense: true }
-);
+// const DynamicRenovationsSection = dynamic(
+//   () => import('../components/landing/LandingRenovationsSection'),
+//   { ssr: false }
+// );
+// const DynamicExperienceSection = dynamic(
+//   () => import('../components/landing/LandingExperienceSection'),
+//   { ssr: false }
+// );
+// const DynamicProductsSection = dynamic(
+//   () => import('../components/landing/LandingProductsSection'),
+//   { ssr: false }
+// );
+// const DynamicPortfolioSection = dynamic(
+//   () => import('../components/landing/LandingPortfolioSection'),
+//   { ssr: false }
+// );
+// const DynamicProcessSection = dynamic(
+//   () => import('../components/landing/LandingProcessSection'),
+//   { ssr: false }
+// );
+// const DynamicReviewsSection = dynamic(
+//   () => import('../components/landing/LandingReviewsSection'),
+//   { ssr: false }
+// );
 
 export default function Home({
   services,
@@ -72,23 +72,23 @@ export default function Home({
     <>
       <HeroPrimary />
       <ServicesSection services={services} />
-      {/* <RenovationsSection renovations={renovations} />
+      <RenovationsSection renovations={renovations} />
       <ExperienceSection experience={experience} />
       <ProductsSection products={products} />
       <PortfolioSection portfolio={portfolio} companyData={companyData} />
       <ProcessSection process={process} />
-      <ReviewsSection reviews={reviews} /> */}
-      <Suspense fallback={null}>
-        <DynamicRenovationsSection renovations={renovations} />
-        <DynamicExperienceSection experience={experience} />
-        <DynamicProductsSection products={products} />
-        <DynamicPortfolioSection
-          portfolio={portfolio}
-          companyData={companyData}
-        />
-        <DynamicProcessSection process={process} />
-        <DynamicReviewsSection reviews={reviews} />
-      </Suspense>
+      <ReviewsSection reviews={reviews} />
+      {/* <Suspense fallback={null}> */}
+      {/* <DynamicRenovationsSection renovations={renovations} />
+      <DynamicExperienceSection experience={experience} />
+      <DynamicProductsSection products={products} />
+      <DynamicPortfolioSection
+        portfolio={portfolio}
+        companyData={companyData}
+      />
+      <DynamicProcessSection process={process} />
+      <DynamicReviewsSection reviews={reviews} /> */}
+      {/* </Suspense> */}
     </>
   );
 }
