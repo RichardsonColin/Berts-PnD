@@ -32,7 +32,7 @@ export default function LandingProcessSection({ process }) {
       </Gutter>
       <StyledParticles
         colorsType={'alt'}
-        numOfParticles={isLargerViewport ? 100 : 50}
+        numOfParticles={isLargerViewport ? 100 : 35}
       />
     </StyledProcessSection>
   );
