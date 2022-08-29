@@ -33,14 +33,13 @@ export default function Particles({
       colorsType in colorTemplates
         ? colorTemplates[colorsType]
         : colorTemplates.main;
-    const numOfColors = colors?.length;
     return [...Array(numOfParticles)].map((e, index) => (
       <Particle
         key={index}
         nthNum={index}
         dimension={dimension}
         colors={colors}
-        numOfColors={numOfColors}
+        numOfColors={colors?.length}
       />
     ));
   }, [colorsType, numOfParticles]);

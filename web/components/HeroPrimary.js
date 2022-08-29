@@ -40,7 +40,7 @@ export default function HeroPrimary() {
       </HeroImageWrapper>
       <StyledParticles
         colorsType={isLargerViewport ? 'mono' : 'main'}
-        numOfParticles={30}
+        numOfParticles={25}
       />
     </StyledHero>
   );
@@ -170,13 +170,12 @@ const StyledParticles = styled(Particles)`
   ${StyledHero} & {
     position: absolute;
     top: 70px;
-    left: 75%;
+    left: 72%;
     transform: rotate(45deg);
 
     /* min-widths */
     @media (min-width: ${mediaQueries.mobileM}) {
       left: unset;
-      top: 70px;
       right: 20px;
     }
     @media (min-width: ${mediaQueries.tablet}) {

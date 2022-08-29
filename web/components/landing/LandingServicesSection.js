@@ -34,7 +34,7 @@ export default function LandingServicesSection({ services }) {
         <ServicesCards services={services} />
         <LinkButton href='/services'>View Services</LinkButton>
       </Gutter>
-      <StyledParticles numOfParticles={isLargerViewport ? 100 : 50} />
+      <StyledParticles numOfParticles={isLargerViewport ? 100 : 35} />
     </StyledServicesSection>
   );
 }
@@ -48,25 +48,21 @@ const StyledServicesSection = styled(StyledSection)`
 const StyledParticles = styled(Particles)`
   ${StyledServicesSection} & {
     position: absolute;
-    top: -200px;
-    right: 65%;
+    top: -135px;
+    right: 60%;
     transform: rotate(45deg);
 
     /* min-widths */
     @media (min-width: ${mediaQueries.mobileM}) {
-      top: -150px;
-      right: 75%;
-    }
-    @media (min-width: ${mediaQueries.mobileL}) {
-      top: -200px;
-      right: 80%;
+      top: -135px;
+      right: 78%;
     }
     @media (min-width: ${mediaQueries.tablet}) {
       right: 90%;
-      top: -300px;
+      top: -280px;
     }
     @media (min-width: ${mediaQueries.laptop}) {
-      top: -240px;
+      top: -220px;
       right: 85%;
     }
     /* custom breakpoint */
