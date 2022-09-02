@@ -40,6 +40,7 @@ body {
   color: var(--color-grey-900);
   font-family: 'Libre Franklin', Helvetica Neue, sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 h1,
