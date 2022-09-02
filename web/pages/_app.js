@@ -1,18 +1,20 @@
 import Head from 'next/head';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 // components
 import Layout from '@/components/layout/Layout';
 import { ModalProvider, BaseModalBackground } from 'styled-react-modal';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // constants
 import { COMPANY_NAME, COMPANY_DESCRIPTION } from '@/utils/constants';
-// font-awesome
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
 // styles
+import styled from 'styled-components';
 import '../public/styles/globals.css';
+// fonts
+import '@fontsource/libre-franklin/300.css';
+import '@fontsource/libre-franklin/400.css';
+import '@fontsource/libre-franklin/500.css';
+import '@fontsource/libre-franklin/600.css';
+import '@fontsource/libre-franklin/700.css';
+import '@fontsource/libre-franklin/800.css';
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
@@ -29,12 +31,7 @@ export default function MyApp({ Component, pageProps }) {
           <meta name='description' content={COMPANY_DESCRIPTION} />
         </Head>
         <ModalProvider backgroundComponent={FadingBackground}>
-          <GoogleReCaptchaProvider
-            reCaptchaKey={process.env['RECAPTCHA_SITE_KEY']}
-            scriptProps={{ defer: true }}
-          >
-            <Component {...pageProps} />
-          </GoogleReCaptchaProvider>
+          <Component {...pageProps} />
         </ModalProvider>
       </Layout>
     </>

@@ -1,15 +1,21 @@
 import Image from 'next/image';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 // components
 import QuoteLinkButton from '@/components/QuoteLinkButton';
-import { default as SquareOne } from '@/components/ui/AnimatedSquare';
-import { default as SquareTwo } from '@/components/ui/AnimatedSquare';
+import Particles from '@/components/ui/Particles';
+// hooks
+import useMediaQuery from '@/hooks/useMediaQuery';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
 import heroImage from '@/public/images/hero-primary.webp';
+// animations
+import { fadeIn } from '@/components/ui/styled/Animations';
 
 export default function HeroPrimary() {
+  const isLargerViewport = useMediaQuery(
+    `(min-width: ${mediaQueries.mobileM})`
+  );
   return (
     <StyledHero id='hero'>
       <ColorWash aria-hidden='true' />
@@ -29,21 +35,12 @@ export default function HeroPrimary() {
           alt='Hero image'
           layout='fill'
           objectFit='cover'
-          quality={100}
+          quality={80}
         />
       </HeroImageWrapper>
-      <StyledSquareOne
-        size={110}
-        thickness={50}
-        angle={135}
-        color='var(--color-grey-10)'
-      />
-      <StyledSquareTwo
-        size={30}
-        thickness={51}
-        angle={135}
-        color='var(--color-grey-10)'
-        animationOffset={5}
+      <StyledParticles
+        colorsType={isLargerViewport ? 'mono' : 'main'}
+        numOfParticles={25}
       />
     </StyledHero>
   );
@@ -75,6 +72,8 @@ const HeroImageWrapper = styled.div`
     margin-left: auto;
     filter: brightness(90%);
     transition: 0.2s ease;
+    opacity: 0;
+    animation: ${fadeIn} 1.5s forwards;
 
     @media (min-width: ${mediaQueries.laptop}) {
       max-width: 80%;
@@ -89,6 +88,8 @@ const HeroContentWrapper = styled.div`
     font-weight: bold;
     text-align: center;
     z-index: 1;
+    opacity: 0;
+    animation: ${fadeIn} 1.5s forwards;
   }
 `;
 const HeroContent = styled.div`
@@ -165,49 +166,19 @@ const StyledHeroAccent = styled.div`
     }
   }
 `;
-const StyledSquare = css`
-  box-shadow: none;
-  z-index: 1;
-  animation-direction: reverse;
-`;
-const StyledSquareOne = styled(SquareOne)`
+const StyledParticles = styled(Particles)`
   ${StyledHero} & {
-    ${StyledSquare}
+    position: absolute;
+    top: 70px;
+    left: 72%;
+    transform: rotate(45deg);
 
     /* min-widths */
     @media (min-width: ${mediaQueries.mobileM}) {
-      display: block;
-      bottom: 10px;
-      right: -95px;
+      left: unset;
+      right: 20px;
     }
-    @media (min-width: ${mediaQueries.mobileL}) {
-      bottom: -85px;
-      left: 50%;
-      margin-left: 20px;
-    }
-    /* landscape */
-    @media (max-width: 825px) and (max-height: 425px) {
-      display: none;
-    }
-  }
-`;
-const StyledSquareTwo = styled(SquareTwo)`
-  ${StyledHero} & {
-    ${StyledSquare}
-
-    /* min-widths */
-    @media (min-width: ${mediaQueries.mobileM}) {
-      display: block;
-      bottom: 40px;
-      left: 50%;
-      margin-left: 105px;
-    }
-    @media (min-width: ${mediaQueries.mobileL}) {
-      bottom: 75px;
-      margin-left: 100px;
-    }
-    /* landscape */
-    @media (max-width: 825px) and (max-height: 425px) {
+    @media (min-width: ${mediaQueries.tablet}) {
       display: none;
     }
   }

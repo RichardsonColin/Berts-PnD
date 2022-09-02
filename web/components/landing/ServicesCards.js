@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Card from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
-// helpers
-import { searchString } from '@/utils/helpers';
+// assets
+import { servicesData } from '@/data/services';
 // constants
 import { mediaQueries } from '@/utils/constants';
 
@@ -15,32 +15,27 @@ ServicesCards.propTypes = {
 };
 
 export default function ServicesCards({ services }) {
-  const getFileName = (path) => {
-    const lastSlashReg = '[^/]+$';
-    const firstPeriodReg = '[^.]*';
-    return searchString(searchString(path, lastSlashReg), firstPeriodReg);
-  };
   return (
     <CardsWrapper position='center'>
-      {services.map((service) => (
+      {services.map((service, index) => (
         <StyledCard key={service.heading}>
           <ImageWrapper>
             <StyledImage
-              src={service.image}
-              alt={service.heading}
+              src={servicesData[index].image}
+              alt={`${service.heading} Service`}
               layout='fill'
               objectFit='cover'
-              quality={80}
+              quality={70}
               placeholder='blur'
             />
           </ImageWrapper>
           <IconWrapper>
             <StyledIcon
               src={service.icon}
-              alt={`${getFileName(service.icon.src)} icon`}
+              alt={`${service.heading} Service Icon`}
               width={34}
               height={34}
-              quality={100}
+              quality={80}
             />
           </IconWrapper>
           <StyledHeading level='3'>{service.heading}</StyledHeading>

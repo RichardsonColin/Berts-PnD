@@ -105,10 +105,11 @@ const StyledLink = styled.a`
     display: inline-block;
     padding: 0.75rem 1rem;
     border-radius: 2px;
-    color: var(--secondary-dark);
+    color: var(--color-grey-10);
     background-color: var(--primary);
     font-size: 1.1em;
     font-weight: 400;
+    text-shadow: 1px 1px var(--color-grey-900);
     transition: 0.2s ease;
 
     &:hover {

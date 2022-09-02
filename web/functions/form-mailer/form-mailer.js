@@ -61,7 +61,12 @@ const handler = async (event) => {
 
     // log info
     await cacheLogger(
-      JSON.stringify({ status: 'success', request: mail, response }),
+      JSON.stringify({
+        status: 'success',
+        ip: event?.headers?.['client-ip'],
+        request: mail,
+        response,
+      }),
       'success'
     );
     logger(`Mail sent successfully`);
@@ -72,7 +77,11 @@ const handler = async (event) => {
     // log error
     logger(err.stack, 'error');
     await cacheLogger(
-      JSON.stringify({ status: 'fail', error: err.message }),
+      JSON.stringify({
+        status: 'fail',
+        ip: event?.headers?.['client-ip'],
+        error: err.message,
+      }),
       'fail'
     );
     // send mail with error issue

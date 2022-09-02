@@ -7,6 +7,8 @@ import Reviews from '@/components/Reviews';
 import Heading from '@/components/ui/Heading';
 import LinkButton from '@/components/ui/LinkButton';
 import Logo from '@/components/Logo';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 
@@ -15,11 +17,10 @@ LandingReviewsSection.propTypes = {
 };
 
 export default function LandingReviewsSection({ reviews }) {
+  const hasMounted = useHasMounted();
   return (
     <StyledReviewsSection id='reviews'>
-      <LogoWrapper>
-        <Logo />
-      </LogoWrapper>
+      <LogoWrapper>{hasMounted ? <Logo /> : null}</LogoWrapper>
       <Gutter>
         <span>What People Say</span>
         <Heading level='2'>Testimonials</Heading>

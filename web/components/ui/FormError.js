@@ -20,9 +20,12 @@ export default function FormError({ className, children }) {
 }
 
 const StyledErrorMessage = styled.div`
+  display: flex;
   text-transform: capitalize;
   color: var(--color-error);
 `;
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  width: 18px;
+  height: 18px;
   margin-right: 0.2rem;
 `;

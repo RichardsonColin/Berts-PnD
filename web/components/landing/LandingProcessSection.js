@@ -5,13 +5,18 @@ import { StyledProcessSection as StyledSection } from './styled/LandingSection';
 import Gutter from '@/components/ui/Gutter';
 import ProcessCards from './ProcessCards';
 import Heading from '@/components/ui/Heading';
-import AnimatedSquareGroup from '@/components/AnimatedSquareGroup';
+import Particles from '@/components/ui/Particles';
+// hooks
+import useMediaQuery from '@/hooks/useMediaQuery';
+// constants
+import { mediaQueries } from '@/utils/constants';
 
 LandingProcessSection.propTypes = {
   process: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default function LandingProcessSection({ process }) {
+  const isLargerViewport = useMediaQuery(`(min-width: ${mediaQueries.tablet})`);
   return (
     <StyledProcessSection id='process'>
       <Gutter>
@@ -25,17 +30,10 @@ export default function LandingProcessSection({ process }) {
         </p>
         <ProcessCards process={process} />
       </Gutter>
-      <AnimatedSquareWrapper>
-        <AnimatedSquareGroup
-          sizes={[400, 200, 100]}
-          angles={[35, 35, 35]}
-          colors={[
-            'var(--secondary)',
-            'var(--primary)',
-            'var(--secondary-accent)',
-          ]}
-        />
-      </AnimatedSquareWrapper>
+      <StyledParticles
+        colorsType={'alt'}
+        numOfParticles={isLargerViewport ? 100 : 35}
+      />
     </StyledProcessSection>
   );
 }
@@ -46,16 +44,28 @@ const StyledProcessSection = styled(StyledSection)`
     position: relative;
   }
 `;
-const AnimatedSquareWrapper = styled.div`
+const StyledParticles = styled(Particles)`
   ${StyledProcessSection} & {
     position: absolute;
-    top: 100px;
-    right: 20px;
-    margin: auto;
-    margin-right: -300px;
+    top: -120px;
+    left: 75%;
+    transform: rotate(45deg);
 
-    @media (min-width: 1300px) {
-      right: 100px;
+    /* min-widths */
+    @media (min-width: ${mediaQueries.mobileL}) {
+      top: -150px;
+      left: 80%;
+    }
+    @media (min-width: ${mediaQueries.tablet}) {
+      top: -270px;
+      left: 85%;
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      top: -180px;
+    }
+    /* custom breakpoint */
+    @media (min-width: 1500px) {
+      top: -100px;
     }
   }
 `;

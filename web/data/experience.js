@@ -1,5 +1,8 @@
 // assets
-import ratingIcon from '@/public/images/rating.svg';
+import ratingIcon from '@/public/images/icon-rating.svg';
+import satisfactionIcon from '@/public/images/icon-satisfaction.svg';
+import jobsIcon from '@/public/images/icon-jobs.svg';
+import craftIcon from '@/public/images/icon-craft.svg';
 
 export const experienceData = [
   {
@@ -10,16 +13,16 @@ export const experienceData = [
   {
     value: '100%',
     text: 'Satisfaction',
-    icon: ratingIcon,
+    icon: satisfactionIcon,
   },
   {
     value: "1000's",
     text: 'Jobs Completed',
-    icon: ratingIcon,
+    icon: jobsIcon,
   },
   {
     value: '2',
     text: 'Craftsmen',
-    icon: ratingIcon,
+    icon: craftIcon,
   },
 ];

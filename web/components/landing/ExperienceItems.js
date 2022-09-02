@@ -48,20 +48,21 @@ const Item = styled.div`
 `;
 const StyledImage = styled(Image)`
   ${ItemsWrapper} & {
+    transform: scale(0.95);
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.7));
   }
 `;
 const Value = styled.p`
   ${ItemsWrapper} & {
     margin: 1rem 0 0;
-    font-size: 2em;
-    font-weight: 700;
+    font-size: 1.6em;
+    font-weight: 600;
   }
 `;
 const Text = styled.p`
   ${ItemsWrapper} & {
-    margin: 0.5rem 0 0;
-    font-size: 1.8em;
+    margin: 0.25rem 0 0;
+    font-size: 1.5em;
     font-weight: 400;
   }
 `;

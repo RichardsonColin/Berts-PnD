@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 // hooks
 import useCurrentRoute from '@/hooks/useCurrentRoute';
+import usePreventVerticalScroll from '@/hooks/usePreventVerticalScroll';
 // components
 import QuoteLinkButton from '@/components/QuoteLinkButton';
 // constants
@@ -17,9 +18,12 @@ export default function BurgerMenu({ open, setOpen }) {
   const currentRoute = useCurrentRoute();
   const isHidden = open ? true : false;
   const tabIndex = isHidden ? 0 : -1;
+
+  usePreventVerticalScroll(open);
+
   return (
     <StyledBurgerMenu aria-label='Main' aria-hidden={!isHidden} open={open}>
-      <MenuList>
+      <MenuList open={open}>
         {siteRoutes.map((route) => (
           <MenuItem key={route}>
             <Link href={route} passHref>
@@ -45,17 +49,18 @@ export default function BurgerMenu({ open, setOpen }) {
 const StyledBurgerMenu = styled.nav`
   position: absolute;
   top: 42px;
-  right: -1px;
+  right: 0px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: 50%;
+  width: 100%;
   min-height: 100vh;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 2rem;
   background-color: var(--primary);
   text-align: right;
-  transition: transform 0.3s ease-in-out;
-  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(100%)')};
+  visibility: ${({ open }) => (open ? '' : 'hidden')};
 
   /* min-widths */
   @media (min-width: ${mediaQueries.mobileS}) {
@@ -66,7 +71,6 @@ const StyledBurgerMenu = styled.nav`
   }
   @media (min-width: ${mediaQueries.tablet}) {
     top: 50px;
-    min-width: 33%;
     font-size: 1.25em;
   }
   @media (min-width: ${mediaQueries.laptop}) {
@@ -80,7 +84,7 @@ const StyledBurgerMenu = styled.nav`
 `;
 const MenuList = styled.ul`
   ${StyledBurgerMenu} & {
-    display: flex;
+    display: ${({ open }) => (open ? 'flex' : 'none')};
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;

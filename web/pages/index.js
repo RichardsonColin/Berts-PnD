@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 // components
 import HeroPrimary from '@/components/HeroPrimary';
@@ -29,6 +31,32 @@ Home.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
+// dynamic imports
+// const DynamicRenovationsSection = dynamic(
+//   () => import('../components/landing/LandingRenovationsSection'),
+//   { ssr: false }
+// );
+// const DynamicExperienceSection = dynamic(
+//   () => import('../components/landing/LandingExperienceSection'),
+//   { ssr: false }
+// );
+// const DynamicProductsSection = dynamic(
+//   () => import('../components/landing/LandingProductsSection'),
+//   { ssr: false }
+// );
+// const DynamicPortfolioSection = dynamic(
+//   () => import('../components/landing/LandingPortfolioSection'),
+//   { ssr: false }
+// );
+// const DynamicProcessSection = dynamic(
+//   () => import('../components/landing/LandingProcessSection'),
+//   { ssr: false }
+// );
+// const DynamicReviewsSection = dynamic(
+//   () => import('../components/landing/LandingReviewsSection'),
+//   { ssr: false }
+// );
+
 export default function Home({
   services,
   renovations,
@@ -39,6 +67,7 @@ export default function Home({
   reviews,
 }) {
   // TODO: App wide - modify all PropTypes classNames to 'isRequired' and fix subsequent linting warnings
+  // TODO: Clean up dynamic loading. (maybe move to individual componenets themselves)
   return (
     <>
       <HeroPrimary />
@@ -49,6 +78,17 @@ export default function Home({
       <PortfolioSection portfolio={portfolio} companyData={companyData} />
       <ProcessSection process={process} />
       <ReviewsSection reviews={reviews} />
+      {/* <Suspense fallback={null}> */}
+      {/* <DynamicRenovationsSection renovations={renovations} />
+      <DynamicExperienceSection experience={experience} />
+      <DynamicProductsSection products={products} />
+      <DynamicPortfolioSection
+        portfolio={portfolio}
+        companyData={companyData}
+      />
+      <DynamicProcessSection process={process} />
+      <DynamicReviewsSection reviews={reviews} /> */}
+      {/* </Suspense> */}
     </>
   );
 }
@@ -84,6 +124,5 @@ export async function getStaticProps() {
       portfolio: portfolio?.data || [],
       reviews: reviews?.data || [],
     },
-    revalidate: 60,
   };
 }

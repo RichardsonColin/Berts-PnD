@@ -8,18 +8,21 @@ import LandingContent from './LandingContent';
 import Mosaic from './Mosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
-import mosaicImageOne from '@/public/images/hero-primary.webp';
-import mosaicImageTwo from '@/public/images/hero-primary.webp';
-import mosaicImageThree from '@/public/images/hero-primary.webp';
+import mosaicImageOne from '@/public/images/mosaic-1.webp';
+import mosaicImageTwo from '@/public/images/mosaic-2.webp';
+import mosaicImageThree from '@/public/images/mosaic-3.webp';
 
 LandingRenovationsSection.propTypes = {
   renovations: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default function LandingRenovationsSection({ renovations }) {
+  const hasMounted = useHasMounted();
   return (
     <StyledRenovationsSection id='renovations'>
       <StyledGutter>
@@ -37,11 +40,13 @@ export default function LandingRenovationsSection({ renovations }) {
           <DetailsList details={renovations} />
           <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
         </LandingContent>
-        <Mosaic
-          title='Free Estimates'
-          images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
-          split='right'
-        />
+        {hasMounted ? (
+          <Mosaic
+            title='Free Estimates'
+            images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
+            split='right'
+          />
+        ) : null}
       </StyledGutter>
     </StyledRenovationsSection>
   );

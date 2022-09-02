@@ -1,5 +1,4 @@
 :root {
-  /* TODO: Convert into JS constants for IE support */
   --primary: hsl(44, 36%, 52%);
   --primary-fade: hsl(44deg 36% 52% / 12%);
   --primary-light: hsl(42, 94%, 80%);
@@ -37,10 +36,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--color-grey-10);
   color: var(--color-grey-900);
+  font-family: 'Libre Franklin', Helvetica Neue, sans-serif;
   overflow-x: hidden;
 }
 
@@ -55,6 +53,17 @@ h6 {
   margin-bottom: 1.875rem;
 }
 
+p,
+a,
+span {
+  line-height: 27px;
+}
+
+p,
+a {
+  font-family: Helvetica, sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -64,14 +73,8 @@ a:hover {
   cursor: pointer;
 }
 
-p,
-a,
-span {
-  line-height: 27px;
-}
-
 button {
-  font: inherit;
+  font-family: Helvetica, sans-serif;
   cursor: pointer;
 }
 

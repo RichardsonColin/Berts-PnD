@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 // hooks
 import useCurrentRoute from '@/hooks/useCurrentRoute';
 // components
-import Logo from '@/components/Logo';
+import LogoCenter from '@/components/LogoCenter';
 import NavList from '@/components/layout/NavList';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
@@ -22,7 +22,7 @@ export default function Footer() {
       <BorderSpacer size={8} position='top' />
       <BorderCutout aria-hidden='true' />
       <LogoWrapper isLanding={isLanding}>
-        <Logo />
+        <LogoCenter />
       </LogoWrapper>
       <ContentWrapper>
         <ContactPhone href={`tel:${COMPANY_PHONE_MAIN}`}>
@@ -74,11 +74,6 @@ const ContactPhone = styled.a``;
 const ContactAddress = styled.address`
   ${StyledFooter} & {
     display: inline-block;
-  }
-`;
-const ContactEmail = styled.a`
-  ${StyledFooter} & {
-    text-decoration: underline;
   }
 `;
 const BorderCutout = styled.div`

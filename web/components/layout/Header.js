@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+// hooks
+import useScrollPosition from '@/hooks/useScrollPosition';
 // components
 import Section from '@/components/ui/Section';
 import Gutter from '@/components/ui/Gutter';
@@ -8,21 +11,36 @@ import Logo from '@/components/Logo';
 import BorderSpacer from '@/components/ui/BorderSpacer';
 // constants
 import { mediaQueries } from '@/utils/constants';
+// animations
+import { fadeIn } from '@/components/ui/styled/Animations';
 
 Header.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
 export default function Header({ children }) {
+  const [sticky, setSticky] = useState(true);
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isShow = currPos.y > prevPos.y;
+      if (isShow !== sticky) setSticky(isShow);
+    },
+    [sticky],
+    null,
+    false,
+    sticky ? 500 : 200
+  );
+
   return (
-    <StyledHeader id='header'>
-      <BorderSpacer size={4} position='bottom' />
+    <StyledHeader id='header' sticky={sticky}>
+      <BorderSpacer size={2} position='bottom' />
       <ContentWrapper>
         <StyledGutter>
           <LogoWrapper>
-            <Link href='/' passHref>
+            <Link href='/' passHref prefetch={false}>
               <LogoLink>
-                <Logo />
+                <Logo priority={true} />
               </LogoLink>
             </Link>
           </LogoWrapper>
@@ -40,9 +58,18 @@ export const StyledHeader = styled.header`
   height: 42px;
   min-height: 42px;
   background-color: #fff;
-  box-shadow: 0px 1px 2px 0px var(--color-grey-700);
-  z-index: 10;
+  color: var(--color-grey-800);
+  z-index: 100;
   transition: 0.2s ease;
+  ${({ sticky }) => {
+    return sticky
+      ? css`
+          transform: translateY(0px);
+        `
+      : css`
+          transform: translateY(-80px);
+        `;
+  }};
 
   /* min-widths */
   @media (min-width: ${mediaQueries.tablet}) {
@@ -50,8 +77,8 @@ export const StyledHeader = styled.header`
     min-height: 50px;
   }
   @media (min-width: ${mediaQueries.laptop}) {
-    height: 90px;
-    min-height: 90px;
+    height: 70px;
+    min-height: 70px;
   }
 `;
 const StyledGutter = styled(Gutter)`
@@ -76,6 +103,7 @@ const LogoWrapper = styled.div`
     align-items: center;
     width: 130px;
     height: 100%;
+    animation: ${fadeIn} 1.5s forwards;
 
     /* min-widths */
     @media (min-width: ${mediaQueries.tablet}) {

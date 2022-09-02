@@ -27,6 +27,7 @@ export default function ContactDetails({ companyData, className }) {
     companyAddressCity,
     companyAddressProvince,
     companyAddressPostal,
+    companyAddressLink,
   } = companyData;
   return (
     <StyledContainer className={className}>
@@ -56,22 +57,28 @@ export default function ContactDetails({ companyData, className }) {
         </StyledLink>
       </StyledDetails>
       <StyledDetails>
-        <StyledText>
-          <FontAwesomeWrapper aria-hidden='true'>
-            <StyledFontAwesomeIcon icon={faLocationDot} />
-          </FontAwesomeWrapper>
-          {companyAddressStreet}
-        </StyledText>
-        <br />
-        <StyledText>
-          <FontAwesomeWrapper aria-hidden='true'></FontAwesomeWrapper>
-          {companyAddressCity}, {companyAddressProvince}
-        </StyledText>
-        <br />
-        <StyledText>
-          <FontAwesomeWrapper aria-hidden='true'></FontAwesomeWrapper>
-          {companyAddressPostal}
-        </StyledText>
+        <StyledLink
+          href={companyAddressLink}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <StyledText>
+            <FontAwesomeWrapper aria-hidden='true'>
+              <StyledFontAwesomeIcon icon={faLocationDot} />
+            </FontAwesomeWrapper>
+            {companyAddressStreet}
+          </StyledText>
+          <br />
+          <StyledText>
+            <FontAwesomeWrapper aria-hidden='true'></FontAwesomeWrapper>
+            {companyAddressCity}, {companyAddressProvince}
+          </StyledText>
+          <br />
+          <StyledText>
+            <FontAwesomeWrapper aria-hidden='true'></FontAwesomeWrapper>
+            {companyAddressPostal}
+          </StyledText>
+        </StyledLink>
       </StyledDetails>
     </StyledContainer>
   );

@@ -67,8 +67,8 @@ const StyledButton = styled.button`
   right: 5px;
   width: 35px;
   height: 35px;
-  border: 3px solid var(--secondary);
-  background-color: var(--color-grey-50);
+  border: 2px solid var(--secondary);
+  background-color: var(--color-grey-10);
   color: var(--secondary);
   font-size: 1.2em;
   text-shadow: 0px 0px 2px var(--color-grey-950);
@@ -77,8 +77,8 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: var(--secondary);
-    color: var(--color-grey-50);
-    border: 3px solid var(--color-grey-50);
+    color: var(--color-grey-10);
+    border: 2px solid var(--color-grey-10);
     transform: rotate(180deg);
   }
 

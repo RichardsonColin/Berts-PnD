@@ -12,6 +12,8 @@ module.exports = {
   COMPANY_DESCRIPTION:
     "Bert's Painting & Decorating is a father and son company providing service in English and French to many satisfied customers for over 35 years. We are Red Seal Qualified Journeyman Painters providing interior and exterior work in residential and small commercial buildings.",
   COMPANY_REVIEW_LINK: 'https://g.page/r/CXvnd3cgbT9lEAg/review',
+  COMPANY_ADDRESS_LINK:
+    "https://google.com/maps/search/Bert's+Painting+%26+Decorating/@49.87607,-97.132592,17z",
   FORM_MAILER_PATH: '.netlify/functions/form-mailer',
   RECAPTCHA_VERIFY_PATH: '.netlify/functions/recaptcha-verify',
   siteRoutes: [

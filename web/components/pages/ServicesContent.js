@@ -8,6 +8,8 @@ import { PagesHeadingWrapper as HeadingWrapper } from './styled/PagesHeading';
 import Gutter from '@/components/ui/Gutter';
 import Container from '@/components/ui/Container';
 import Heading from '@/components/ui/Heading';
+// assets
+import { servicesData } from '@/data/services';
 // constants
 import { mediaQueries } from '@/utils/constants';
 
@@ -35,7 +37,7 @@ export default function ServicesContent({
           alt={`${heading} image`}
           layout='fill'
           objectFit='cover'
-          quality={80}
+          quality={100}
           placeholder='blur'
         />
       </ImageWrapper>
@@ -52,7 +54,7 @@ export default function ServicesContent({
             alt={`${heading} icon`}
             width={30}
             height={30}
-            quality={100}
+            quality={80}
           />
         </IconWrapper>
         {body.map((text, index) => (
@@ -76,13 +78,13 @@ export default function ServicesContent({
             >
               {index % 2 === 0 ? (
                 <>
-                  <ContentImage {...content} />
+                  <ContentImage {...servicesData[index]} />
                   <ContentText {...content} />
                 </>
               ) : (
                 <>
                   <ContentText {...content} />
-                  <ContentImage {...content} />
+                  <ContentImage {...servicesData[index]} />
                 </>
               )}
             </StyledWrapperContainer>

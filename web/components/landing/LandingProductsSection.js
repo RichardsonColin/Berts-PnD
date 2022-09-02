@@ -8,18 +8,21 @@ import LandingContent from './LandingContent';
 import Mosaic from './Mosaic';
 import Heading from '@/components/ui/Heading';
 import QuoteLinkButton from '@/components/QuoteLinkButton';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
-import mosaicImageOne from '@/public/images/hero-primary.webp';
-import mosaicImageTwo from '@/public/images/hero-primary.webp';
-import mosaicImageThree from '@/public/images/hero-primary.webp';
+import mosaicImageOne from '@/public/images/mosaic-1-alt.webp';
+import mosaicImageTwo from '@/public/images/mosaic-1.webp';
+import mosaicImageThree from '@/public/images/mosaic-3.webp';
 
 LandingProductsSection.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default function LandingProductsSection({ products }) {
+  const hasMounted = useHasMounted();
   return (
     <StyledProductsSection id='products'>
       <StyledGutter>
@@ -37,11 +40,13 @@ export default function LandingProductsSection({ products }) {
           <DetailsList details={products} />
           <StyledQuoteLinkButton>Schedule Now</StyledQuoteLinkButton>
         </LandingContent>
-        <Mosaic
-          title='Exceptional Quality'
-          images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
-          split='left'
-        />
+        {hasMounted ? (
+          <Mosaic
+            title='Exceptional Quality'
+            images={[mosaicImageOne, mosaicImageTwo, mosaicImageThree]}
+            split='left'
+          />
+        ) : null}
       </StyledGutter>
     </StyledProductsSection>
   );

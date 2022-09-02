@@ -5,6 +5,8 @@ import styled, { css } from 'styled-components';
 import { StyledExperienceSection as StyledSection } from './styled/LandingSection';
 import ExperienceItems from './ExperienceItems';
 import Heading from '@/components/ui/Heading';
+// hooks
+import useHasMounted from '@/hooks/useHasMounted';
 // constants
 import { mediaQueries } from '@/utils/constants';
 // assets
@@ -15,26 +17,29 @@ LandingExperienceSection.propTypes = {
 };
 
 export default function LandingExperienceSection({ experience }) {
+  const hasMounted = useHasMounted();
   return (
     <StyledExperienceSection id='experience'>
-      <StyledSlantLeft aria-hidden='true' />
-      <StyledSlantRight aria-hidden='true' />
       <ContentWrapper>
         <StyledSpan>We Know Painting</StyledSpan>
         <StyledHeading level='2'>Over 45 Years of Experience</StyledHeading>
         <ExperienceItems items={experience} />
       </ContentWrapper>
       <BackgroundWrapper>
+        <StyledSlantLeft aria-hidden='true' />
+        <StyledSlantRight aria-hidden='true' />
         <ImageFilter aria-hidden='true' />
         <ImageWrapper>
-          <Image
-            src={backgroundImage}
-            alt='Painting image'
-            layout='fill'
-            objectFit='cover'
-            quality={80}
-            placeholder='blur'
-          />
+          {hasMounted ? (
+            <Image
+              src={backgroundImage}
+              alt='Painting image'
+              layout='fill'
+              objectFit='cover'
+              quality={70}
+              placeholder='blur'
+            />
+          ) : null}
         </ImageWrapper>
       </BackgroundWrapper>
     </StyledExperienceSection>
@@ -43,15 +48,14 @@ export default function LandingExperienceSection({ experience }) {
 
 // styles
 const StyledExperienceSection = styled(StyledSection)`
-  & {
-    position: relative;
-    height: 1100px;
-    padding-left: 0;
-    padding-right: 0;
+  position: relative;
+  height: 1100px;
+  padding-left: 0;
+  padding-right: 0;
+  /* overflow: hidden; */
 
-    @media (min-width: ${mediaQueries.laptop}) {
-      height: 1200px;
-    }
+  @media (min-width: ${mediaQueries.laptop}) {
+    height: 1200px;
   }
 `;
 const ContentWrapper = styled.div`
@@ -72,11 +76,10 @@ const ContentWrapper = styled.div`
 `;
 const StyledHeading = styled(Heading)`
   ${StyledExperienceSection} & {
-    width: 244px;
     margin: 0 auto;
 
     @media (min-width: ${mediaQueries.tablet}) {
-      width: 300px;
+      width: 480px;
     }
   }
 `;
@@ -124,51 +127,59 @@ const ImageWrapper = styled.div`
 `;
 const StyledSlantLeft = styled.div`
   ${StyledExperienceSection} & {
+    display: none;
     position: absolute;
-    top: 60%;
-    left: -720px;
     width: 700px;
     height: 700px;
     background-color: var(--primary);
-    border: 175px solid var(--secondary);
-    transform: translateY(-50%) rotate(50deg);
+    border: 100px solid var(--secondary);
+    transform: rotate(45deg);
     z-index: 2;
 
     /* min-widths */
-    @media (min-width: ${mediaQueries.mobileL}) {
-      left: -675px;
-    }
     @media (min-width: ${mediaQueries.tablet}) {
-      left: -400px;
+      display: block;
+      top: -200px;
+      left: -600px;
+      box-shadow: 4px 3px 7px var(--color-grey-950);
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      left: -550px;
     }
     /* custom breakpoint */
-    @media (min-width: 1200px) {
-      box-shadow: 4px 3px 7px var(--color-grey-950);
+    @media (min-width: 1300px) {
+      border: 125px solid var(--secondary);
+      top: -50px;
+      left: -500px;
     }
   }
 `;
 const StyledSlantRight = styled.div`
   ${StyledExperienceSection} & {
+    display: none;
     position: absolute;
-    top: 40%;
-    right: -720px;
     width: 700px;
     height: 700px;
     background-color: var(--primary);
-    border: 175px solid var(--secondary);
-    transform: translateY(-50%) rotate(50deg);
+    border: 100px solid var(--secondary);
+    transform: rotate(45deg);
     z-index: 2;
 
     /* min-widths */
-    @media (min-width: ${mediaQueries.mobileL}) {
-      right: -675px;
-    }
     @media (min-width: ${mediaQueries.tablet}) {
-      right: -400px;
+      display: block;
+      bottom: -200px;
+      right: -600px;
+      box-shadow: 3px 4px 7px var(--color-grey-950);
+    }
+    @media (min-width: ${mediaQueries.laptop}) {
+      right: -550px;
     }
     /* custom breakpoint */
-    @media (min-width: 1200px) {
-      box-shadow: 3px 4px 7px var(--color-grey-950);
+    @media (min-width: 1300px) {
+      border: 125px solid var(--secondary);
+      bottom: -50px;
+      right: -500px;
     }
   }
 `;

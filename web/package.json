@@ -16,6 +16,7 @@
     "@aws-sdk/client-s3": "^3.145.0",
     "@aws-sdk/client-ses": "^3.145.0",
     "@aws-sdk/lib-storage": "^3.145.0",
+    "@fontsource/libre-franklin": "^4.5.9",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -37,11 +38,12 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/eslint-parser": "^7.17.0",
-    "@netlify/plugin-nextjs": "4.15.0",
+    "@netlify/plugin-nextjs": "4.20.0",
+    "@next/bundle-analyzer": "^12.2.5",
     "@svgr/webpack": "^6.2.1",
     "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.22.0",
-    "eslint-config-next": "12.2.5",
+    "eslint-config-next": "^12.2.5",
     "eslint-plugin-react": "^7.30.0"
   },
   "repository": {
