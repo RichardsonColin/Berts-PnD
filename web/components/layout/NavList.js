@@ -67,7 +67,7 @@ const NavListItem = styled.li`
   }
 `;
 const LinkText = styled.span`
-  vertical-align: middle;
+  vertical-align: text-bottom;
   line-height: 15px;
 `;
 const StyledLink = styled.a`
