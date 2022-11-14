@@ -1,8 +1,8 @@
 # Berts-PnD
 
-Berts Painting and Decorating Site
+Berts Painting and Decorating Demo Site
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[Visit the live site](https://brave-ritchie-84cd7d.netlify.app/)
 
 ## Getting Started
 
